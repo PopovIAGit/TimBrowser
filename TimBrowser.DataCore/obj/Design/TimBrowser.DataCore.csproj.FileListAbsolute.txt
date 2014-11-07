@@ -1,0 +1,5 @@
+D:\Work\Projects\TimBrowser\TimBrowser.DataCore\bin\Design\TimBrowser.DataCore.dll
+D:\Work\Projects\TimBrowser\TimBrowser.DataCore\bin\Design\TimBrowser.DataCore.pdb
+D:\Work\Projects\TimBrowser\TimBrowser.DataCore\obj\Design\ResolveAssemblyReference.cache
+D:\Work\Projects\TimBrowser\TimBrowser.DataCore\obj\Design\TimBrowser.DataCore.dll
+D:\Work\Projects\TimBrowser\TimBrowser.DataCore\obj\Design\TimBrowser.DataCore.pdb

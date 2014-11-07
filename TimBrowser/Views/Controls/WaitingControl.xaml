@@ -1,0 +1,56 @@
+﻿<UserControl
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Name="userControl" x:Class="TimBrowser.Views.Controls.WaitingControl" 
+			 mc:Ignorable="d" 
+			 d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+		<Storyboard x:Key="ActiveStoryboard" RepeatBehavior="Forever" AutoReverse="True">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="EllipseOne">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="EllipseTwo">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="EllipseThree">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="EllipseFour">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+    
+	<Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+        
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.25*"/>
+			<ColumnDefinition Width="0.25*"/>
+			<ColumnDefinition Width="0.25*"/>
+			<ColumnDefinition Width="0.25*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform/>
+				<SkewTransform/>
+				<RotateTransform/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</Grid.RenderTransform>
+		<Ellipse x:Name="EllipseOne" Margin="16" StrokeThickness="0" Fill="#FF0CB3EE" Height="{Binding ActualWidth, ElementName=EllipseOne}" Opacity="0" VerticalAlignment="Center"/>
+		<Ellipse x:Name="EllipseTwo" Margin="16" StrokeThickness="0" Fill="#FF0CB3EE" Height="{Binding ActualWidth, ElementName=EllipseOne}" Grid.Column="1" Opacity="0" VerticalAlignment="Center"/>
+		<Ellipse x:Name="EllipseThree" Margin="16" StrokeThickness="0" Fill="#FF0CB3EE" Height="{Binding ActualWidth, ElementName=EllipseOne}" Grid.Column="2" Opacity="0" VerticalAlignment="Center"/>
+		<Ellipse x:Name="EllipseFour" Margin="16" StrokeThickness="0" Fill="#FF0CB3EE" Height="{Binding ActualWidth, ElementName=EllipseOne}" Grid.Column="3" Opacity="0" VerticalAlignment="Center"/>
+			
+	</Grid>
+</UserControl>

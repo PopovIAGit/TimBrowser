@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="TimBrowser.Views.LogEvParametersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:TimBrowser.Converters"
+             xmlns:contrl="clr-namespace:TimBrowser.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        
+        <Style x:Key="SortLBStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Background" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                             Color="{StaticResource TimListItemSelectColor}"/>
+            </Style.Resources>
+
+        </Style>
+
+        <DataTemplate x:Key="FilterListBoxDataTemplate">
+        	<Grid>
+                <CheckBox Margin="0,0,0,4" d:LayoutOverrides="Width, Height" BorderThickness="0" FontSize="14"
+                          IsChecked="{Binding IsChecked, Mode=TwoWay}">
+                    <ContentControl>
+                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
+                    </ContentControl>
+                </CheckBox>
+        	</Grid>
+            
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.06*"/>
+    		<RowDefinition Height="0.94*"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.6*"/>
+    		<ColumnDefinition Width="0.2*"/>
+    		<ColumnDefinition Width="0.2*"/>
+    	</Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="LogEvParametersDataGrid" Grid.Column="0" Grid.Row="1"
+		ItemsSource="{Binding LogParametersView}"
+		SelectedItem="{Binding SelectedParameter, Mode=TwoWay}"
+		ScrollViewer.CanContentScroll="True"
+		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+		ScrollViewer.VerticalScrollBarVisibility="Auto"
+		CanUserReorderColumns="False" CanUserSortColumns="True"
+		AutoGenerateColumns="False" FontFamily="Segoe UI" FontSize="14" 
+                CellStyle="{StaticResource TimDataGridCellStyle1}" 
+                VerticalGridLinesBrush="{StaticResource TimDataGridLinesBrush}" 
+                ColumnHeaderStyle="{StaticResource TimDataGridColumnHeaderStyle1}" 
+                Grid.RowSpan="2" HorizontalGridLinesBrush="{x:Null}" HorizontalContentAlignment="Stretch" 
+                VerticalContentAlignment="Stretch" 
+                AlternatingRowBackground="{StaticResource TimDataGridRowAltBackground}"
+                    Validation.ErrorTemplate="{x:Null}"
+                    BorderThickness="0">
+
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="№" Width="0.05*"
+				Binding="{Binding Number, Mode=OneWay}" 
+                                ElementStyle="{StaticResource DataGridTextTemplate}"/>
+                <DataGridTextColumn Header="Дата и время" Width="0.2*"
+				Binding="{Binding DateTimeString, Mode=OneWay}"
+                                ElementStyle="{StaticResource DataGridTextTemplate}"/>
+                <DataGridTextColumn Header="Параметр" Width="0.4*"
+				Binding="{Binding Name, Mode=OneWay}"
+                                ElementStyle="{StaticResource DataGridTextTemplate}"/>
+                <DataGridTextColumn Header="Значение" Width="0.2*"
+				Binding="{Binding ValueString, Mode=OneWay}"
+                                ElementStyle="{StaticResource DataGridTextTemplate}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        
+        <Grid x:Name="EventNameGrid" Margin="12,4" 
+              Background="{Binding IsEventSet, Converter={conv:BooleanLogEvColorValueExt}}">
+        	<TextBlock x:Name="EventNameTextBlock" Margin="4,0" TextWrapping="Wrap"
+        		HorizontalAlignment="Left" Text="{Binding EventName}" VerticalAlignment="Center" />            
+        </Grid>
+        
+        <TextBlock x:Name="FilterTextBlock" HorizontalAlignment="Left" Margin="4" TextWrapping="Wrap" Grid.Column="2" Text="фильтрация параметров"/>
+        
+        <ListBox Grid.Row="1" Grid.Column="2" Validation.ErrorTemplate="{x:Null}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"                 
+                 ItemsSource="{Binding ParameterFilterList}"
+                 x:Name="FilterListBox" Margin="0,8,0,0" VerticalAlignment="Top" BorderThickness="0" Background="{x:Null}" 
+                 ItemTemplate="{StaticResource FilterListBoxDataTemplate}" 
+                 ItemContainerStyle="{StaticResource SortLBStyle}"
+                 BorderBrush="{x:Null}">
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                    </Style.Resources>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+
+        <contrl:BitParameterControl Grid.Column="1" x:Name="ParameterControl"
+									Title="{Binding ParameterFieldsName}" BitFields="{Binding ParameterFields}" 
+                                    Margin="8,8,8,4" Grid.Row="1"/>
+
+    </Grid>
+    
+</UserControl>

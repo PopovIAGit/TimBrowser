@@ -1,0 +1,8 @@
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Design\TimBrowser.Bluetooth.dll
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Design\TimBrowser.Bluetooth.pdb
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Design\InTheHand.Net.Personal.dll
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Design\TimBrowser.DataCore.dll
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Design\TimBrowser.DataCore.pdb
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Design\ResolveAssemblyReference.cache
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Design\TimBrowser.Bluetooth.dll
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Design\TimBrowser.Bluetooth.pdb

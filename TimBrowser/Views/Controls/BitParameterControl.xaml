@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="TimBrowser.Views.Controls.BitParameterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="clr-namespace:TimBrowser.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             MaxWidth="400">
+    
+	<UserControl.Resources>
+        
+		<DataTemplate x:Key="BitFieldsDataTemplate">			
+				<Grid Background="#FFF9F9F9">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.1*"/>
+						<ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.4*"/>
+					</Grid.ColumnDefinitions>
+
+					<TextBlock x:Name="FieldsName"  Background="{x:Null}" HorizontalAlignment="Left" Margin="4,0,0,0" d:LayoutOverrides="Width, Height" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="13.333" 
+						Text="{Binding Description}"/>
+					<Ellipse Grid.Column="0" Grid.ColumnSpan="2" x:Name="FieldValueEllipse" Stroke="Black" Height="{Binding ActualWidth, ElementName=FieldValueEllipse, Mode=OneWay}" Margin="2,4" 
+						Fill="{Binding IsSet, Converter={c:FieldsValueConverter}}" Width="18"/>
+                <Border Grid.Column="1" Grid.ColumnSpan="3" BorderBrush="#33787878" BorderThickness="0,0,0,1" />
+            </Grid>
+		</DataTemplate>
+        
+	</UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.05*"/>
+    		<RowDefinition Height="0.95*"/>
+    	</Grid.RowDefinitions>
+    	<TextBlock x:Name="TitleTextBlock" TextWrapping="Wrap" Margin="12,0,0,0" HorizontalAlignment="Right" FontSize="16" />
+        <ItemsControl x:Name="BitFieldsList" Background="{x:Null}" Grid.Row="1"
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                      ItemTemplate="{StaticResource BitFieldsDataTemplate}"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                	<ScrollViewer x:Name="scrollViewer" >
+                		<ItemsPresenter/>
+                	</ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
+
+    </Grid>
+</UserControl>

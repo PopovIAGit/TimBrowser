@@ -1,0 +1,191 @@
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.exe
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.pdb
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.Bluetooth.dll
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.DataCore.dll
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\InTheHand.Net.Personal.dll
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TpeParameters.dll
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.Bluetooth.pdb
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TimBrowser.DataCore.pdb
+d:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\TpeParameters.pdb
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\MainWindowView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\DownloadView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\MainWindowView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\App.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.cache
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.lref
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\App.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\DownloadView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.g.resources
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.Properties.Resources.resources
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.exe
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.pdb
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvMainView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvMainView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\MenuView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\MenuView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Resources\TimDataGridStyle.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Resources\ScrollBar.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogCmdView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogCmdView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogParamView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogParamView.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.g.cs
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\ListUserControl.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\ListUserControl.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogChosenView.baml
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogChosenView.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterResourceDictionary.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.baml
+d:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.csprojResolveAssemblyReference.cache
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.csproj.GenerateResource.Cache
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\ParametersTableView.baml
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\ParametersTableView.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.baml
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.baml
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.baml
+D:\Work\Projects\TimBrowser\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.g.cs
+D:\Work\Projects\TimBrowser\TimBrowser\bin\Debug\InTheHand.Net.Personal.xml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.exe
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.exe
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\System.Windows.Interactivity.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.Bluetooth.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.DataCore.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TpeParameters.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\InTheHand.Net.Personal.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.Bluetooth.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.DataCore.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\TpeParameters.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\System.Windows.Interactivity.xml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\bin\Debug\InTheHand.Net.Personal.xml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Resources\ScrollBar.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Resources\TimDataGridStyle.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterResourceDictionary.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ListUserControl.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogChosenView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvMainView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MenuView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ListUserControl.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogChosenView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogCmdView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvMainView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogParamView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MainWindowView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MenuView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ParametersTableView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\App.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.cache
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.lref
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\App.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogCmdView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogParamView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MainWindowView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ParametersTableView.baml
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.g.resources
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.Properties.Resources.resources
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\GenerateResource.read.1.tlog
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.exe
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.exe
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\System.Windows.Interactivity.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.Bluetooth.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.DataCore.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TpeParameters.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.Bluetooth.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TimBrowser.DataCore.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\TpeParameters.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\bin\Debug\System.Windows.Interactivity.xml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Resources\ScrollBar.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Resources\TimDataGridStyle.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterResourceDictionary.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ListUserControl.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogChosenView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvMainView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MenuView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothAuthView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\WaitingControl.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadInformationModuleView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ListUserControl.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogChosenView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogCmdView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvChosenParametersView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvMainView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogParamView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MainWindowView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MenuView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ParametersTableView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintPreviewView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\PrintSelectionView.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\App.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.cache
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser_MarkupCompile.lref
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\App.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Bluetooth\BluetoothView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\Controls\BitParameterControl.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\DownloadView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogCmdView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvEventsView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogEvParametersView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\LogParamView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\MainWindowView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\Views\ParametersTableView.baml
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.g.resources
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.Properties.Resources.resources
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.csprojResolveAssemblyReference.cache
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser\obj\x86\Debug\TimBrowser.csproj.GenerateResource.Cache
+D:\Work\Electronica Separate\TimBrowser v2.0.7\TimBrowser\obj\x86\Debug\TimBrowser.exe
+D:\Work\Electronica Separate\TimBrowser v2.0.7\TimBrowser\obj\x86\Debug\TimBrowser.pdb

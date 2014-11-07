@@ -1,0 +1,96 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Documents="clr-namespace:System.Windows.Documents;assembly=PresentationUI" x:Class="TimBrowser.Views.PrintPreviewView" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:c="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+	<UserControl.Resources>
+        
+        <Style x:Key="TimContentControlStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <ToolBar Focusable="{TemplateBinding Focusable}" ToolBarTray.IsLocked="True" Language="en-us" KeyboardNavigation.TabNavigation="Continue" Uid="ToolBar_2">
+                            <Button x:Name="PrintButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerPrintButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}"  IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="0" ToolTip="Print (Ctrl+P)" Uid="Button_14" VerticalAlignment="Center" Width="24">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <c:ActionMessage MethodName="PrintRequest" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <!--
+                            убрано из PrintButton:
+                            CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" Command="ApplicationCommands.Print"
+                            
+                            <Button x:Name="CopyButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerCopyButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" Command="ApplicationCommands.Copy" IsTabStop="True" Margin="2" Padding="2" Style="{DynamicResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="1" ToolTip="Copy (Ctrl+C)" Uid="Button_15" VerticalAlignment="Center" Width="24"/>
+                            -->
+
+                            <Separator Uid="Separator_110"/>
+                            <Button x:Name="ZoomInButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerZoomInButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" Command="NavigationCommands.IncreaseZoom" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="3" ToolTip="Increase the size of the content (Ctrl +)" Uid="Button_16" VerticalAlignment="Center" Width="24"/>                            
+                            <Button x:Name="ZoomOutButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerZoomOutButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" Command="NavigationCommands.DecreaseZoom" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="4" ToolTip="Decrease the size of the content (Ctrl -)" Uid="Button_17" VerticalAlignment="Center" Width="24"/>
+                            <Separator Uid="Separator_111"/>
+                            <Button x:Name="ActualSizeButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerActualSizeButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Command="NavigationCommands.Zoom" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="5" ToolTip="100% (Ctrl+1)" Uid="Button_18" VerticalAlignment="Center" Width="24"/>
+                            <Button x:Name="PageWidthButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerPageWidthButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" Command="DocumentViewer.FitToWidthCommand" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="6" ToolTip="Page Width (Ctrl+2)" Uid="Button_19" VerticalAlignment="Center" Width="24"/>
+                            <Button x:Name="WholePageButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerWholePageButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Command="DocumentViewer.FitToMaxPagesAcrossCommand" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="7" ToolTip="Whole Page (Ctrl+3)" Uid="Button_20" VerticalAlignment="Center" Width="24"/>
+                            <Button x:Name="TwoPagesButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerTwoPagesButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" CommandTarget="{Binding TemplatedParent, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Command="DocumentViewer.FitToMaxPagesAcrossCommand" IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="8" ToolTip="Two Pages (Ctrl+4)" Uid="Button_21" VerticalAlignment="Center" Width="24"/>
+                        </ToolBar>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TimDocumentViewerStyle" BasedOn="{x:Null}" TargetType="{x:Type DocumentViewer}">
+            <Setter Property="Foreground" Value="{StaticResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{StaticResource {x:Static SystemColors.ControlBrushKey}}"/>
+			<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="ContextMenu" Value="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerContextMenu, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type DocumentViewer}">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False">
+							<Grid Background="{TemplateBinding Background}" KeyboardNavigation.TabNavigation="Local">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+                                <ContentControl Grid.Column="0" Focusable="{TemplateBinding Focusable}" Grid.Row="0" Style="{StaticResource TimContentControlStyle}" TabIndex="0"/>
+								<ScrollViewer x:Name="PART_ContentHost" CanContentScroll="true" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalScrollBarVisibility="Disabled" IsTabStop="true" Grid.Row="1" TabIndex="1"/>
+								<DockPanel Grid.Row="1">
+                                    <FrameworkElement DockPanel.Dock="Right" Width="{StaticResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
+									<Rectangle Height="10" Visibility="Visible" VerticalAlignment="top">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+												<LinearGradientBrush.GradientStops>
+													<GradientStopCollection>
+														<GradientStop Color="#66000000" Offset="0"/>
+														<GradientStop Color="Transparent" Offset="1"/>
+													</GradientStopCollection>
+												</LinearGradientBrush.GradientStops>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+								</DockPanel>
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</UserControl.Resources>
+    
+	<Grid>
+		<DocumentViewer Document="{Binding PrintDocument}"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource TimDocumentViewerStyle}"/>
+	</Grid>
+    
+</UserControl>

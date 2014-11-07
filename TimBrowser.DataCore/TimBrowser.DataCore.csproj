@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C85EED4F-98D6-4558-BBC2-4436E5EFE868}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimBrowser.DataCore</RootNamespace>
+    <AssemblyName>TimBrowser.DataCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Design|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Design\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Communication\Codes.cs" />
+    <Compile Include="Communication\CommErrorEventArgs.cs" />
+    <Compile Include="Communication\CommunicationException.cs" />
+    <Compile Include="Communication\ITimCommunication.cs" />
+    <Compile Include="Download\Codes.cs" />
+    <Compile Include="Download\DownloadInformationModule.cs" />
+    <Compile Include="Download\DownloadInformationModule.Events.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncFive.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncFour.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncOne.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncSix.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncThree.cs" />
+    <Compile Include="Download\DownloadInformationModule.FuncTwo.cs" />
+    <Compile Include="Download\Events\DownloadException.cs" />
+    <Compile Include="Download\Events\DownloadProgressChangedEventArgs.cs" />
+    <Compile Include="Download\Model\FuncDownloadData.cs" />
+    <Compile Include="Download\Model\FuncFiveData.cs" />
+    <Compile Include="Download\Model\FuncFourData.cs" />
+    <Compile Include="Download\Model\FuncSixData.cs" />
+    <Compile Include="Download\Model\FuncThreeData.cs" />
+    <Compile Include="Download\Model\FuncTwoData.cs" />
+    <Compile Include="Download\Utils.cs" />
+    <Compile Include="File\DesktopFileItem.cs" />
+    <Compile Include="File\DesktopFileOperation.cs" />
+    <Compile Include="File\IFileItem.cs" />
+    <Compile Include="File\IFileOperation.cs" />
+    <Compile Include="Helpers\Codes.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\ImData.cs" />
+    <Compile Include="Model\Device\DeviceInfo.cs" />
+    <Compile Include="Model\Device\DeviceLogInfo.cs" />
+    <Compile Include="Model\InformationModuleData.cs" />
+    <Compile Include="Model\Logs\DeviceLogs.cs" />
+    <Compile Include="Model\Logs\LogCmdRecordItem.cs" />
+    <Compile Include="Model\Logs\LogParamRecordItem.cs" />
+    <Compile Include="Model\Logs\LogEventRecordItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\ParametersTemplateService.cs" />
+    <Compile Include="Storage\Data.cs" />
+    <Compile Include="Transform\Codes.cs" />
+    <Compile Include="Transform\EventCode.cs" />
+    <Compile Include="Transform\TransformDownloadData.cs" />
+    <Compile Include="Transform\TransformDownloadDataException.cs" />
+    <Compile Include="Transform\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Download\Model\FuncOneData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Download\DownloadInformationModule.Commnunication.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Application\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
+      <Project>{16a337ef-95ff-4099-b847-c7b62447184f}</Project>
+      <Name>TpeParameters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

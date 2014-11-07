@@ -1,0 +1,27 @@
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.dll
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.pdb
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.dll
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TpeParameters.dll
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.pdb
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TpeParameters.pdb
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.dll
+d:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.pdb
+D:\Work\Projects\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csprojResolveAssemblyReference.cache
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TpeParameters.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TpeParameters.pdb
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\ResolveAssemblyReference.cache
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.dll
+Z:\applications\Information Module 3\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TpeParameters.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\bin\Debug\TpeParameters.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.dll
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.pdb
+D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csprojResolveAssemblyReference.cache
