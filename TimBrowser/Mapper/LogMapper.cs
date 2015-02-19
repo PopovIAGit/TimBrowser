@@ -72,12 +72,19 @@ namespace TimBrowser.Mapper
 
                 string dateTimeString = lcr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
                 string cmdName = String.Empty;
+                string srcCmdName = String.Empty;
 
-                int cmdValue = (int)lcr.Command.Value;
+                int cmdValue = (int)lcr.Command.Value & 0x000F;
+                int srcCmdValue = (int)lcr.Command.Value & 0xF000;
+
 
                 // ищем поле, которое имеет числовое значение команды
                 var cmd = (from c in lcr.Command.ValueDescription.Fields
                            where c.BitValue == cmdValue
+                           select c).FirstOrDefault();
+
+                var srcCmd = (from c in lcr.Command.ValueDescription.Fields
+                           where c.BitValue == srcCmdValue
                            select c).FirstOrDefault();
 
                 if (cmd != null)
@@ -85,10 +92,17 @@ namespace TimBrowser.Mapper
                     cmdName = cmd.Description;
                 }
 
+                if (srcCmd != null)
+                {
+                    srcCmdName = srcCmd.Description;
+                }
+
+                //здесь начинается магия с Источником команд (Источник команд)
+
                 TimParameterItem statusPar = ParameterMapper.MapParameter(0, lcr.Status, lcr.DateAndTime);
 
                 timLogCmdRecords.Add(new TimLogCmdRecItem(numberCounter,
-                    dateTimeString, cmdName, statusPar));
+                    dateTimeString, cmdName, srcCmdName, statusPar));
             }
 
             return timLogCmdRecords;

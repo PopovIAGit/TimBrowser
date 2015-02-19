@@ -47,8 +47,6 @@ namespace TimBrowser.ViewModels
         {
             _windowManager = windowManager;
             _bluetoothAuthViewModelObj = bluetoothAuthViewModelObj;
-
-
         }
 
         #region Fields
@@ -81,6 +79,7 @@ namespace TimBrowser.ViewModels
             _bluetoothAuthViewModelObj.OnAuthCancel = AuthCancel;
 
             StateBehaviour(_bluetoothDriver.CurrentState.Id);
+
         }
 
         public override void Deactivate()
@@ -180,6 +179,14 @@ namespace TimBrowser.ViewModels
             get
             {
                 return _bluetoothDriver.Communication;
+            }
+        }
+
+        public override DataCore.Communication.ICommunicationSource CommunicationM
+        {
+            get
+            {
+                return null;
             }
         }
 

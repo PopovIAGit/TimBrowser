@@ -28,14 +28,14 @@ namespace TimBrowser.Views
             
             LogCmdList = new List<TimLogCmdRecItem>()
             {
-                new TimLogCmdRecItem(1, "01.01.14", "Команда 1", null),
-                new TimLogCmdRecItem(2, "01.01.14", "Команда 2", null),
-                new TimLogCmdRecItem(3, "01.01.14", "Команда 3", null),
-                new TimLogCmdRecItem(4, "01.01.14", "Команда 4", null),
-                new TimLogCmdRecItem(5, "01.01.14", "Команда 5", null),
-                new TimLogCmdRecItem(6, "01.01.14", "Команда 6", null),
-                new TimLogCmdRecItem(7, "01.01.14", "Команда 7", null),
-                new TimLogCmdRecItem(8, "01.01.14", "Команда 8", null),
+                new TimLogCmdRecItem(1, "01.01.14", "Команда 1", "Источник 1", null),
+                new TimLogCmdRecItem(2, "01.01.14", "Команда 2", "Источник 2", null),
+                new TimLogCmdRecItem(3, "01.01.14", "Команда 3", "Источник 3", null),
+                new TimLogCmdRecItem(4, "01.01.14", "Команда 4", "Источник 4", null),
+                new TimLogCmdRecItem(5, "01.01.14", "Команда 5", "Источник 5", null),
+                new TimLogCmdRecItem(6, "01.01.14", "Команда 6", "Источник 6", null),
+                new TimLogCmdRecItem(7, "01.01.14", "Команда 7", "Источник 7", null),
+                new TimLogCmdRecItem(8, "01.01.14", "Команда 8", "Источник 8", null),
             };
         }
 

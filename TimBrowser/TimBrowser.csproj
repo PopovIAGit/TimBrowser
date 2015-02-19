@@ -10,13 +10,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimBrowser</RootNamespace>
     <AssemblyName>TimBrowser</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Utf8Output>true</Utf8Output>
     <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +31,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -42,6 +43,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -51,6 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Design|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -61,6 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>mainappicon256.ico</ApplicationIcon>
@@ -70,6 +74,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Caliburn.Micro.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\libs\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus">
+      <HintPath>..\libs\Modbus.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationUI" />
@@ -104,6 +117,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApiImplementation\Communication\EmptyLowCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\ModbusCommunication.cs" />
+    <Compile Include="ApiImplementation\Communication\ModbusProtocolCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\SerialPortLowCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\StreamModbusAdapter.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -120,14 +138,17 @@
     <Compile Include="Mapper\ParameterMapper.cs" />
     <Compile Include="Messages\LogEvSelectedMessage.cs" />
     <Compile Include="Messages\TimErrorEventArgs.cs" />
+    <Compile Include="Model\ComSources.cs" />
     <Compile Include="Model\PrintSelectionItem.cs" />
     <Compile Include="Model\PrintTableItem.cs" />
+    <Compile Include="Model\SerialPortData.cs" />
     <Compile Include="Model\TimChosenParameterItem.cs" />
     <Compile Include="Model\TimLogCmdRecItem.cs" />
     <Compile Include="Model\TimLogEvRecItem.cs" />
     <Compile Include="Model\TimLogParamRecItem.cs" />
     <Compile Include="Model\TimParameterItem.cs" />
     <Compile Include="Model\TimParametersGroup.cs" />
+    <Compile Include="Services\TimDataServiceM.cs" />
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Model\PrintSelectionIds.cs" />
     <Compile Include="Services\Print\PageRangeDocumentPaginator.cs" />
@@ -155,7 +176,9 @@
     <Compile Include="ViewModels\LogParamViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\ModBus\Driver.cs" />
     <Compile Include="ViewModels\ModBus\ModBusViewModel.cs" />
+    <Compile Include="ViewModels\ModBus\ModBusViewModel.Behaviours.cs" />
     <Compile Include="ViewModels\ParametersTableViewModel.cs" />
     <Compile Include="ViewModels\PrintPreviewViewModel.cs" />
     <Compile Include="ViewModels\PrintSelectionViewModel.cs" />
@@ -208,6 +231,9 @@
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Modbus\ModBusView.xaml.cs">
+      <DependentUpon>ModBusView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ParametersTableView.xaml.cs">
       <DependentUpon>ParametersTableView.xaml</DependentUpon>
     </Compile>
@@ -235,7 +261,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -332,6 +360,10 @@
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modbus\ModBusView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ParametersTableView.xaml">
       <SubType>Designer</SubType>
@@ -430,6 +462,12 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiImplementation\ILow\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

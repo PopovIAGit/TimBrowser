@@ -42,11 +42,14 @@
 				<DataGridTextColumn Header="№" Width="0.05*"
 					Binding="{Binding Number, Mode=OneWay}" 
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
-				<DataGridTextColumn Header="Дата и время" Width="0.2*"
+				<DataGridTextColumn Header="Дата и время" Width="0.25*"
 					Binding="{Binding DateTimeString, Mode=OneWay}"
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
 				<DataGridTextColumn Header="Команда" Width="0.6*"
 					Binding="{Binding CmdName, Mode=OneWay}"
+                                    ElementStyle="{StaticResource DataGridTextTemplate}"/>
+                <DataGridTextColumn Header="Источник команды" Width="0.25*"
+					Binding="{Binding SrcCmdName, Mode=OneWay}"
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
 			</DataGrid.Columns>
             

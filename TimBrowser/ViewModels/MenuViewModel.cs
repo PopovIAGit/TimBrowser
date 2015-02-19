@@ -73,8 +73,6 @@ namespace TimBrowser.ViewModels
             }
         }
 
-
-
         public void SaveFile()
         {
             // запускаем диалоговое окно сохранения файла
@@ -100,6 +98,23 @@ namespace TimBrowser.ViewModels
             settings.Icon = new BitmapImage(new Uri("pack://application:,,,/Assets/appicon.png"));
             settings.Width = 400;
             settings.Height = 550;
+            DownloadViewModel.DownloadInformationModuleObj.TypeComm = 1;
+            // открываем новое окно через WindowManager, используя динамический объект с настройками
+            _windowManager.ShowDialog(DownloadViewModel, null, settings);
+        }
+
+        public void Download_RS()
+        {
+            // создаем динамический объект, который определяет настройки нового окна
+            dynamic settings = new ExpandoObject();
+            settings.WindowStartupLocation = WindowStartupLocation.Manual;
+            settings.SizeToContent = SizeToContent.Manual;
+            settings.ResizeMode = System.Windows.ResizeMode.NoResize;
+            settings.Title = "Считывание";
+            settings.Icon = new BitmapImage(new Uri("pack://application:,,,/Assets/appicon.png"));
+            settings.Width = 400;
+            settings.Height = 550;
+            DownloadViewModel.DownloadInformationModuleObj.TypeComm = 2;
 
             // открываем новое окно через WindowManager, используя динамический объект с настройками
             _windowManager.ShowDialog(DownloadViewModel, null, settings);

@@ -10,11 +10,13 @@ namespace TimBrowser.ViewModels
 {
     public class LogEvMainViewModel
     {
-        public LogEvMainViewModel(TimDataService timDataService, LogEvEventsViewModel logEvEventsControl,
+        public LogEvMainViewModel(TimDataService timDataService, TimDataServiceM timDataServiceM, LogEvEventsViewModel logEvEventsControl,
             LogEvChosenParametersViewModel logEvChosenParametersControl)
         {
             _timDataService = timDataService;
+            _timDataServiceM = timDataServiceM;
             _timDataService.OnTimDataChanged += TimDataChanged;
+            _timDataServiceM.OnTimDataChangedM += TimDataChanged;
 
             LogEvEventsControl              = logEvEventsControl;
             LogEvChosenParametersControl    = logEvChosenParametersControl;
@@ -23,6 +25,7 @@ namespace TimBrowser.ViewModels
         #region Fields
 
         private readonly TimDataService _timDataService;
+        private readonly TimDataServiceM _timDataServiceM;
 
         public System.Action DataLoadedAction;
         #endregion
@@ -33,6 +36,7 @@ namespace TimBrowser.ViewModels
         {
             // добавляем новые данные
             LogEvEventsControl.LogEvents = _timDataService.LogEvents;
+            if (LogEvEventsControl.LogEvents ==null) LogEvEventsControl.LogEvents = _timDataServiceM.LogEvents;
 
             if (DataLoadedAction != null)
                 DataLoadedAction();

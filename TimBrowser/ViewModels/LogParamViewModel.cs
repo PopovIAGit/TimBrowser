@@ -11,15 +11,18 @@ namespace TimBrowser.ViewModels
 {
     public class LogParamViewModel : Screen
     {
-        public LogParamViewModel(TimDataService timDataService)
+        public LogParamViewModel(TimDataService timDataService, TimDataServiceM timDataServiceM)
         {
             _timDataService = timDataService;
             _timDataService.OnTimDataChanged += TimDataChanged;
+            _timDataServiceM = timDataServiceM;
+            _timDataServiceM.OnTimDataChangedM += TimDataChanged;
         }
 
         #region Properties
 
         private readonly TimDataService _timDataService;
+        private readonly TimDataServiceM _timDataServiceM;
         private ObservableCollection<TimLogParamRecItem> _logParam;
         private TimLogParamRecItem _selectedLogParam;
         private string _parameterTitle;
@@ -31,6 +34,7 @@ namespace TimBrowser.ViewModels
         {
             // добавляем новые данные
             LogParam = _timDataService.LogParameter;
+            if (LogParam == null) LogParam = _timDataServiceM.LogParameter;
         }
 
         private void OnSelectedLogParamChanged()

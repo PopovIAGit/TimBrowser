@@ -35,6 +35,11 @@ namespace TimBrowser.DataCore.Download
                 for (byte cellIndex = 1; cellIndex <= logCellNum; cellIndex++)      // Считываем данные для каждой ячейка у текущего типа журнала
                 {
 
+                    if (cellIndex == 7)
+                    {
+                        cellIndex = 7;
+                    }
+
                     TransmitByte(funcCodeTransmit);                                 // Передаем код функции
                     System.Threading.Thread.Sleep(30);
                     TransmitByte(logType);                                          // Передаем тип журнала

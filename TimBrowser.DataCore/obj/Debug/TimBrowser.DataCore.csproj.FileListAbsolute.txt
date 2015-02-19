@@ -19,3 +19,10 @@ D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.DataCore\bin\Debug\Tpe
 D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.dll
 D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.pdb
 D:\Work\Electronica Separate\TimBrowser v2.0.5\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csprojResolveAssemblyReference.cache
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\bin\Debug\TimBrowser.DataCore.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\bin\Debug\TimBrowser.DataCore.pdb
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.pdb
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csprojResolveAssemblyReference.cache
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.pdb

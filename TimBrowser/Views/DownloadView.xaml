@@ -18,7 +18,11 @@
         <ContentControl x:Name="BluetoothDownloadControl" Grid.Row="0"
 						caliburn:View.Model="{Binding BluetoothViewModelObj}"
 						Visibility="Visible" />
-       
+
+        <ContentControl x:Name="ModBusDownloadControl" Grid.Row="0"
+						caliburn:View.Model="{Binding ModBusViewModelObj}"
+						Visibility="Visible" />
+
         <ContentControl x:Name="DonwloadControl" Grid.Row="1"
                         caliburn:View.Model="{Binding DownloadInformationModuleObj}"
                         Visibility="Visible" />

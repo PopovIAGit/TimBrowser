@@ -27,6 +27,7 @@ namespace TimBrowser
                 _container.RegisterSingle<IEventAggregator, EventAggregator>();
 
                 _container.RegisterSingle<TimDataService>();
+                _container.RegisterSingle<TimDataServiceM>();
                 _container.RegisterSingle<TimErrorService>();
                 _container.Register<TimFileService>();
 

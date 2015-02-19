@@ -39,36 +39,50 @@ namespace TimBrowser.ViewModels
 
         private void OnDownloadAction(bool isDownloading)
         {
-            _bluetoothViewModel.DownloadBehaviour(isDownloading);
+            if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.DownloadBehaviour(isDownloading);
+            else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.DownloadBehaviour(isDownloading);
         }
 
         protected override void OnActivate()
         {
-            _bluetoothViewModel.Activate();
+            if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.Activate();
+            else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.Activate();
+            
         }
 
         protected override void OnDeactivate(bool close)
         {
             _downloadInformationModuleViewModel.Deactivate();
-            _bluetoothViewModel.Deactivate();
+            if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.Deactivate();
+            else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.Deactivate();
+            
         }
 
         private void OnConnectAction(bool canDownload)
         {
-            if (canDownload)
-                _downloadInformationModuleViewModel.ActivateCommunication(_bluetoothViewModel.Communication);
+            if (canDownload){
+                if (_downloadInformationModuleViewModel.TypeComm == 1) _downloadInformationModuleViewModel.ActivateCommunication(_bluetoothViewModel.Communication);
+                else if (_downloadInformationModuleViewModel.TypeComm == 2) _downloadInformationModuleViewModel.ActivateCommunicationM(_modBusViewModel.CommunicationM);
+            }
+                
             else
                 _downloadInformationModuleViewModel.ActivateCommunication(null);
         }
 
         public DownloadCommBase BluetoothViewModelObj
         {
-            get { return _bluetoothViewModel; }
+            get {
+                if (_downloadInformationModuleViewModel.TypeComm == 1) return _bluetoothViewModel;
+                else return null;
+            }
         }
 
         public DownloadCommBase ModBusViewModelObj
         {
-            get { return _modBusViewModel; }
+            get {
+                if (_downloadInformationModuleViewModel.TypeComm == 2)  return _modBusViewModel; 
+                else return null;
+            }
         }
 
         public DownloadInformationModuleViewModel DownloadInformationModuleObj

@@ -9,6 +9,7 @@ using Caliburn.Micro;
 using System.Windows;
 using TimBrowser.Messages;
 
+
 namespace TimBrowser.ViewModels
 {
     public class DownloadInformationModuleViewModel : PropertyChangedBase
@@ -33,13 +34,17 @@ namespace TimBrowser.ViewModels
         private TimFileService _timFileService;
         private TimErrorService _timErrorService;
         private ITimCommunication _communication;
+        private ICommunicationSource _communicationM;
         private Visibility _downloadVisibility;
         private Visibility _downloadButtonVisibility;
+        public int TypeComm;
+
 
         private string _progressString;
         private bool _isDownloadError;
 
         public System.Action<bool> DownloadAction;
+        
 
         #endregion
 
@@ -55,14 +60,31 @@ namespace TimBrowser.ViewModels
         /// </summary>
         public void DownloadStart()
         {
-            if (_communication != null)
-                RaiseDownloadAction(true);
+            switch (TypeComm)
+            {
+                case 1:
+                    if (_communication != null)
+                    RaiseDownloadAction(true);
 
-            _timDownloadService.DownloadAsync(_communication,
-                () =>
-                {
-                    RaiseDownloadAction(false);
-                });
+                    _timDownloadService.DownloadAsync(_communication,
+                        () =>
+                        {
+                            RaiseDownloadAction(false);
+                        });
+                    break;
+                case 2:
+                    if (_communicationM != null)
+                    RaiseDownloadAction(true);
+
+                    _timDownloadService.DownloadAsyncM(_communicationM,
+                        () =>
+                        {
+                            RaiseDownloadAction(false);
+                        });
+                    
+                    break;
+            }
+            
         }
 
         private void RaiseDownloadAction(bool isDownloading)
@@ -82,6 +104,16 @@ namespace TimBrowser.ViewModels
             _communication = communication;
 
             if (_communication != null)
+                DownloadVisibility = Visibility.Visible;
+            else
+                DownloadVisibility = Visibility.Collapsed;
+        }
+
+        public void ActivateCommunicationM(ICommunicationSource communication)
+        {
+            _communicationM = communication;
+
+            if (_communicationM != null)
                 DownloadVisibility = Visibility.Visible;
             else
                 DownloadVisibility = Visibility.Collapsed;
@@ -116,26 +148,6 @@ namespace TimBrowser.ViewModels
                 ProgressString = "Ошибка считывания";
             }
             else if (e.MessageType == ErrorMessageTypes
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 .TransformImError)
             {
                 _isDownloadError = true;

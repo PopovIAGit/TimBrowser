@@ -24,12 +24,16 @@ namespace TimBrowser.ViewModels
 
         public abstract void DownloadBehaviour(bool isDownloading);
 
-
         public virtual void Activate() { }
         public virtual void Deactivate() { }
 
 
         public abstract ITimCommunication Communication
+        {
+            get;
+        }
+
+        public abstract ICommunicationSource CommunicationM
         {
             get;
         }

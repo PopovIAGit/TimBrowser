@@ -11,16 +11,19 @@ namespace TimBrowser.ViewModels
 {
     public class LogCmdViewModel : Screen
     {
-        public LogCmdViewModel(TimDataService timDataService)
+        public LogCmdViewModel(TimDataService timDataService, TimDataServiceM timDataServiceM)
         {
             _timDataService = timDataService;
             _timDataService.OnTimDataChanged += TimDataChanged;
+            _timDataServiceM = timDataServiceM;
+            _timDataServiceM.OnTimDataChangedM += TimDataChanged;
             StatusRegName = "статусный регистр устройства";
         }
 
         #region Fields
         
         private readonly TimDataService _timDataService;
+        private readonly TimDataServiceM _timDataServiceM;
         private ObservableCollection<TimLogCmdRecItem> _logCmd;
         private TimLogCmdRecItem _selectedLogCmdItem;
         private List<TimParameterFieldItem> _statusReg;
@@ -32,7 +35,12 @@ namespace TimBrowser.ViewModels
         {
             // добавляем новые данные
             LogCmd = _timDataService.LogCmd;
-            MoveTimeString = _timDataService.MoveTimeString;
+            if (LogCmd == null)
+            {
+                LogCmd = _timDataServiceM.LogCmd;
+                MoveTimeString = _timDataServiceM.MoveTimeString;
+            }
+            else MoveTimeString = _timDataService.MoveTimeString;
         }
 
         private void SelectedItemChanged()

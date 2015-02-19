@@ -91,7 +91,7 @@ namespace TimBrowser.DataCore.Services
         public InformationModuleData TransformFuncDownload(FuncDownloadData funcDownloadData)
         {
             TransformDownloadData transformDownloadData = new TransformDownloadData();
-
+            ///???im=null;
             InformationModuleData im = transformDownloadData.Transform(funcDownloadData);
 
             return im;

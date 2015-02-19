@@ -11,6 +11,7 @@ namespace TimBrowser.DataCore.Helpers
         BurT = 4000,
         BurM = 4001,
         BurBig = 4002,
+        BURT2 = 4005,
         BKD = 5000
     }
     

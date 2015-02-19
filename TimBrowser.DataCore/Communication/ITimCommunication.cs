@@ -19,3 +19,15 @@ namespace TimBrowser.DataCore.Communication
         void SetConnected(bool connected);
     }
 }
+
+/*public interface ILowCommunicationFunc
+{
+    byte ReadByte();
+    byte[] ReadBytes(int count);
+    void WriteByte(byte data);
+    void WriteBytes(byte[] data);
+
+    bool IsBusy { get; }
+
+    Action<CommunicationErrors> CommErrorAction { get; set; }
+}*/

@@ -8,10 +8,13 @@ namespace TimBrowser.Services
 {
     public class TimFileService
     {
-        public TimFileService(TimDataService timDataService)
+        public TimFileService(TimDataServiceM timDataServiceM, TimDataService timDataService)
         {
             _timDataService = timDataService;
             _timDataService.OnTimDataChanged += TimDataChanged;
+
+            _timDataServiceM = timDataServiceM;
+            _timDataServiceM.OnTimDataChangedM += TimDataChanged;
 
             // по хорошему нужно как-то передавать реализацию, а не создавать новую в этом классе
             _fileOperation = new DesktopFileOperation();
@@ -20,6 +23,7 @@ namespace TimBrowser.Services
         #region Fields
 
         private readonly TimDataService _timDataService;
+        private readonly TimDataServiceM _timDataServiceM;
         private readonly IFileOperation _fileOperation;
         private IFileItem _currentFileItem;
 
@@ -34,6 +38,8 @@ namespace TimBrowser.Services
         private void TimDataChanged(object sender, EventArgs e)
         {
             _canSaveFile = (_timDataService.CurrentInformationModule != null);
+
+            if (_canSaveFile==false) _canSaveFile = (_timDataServiceM.CurrentInformationModule != null);
 
             if (CanSaveFileAction != null)
                 CanSaveFileAction(_canSaveFile);
@@ -70,13 +76,24 @@ namespace TimBrowser.Services
         {
             get 
             {
-                if (_timDataService.CurrentInformationModule == null)
-                    return String.Empty;
+                string fileName;
 
-                string fileName = _timDataService.CurrentInformationModule.DeviceInfo.DeviceName +
-                "-" + _timDataService.CurrentInformationModule.DeviceInfo.DeviceNumberString +
-                " (" + _timDataService.CurrentFuncDownloadData.DateTimeDownload
-                .ToString(Helper.Constants.DATE_TIME_FILE_FORMAT_STRING) + ")";
+                if (_timDataService.CurrentInformationModule != null)
+                {
+                    fileName = _timDataService.CurrentInformationModule.DeviceInfo.DeviceName +
+                    "-" + _timDataService.CurrentInformationModule.DeviceInfo.DeviceNumberString +
+                    " (" + _timDataService.CurrentFuncDownloadData.DateTimeDownload
+                    .ToString(Helper.Constants.DATE_TIME_FILE_FORMAT_STRING) + ")";
+                }
+
+                else if (_timDataServiceM.CurrentInformationModule != null)
+                {
+                    fileName = _timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName +
+                    "-" + _timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceNumberString +
+                    " (" + _timDataServiceM.CurrentFuncDownloadData.DateTimeDownload
+                    .ToString(Helper.Constants.DATE_TIME_FILE_FORMAT_STRING) + ")";
+                }
+                else return String.Empty;
 
                 return fileName;
             }

@@ -13,13 +13,40 @@
         <StackPanel Orientation="Horizontal">
         	<StackPanel Orientation="Horizontal" Height="60" Margin="0">
 
-        		<Button x:Name="Download" Margin="12,0" Width="70" Height="60" Background="{x:Null}" BorderBrush="{StaticResource TimMenuButtonBrush}" Foreground="Black">
-        			<StackPanel>
+                <Button x:Name="Download" Margin="12,0" Width="70" Height="60" Background="{x:Null}" BorderBrush="{StaticResource TimMenuButtonBrush}" Foreground="Black">
+                    <Button.ToolTip>
+                        <ToolTip Background="#90F9EF83" HasDropShadow="False">
+                            <StackPanel>
+                                <TextBlock Margin="5" Foreground="Black"></TextBlock>
+                                <TextBlock Margin="3" Foreground="Black">Считать ИМ по беспроводному каналу Bluetooth!</TextBlock>
+                                <TextBlock Margin="5" Foreground="Black"></TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <StackPanel>
         				<Image Source="../Assets/download-256.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" />
-        				<TextBlock Text="Считать" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        			</StackPanel>
-        		</Button>
-        		<Button x:Name="LoadFile" Margin="12,0" Width="70" Height="60" BorderBrush="{StaticResource TimMenuButtonBrush}" Background="{x:Null}">
+                        <TextBlock Text="Bluetooth" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    
+                </Button>
+
+                <Button x:Name="Download_RS" Margin="12,0" Width="70" Height="60" Background="{x:Null}" BorderBrush="{StaticResource TimMenuButtonBrush}" Foreground="Black">
+                    <Button.ToolTip>
+                        <ToolTip Background="#90F9EF83" HasDropShadow="False">
+                            <StackPanel>
+                                <TextBlock Margin="5" Foreground="Black"></TextBlock>
+                                <TextBlock Margin="3" Foreground="Black">Считать ИМ по RS-485!</TextBlock>
+                                <TextBlock Margin="5" Foreground="Black"></TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <StackPanel>
+                        <Image Source="../Assets/download-256.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" />
+                        <TextBlock Text="RS-485" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                
+                <Button x:Name="LoadFile" Margin="12,0" Width="70" Height="60" BorderBrush="{StaticResource TimMenuButtonBrush}" Background="{x:Null}">
         			<StackPanel>
         				<Image Source="../Assets/folder-256.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" />
         				<TextBlock Text="Открыть" VerticalAlignment="Center" HorizontalAlignment="Center" />

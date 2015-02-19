@@ -13,10 +13,13 @@ namespace TimBrowser.ViewModels
     public class ParametersTableViewModel : Screen
     {
 
-        public ParametersTableViewModel(TimDataService timDataService)
+        public ParametersTableViewModel(TimDataService timDataService, TimDataServiceM timDataServiceM)
         {
             _timDataService = timDataService;
             _timDataService.OnTimDataChanged += TimDataChanged;
+            _timDataServiceM = timDataServiceM;
+            _timDataServiceM.OnTimDataChangedM += TimDataChanged;
+
 
             _groupSelectedIndex = -1;
         }
@@ -24,6 +27,7 @@ namespace TimBrowser.ViewModels
         #region Fields
 
         private readonly TimDataService _timDataService;
+        private readonly TimDataServiceM _timDataServiceM;
 
         private ObservableCollection<TimParametersGroup> _groups;
         private TimParametersGroup _selectedGroup;
@@ -39,6 +43,7 @@ namespace TimBrowser.ViewModels
         {
             // добавляем новые данные
             Groups = _timDataService.GroupOfParameters;
+            if (Groups == null) Groups = _timDataServiceM.GroupOfParameters;
 
             if (_groups != null)
                 GroupSelectedIndex = 0;
