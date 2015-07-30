@@ -36,8 +36,34 @@ namespace TimBrowser.DataCore.Transform
 
             try
             {
+                TableItem paramTableTemplate = null;
                 int deviceId = funcDownloadData.FuncOne.IdOfDevice;
-                TableItem paramTableTemplate = _parametersTemplateService.GetParametersTemplate(deviceId);
+
+                if (deviceId == 4000 && funcDownloadData.FuncOne.FirmwareVersion == 1)
+                {
+                    paramTableTemplate = _parametersTemplateService.GetParametersTemplate(400001);
+                }
+                else
+                {
+                    if (deviceId < 5000)
+                    {
+                        if (funcDownloadData.FuncSix.ParametersValues[147] < 13)
+                        {
+                            if (deviceId == 4000)
+                            {
+                                paramTableTemplate = _parametersTemplateService.GetParametersTemplate(400012);
+                            }
+                            else if (deviceId == 4001)
+                            {
+                                paramTableTemplate = _parametersTemplateService.GetParametersTemplate(400112);
+                            }
+                        }
+                        else paramTableTemplate = _parametersTemplateService.GetParametersTemplate(deviceId);
+                    }
+                    else paramTableTemplate = _parametersTemplateService.GetParametersTemplate(deviceId);
+                }
+                
+                //TableItem paramTableTemplate = _parametersTemplateService.GetParametersTemplate(deviceId);
                 TableItem paramTable = FillParametersTable(funcDownloadData, paramTableTemplate);
 
                 DeviceInfo deviceInfo = GetDeviceInfo(funcDownloadData, paramTable);
@@ -526,6 +552,8 @@ namespace TimBrowser.DataCore.Transform
             ParameterItem timeTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Time);
             ParameterItem secondsTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Seconds);
 
+            ParameterItem commandsSourePar = Utils.FindParameterByAppointment(paramTable, ParamAppointments.LogCmdControlWord);
+
             int statusParFieldIndex = Utils.GetParamFieldIndex(statusTemplatePar.Address, Codes.MainCellIndex,
                 deviceLogsInfo[indexCmdLog]);
             int commandParParFieldIndex = Utils.GetParamFieldIndex(commandsTemplatePar.Address, Codes.MainCellIndex,
@@ -541,6 +569,7 @@ namespace TimBrowser.DataCore.Transform
             {
                 ParameterItem status = new ParameterItem(statusTemplatePar);
                 ParameterItem command = new ParameterItem(commandsTemplatePar);
+                //ParameterItem commandS = new ParameterItem(commandsTemplatePar);
 
                 // проверяем, что поле не содержит дефектных данных
                 if (funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
@@ -551,6 +580,9 @@ namespace TimBrowser.DataCore.Transform
 
                     command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
                             LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);
+
+                    /*command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
+                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);*/
 
                     dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
                             LogFieldCells[Codes.MainCellIndex].LogFieldValues[dateParFieldIndex]);

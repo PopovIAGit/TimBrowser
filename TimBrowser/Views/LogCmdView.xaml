@@ -43,13 +43,16 @@
 					Binding="{Binding Number, Mode=OneWay}" 
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
 				<DataGridTextColumn Header="Дата и время" Width="0.25*"
-					Binding="{Binding DateTimeString, Mode=OneWay}"
+					Binding="{Binding DateTimeString, Mode=OneWay, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
 				<DataGridTextColumn Header="Команда" Width="0.6*"
 					Binding="{Binding CmdName, Mode=OneWay}"
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
                 <DataGridTextColumn Header="Источник команды" Width="0.25*"
 					Binding="{Binding SrcCmdName, Mode=OneWay}"
+                                    ElementStyle="{StaticResource DataGridTextTemplate}"/>
+                <DataGridTextColumn Header="Время движения" Width="0.25*"
+					Binding="{Binding MoveDateTimeString, Mode=OneWay, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
 			</DataGrid.Columns>
             

@@ -73,8 +73,8 @@
 				Binding="{Binding Number, Mode=OneWay}" 
                                 ElementStyle="{StaticResource DataGridTextTemplate}"/>
                 <DataGridTextColumn Header="Дата и время" Width="0.2*"
-				Binding="{Binding DateTimeString, Mode=OneWay}"
-                                ElementStyle="{StaticResource DataGridTextTemplate}"/>
+				Binding="{Binding DateTimeString, Mode=OneWay, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"
+                                ElementStyle="{StaticResource DataGridTextTemplate}" />
                 <DataGridTextColumn Header="Параметр" Width="0.4*"
 				Binding="{Binding Name, Mode=OneWay}"
                                 ElementStyle="{StaticResource DataGridTextTemplate}"/>

@@ -259,3 +259,10 @@ D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.Prop
 D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.csproj.GenerateResource.Cache
 D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.exe
 D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.pdb
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.xml
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\Interop.FoxitPDFInfoLib.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\Interop.PDFPrevHndlrLib.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\Interop.PDFShellLib.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\Interop.PDFSHELLSERVERLib.dll
+D:\Work\Electronica Separate\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.csproj.ResolveComReference.cache

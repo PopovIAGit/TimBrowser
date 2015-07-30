@@ -19,7 +19,7 @@
                             <Button x:Name="PrintButton" Background="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerPrintButton, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}"  IsTabStop="True" Margin="2" Padding="2" Style="{StaticResource {ComponentResourceKey ResourceId=PUIDocumentViewerButtonStyle, TypeInTargetAssembly={x:Type Documents:PresentationUIStyleResources}}}" ToolTipService.ShowOnDisabled="True" TabIndex="0" ToolTip="Print (Ctrl+P)" Uid="Button_14" VerticalAlignment="Center" Width="24">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <c:ActionMessage MethodName="PrintRequest" />
+                                        <c:ActionMessage MethodName="PrintRequest"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>

@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimBrowser</RootNamespace>
     <AssemblyName>TimBrowser</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -74,6 +74,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Caliburn.Micro.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\libs\Microsoft.Practices.Unity.dll</HintPath>
@@ -162,6 +175,7 @@
     <Compile Include="Services\TimErrorService.cs" />
     <Compile Include="Services\TimFileService.cs" />
     <Compile Include="Services\Print\PrintTableItemsCreator.cs" />
+    <Compile Include="Services\CreateXlsFile\XlsEngine.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothAuthViewModel.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.Behaviours.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.cs" />
@@ -264,6 +278,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="doc\РЭ Tim Browser v2.doc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -468,6 +483,48 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApiImplementation\ILow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\excel-26.png" />
+    <Resource Include="Assets\pdf-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="FoxitPDFInfoLib">
+      <Guid>{DFB9EA05-9456-443E-B310-6D854CC80D93}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFPrevHndlrLib">
+      <Guid>{0F6D3808-7974-4B1A-94C2-3200767EACE8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFShellLib">
+      <Guid>{67E94227-7662-4050-9C72-746983CF37A2}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFSHELLSERVERLib">
+      <Guid>{41C5FFFE-36DD-415D-9ED0-2976A342A1C8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

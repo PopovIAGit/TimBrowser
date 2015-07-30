@@ -54,7 +54,7 @@ namespace TimBrowser.DataCore.Download
                 goto Povtor1;
             }
 
-            int firmwareVersion = (int)((funcData[(int)FuncOneIndicies.FirmwareVersionMsb] << 8) |            // Извлекаем идентификатор устройства
+            int firmwareVersion = (int)((funcData[(int)FuncOneIndicies.FirmwareVersionMsb] << 8) |            // Извлекаем версию 
                 funcData[(int)FuncOneIndicies.FirmwareVersionLsb]);
 
             int idOfDevice = (int)((funcData[(int)FuncOneIndicies.DeviceIdMsb] << 8) |            // Извлекаем идентификатор устройства

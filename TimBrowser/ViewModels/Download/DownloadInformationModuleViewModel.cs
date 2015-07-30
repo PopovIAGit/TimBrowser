@@ -126,7 +126,7 @@ namespace TimBrowser.ViewModels
 
         private string TransformError(string str)
         {
-            string fileName = str + Helper.Constants.FILE_EXT;
+            string fileName = str + Helper.Constants.FILE_SAVE_EXT;
             string filePath = AppDomain.CurrentDomain.BaseDirectory + fileName;
 
             _timFileService.SaveFile(fileName, filePath);

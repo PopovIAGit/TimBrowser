@@ -39,6 +39,10 @@ namespace TimBrowser.ViewModels
         private readonly TimFileService _timFileService;
 
         private string _menuTitleText;
+        private string _blockVersionText;
+        private string _typeBlock;
+        private string _typeDrive;
+        private string _factoryNumber;
         private bool _saveButtonEnable;
         private bool _printButtonEnable;
 
@@ -55,6 +59,10 @@ namespace TimBrowser.ViewModels
             SaveButtonEnable = canSave;
             PrintButtonEnable = canSave;
             MenuTitleText = _timFileService.CurrentFileName;
+            BlockVersionText = _timFileService.CurrentVersion;// _timFileService.CurrentFileName;
+            TypeBlockText = _timFileService.CurrentTypeBlock;
+            TypeDriveText = _timFileService.CurrentTypeDrive;
+            FactoryNumberText = _timFileService.CurrentFactoryNumber;
         }
 
         // метод для обработки кнопки
@@ -78,8 +86,8 @@ namespace TimBrowser.ViewModels
             // запускаем диалоговое окно сохранения файла
             Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
             saveFileDialog.FileName = _timFileService.CurrentFileName;
-            saveFileDialog.DefaultExt = Constants.FILE_EXT_FILTER;
-            saveFileDialog.Filter = Constants.FILE_FILTER;
+            saveFileDialog.DefaultExt = Constants.FILE_SAVE_EXT_FILTER;
+            saveFileDialog.Filter = Constants.FILE_SAVE_FILTER;
 
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -195,6 +203,46 @@ namespace TimBrowser.ViewModels
             }
         }
 
+        public string BlockVersionText
+        {
+            get { return _blockVersionText; }
+            set
+            {
+                _blockVersionText = value;
+                NotifyOfPropertyChange("BlockVersionText");
+            }
+        }
+        
+        public string TypeBlockText
+        {
+            get { return _typeBlock; }
+            set
+            {
+                _typeBlock = value;
+                NotifyOfPropertyChange("TypeBlockText");
+            }
+        }
+
+        public string TypeDriveText
+        {
+            get { return _typeDrive; }
+            set
+            {
+                _typeDrive = value;
+                NotifyOfPropertyChange("TypeDriveText");
+            }
+        }
+
+        public string FactoryNumberText
+        {
+            get { return _factoryNumber; }
+            set
+            {
+                _factoryNumber = value;
+                NotifyOfPropertyChange("FactoryNumberText");
+            }
+        }
+        
         public bool SaveButtonEnable
         {
             get { return _saveButtonEnable; }

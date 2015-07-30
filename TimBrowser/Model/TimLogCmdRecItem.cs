@@ -14,22 +14,25 @@ namespace TimBrowser.Model
         /// <param name="cmdName">Наименование команды</param>
         /// /// <param name="srcCmdName">Наименование источника команды</param>
         /// <param name="statusParameter">Статусный регистр устройства во время команды</param>
-        public TimLogCmdRecItem(int number, string dateTimeString, string cmdName, string srcCmdName, 
+        public TimLogCmdRecItem(int number, string dateTimeString, string cmdName, string srcCmdName, string moveDateTimeString,
             TimParameterItem statusParameter)
         {
             _number = number;
-            _dateTimeString = dateTimeString;
+            //_dateTimeString = dateTimeString;
+            DateTime.TryParse(dateTimeString, out _dateTimeString);
             _cmdName = cmdName;
             _srcCmdName = srcCmdName;
+            _moveDateTimeString = moveDateTimeString;
             _statusParameter = statusParameter;
         }
 
         #region Fields
 
         private int _number;
-        private string _dateTimeString;
+        private DateTime _dateTimeString;
         private string _cmdName;
         private string _srcCmdName;
+        private string _moveDateTimeString;
         private TimParameterItem _statusParameter;
         
         #endregion
@@ -44,7 +47,7 @@ namespace TimBrowser.Model
         /// <summary>
         /// Дата и время команды
         /// </summary>
-        public string DateTimeString
+        public DateTime DateTimeString
         {
             get { return _dateTimeString; }
         }
@@ -63,6 +66,14 @@ namespace TimBrowser.Model
         public string SrcCmdName
         {
             get { return _srcCmdName; }
+        }
+
+        /// <summary>
+        /// Наименование источника команды
+        /// </summary>
+        public string MoveDateTimeString
+        {
+            get { return _moveDateTimeString; }
         }
 
         /// <summary>

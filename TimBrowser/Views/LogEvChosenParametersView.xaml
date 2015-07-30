@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="NumberTextBlock" Margin="4,2" TextWrapping="Wrap" Text="{Binding Number}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="13.333"/>
-                <TextBlock x:Name="DateTimeTextBlock" Margin="4,2" TextWrapping="Wrap" Text="{Binding DateTimeString}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="13.333"/>
+                <TextBlock x:Name="DateTimeTextBlock" Margin="4,2" TextWrapping="Wrap" Text="{Binding DateTimeString,StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="13.333"/>
                 <TextBlock x:Name="ValueTextBlock" Margin="4,2" TextWrapping="Wrap" Text="{Binding ValueString}" Grid.ColumnSpan="2" d:LayoutOverrides="Width, Height" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13.333"/>
             </Grid>
         </DataTemplate>

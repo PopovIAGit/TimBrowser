@@ -20,7 +20,9 @@ namespace TimBrowser.Model
         {
             _number = number;
             _index = index;
-            _dateTimeString = dateTimeString;
+            //_dateTimeString = dateTimeString;
+
+            DateTime.TryParse(dateTimeString, out _dateTimeString);
             _name = name;
             _valueString = valueString;
             _timFields = timFields;
@@ -30,7 +32,7 @@ namespace TimBrowser.Model
 
         private int _number;
         private string _index;
-        private string _dateTimeString;
+        private DateTime _dateTimeString; /*string*/
         private string _name;
         private string _valueString;
 
@@ -56,7 +58,7 @@ namespace TimBrowser.Model
         /// <summary>
         /// Строковое значение даты и времени
         /// </summary>
-        public string DateTimeString
+        public DateTime DateTimeString /*string*/
         {
             get { return _dateTimeString; }
         }

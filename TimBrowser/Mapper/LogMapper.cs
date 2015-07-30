@@ -12,6 +12,7 @@ namespace TimBrowser.Mapper
 {
     public static class LogMapper
     {
+        
         /// <summary>
         /// Преобразование списка журнала событий для использования во ViewModel
         /// </summary>
@@ -66,6 +67,10 @@ namespace TimBrowser.Mapper
 
             int numberCounter = 0;
 
+            int f_Command = 0;
+            DateTime DeltaDateTime = new DateTime();
+            TimeSpan DeltaDateTime1 = new TimeSpan();
+
             foreach (var lcr in logCmdRecords)
             {
                 numberCounter++;
@@ -73,10 +78,10 @@ namespace TimBrowser.Mapper
                 string dateTimeString = lcr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
                 string cmdName = String.Empty;
                 string srcCmdName = String.Empty;
+                string moveDateTimeString = String.Empty;
 
                 int cmdValue = (int)lcr.Command.Value & 0x000F;
-                int srcCmdValue = (int)lcr.Command.Value & 0xF000;
-
+                int srcCmdValue = (int)lcr.Command.Value & 0xFC00;
 
                 // ищем поле, которое имеет числовое значение команды
                 var cmd = (from c in lcr.Command.ValueDescription.Fields
@@ -86,6 +91,20 @@ namespace TimBrowser.Mapper
                 var srcCmd = (from c in lcr.Command.ValueDescription.Fields
                            where c.BitValue == srcCmdValue
                            select c).FirstOrDefault();
+
+                if (cmd.Description == "Закрыть" || cmd.Description == "Открыть")
+                {
+                    f_Command = 1;
+                    DeltaDateTime = lcr.DateAndTime;
+                }
+
+                if (f_Command == 1 && (cmd.Description == "Стоп" || cmd.Description == "Стоп по аварии"))
+                {
+                    f_Command = 0;
+                    DeltaDateTime1 = lcr.DateAndTime - DeltaDateTime;
+                    moveDateTimeString = DeltaDateTime1.ToString();
+                }
+
 
                 if (cmd != null)
                 {
@@ -102,7 +121,7 @@ namespace TimBrowser.Mapper
                 TimParameterItem statusPar = ParameterMapper.MapParameter(0, lcr.Status, lcr.DateAndTime);
 
                 timLogCmdRecords.Add(new TimLogCmdRecItem(numberCounter,
-                    dateTimeString, cmdName, srcCmdName, statusPar));
+                    dateTimeString, cmdName, srcCmdName, moveDateTimeString, statusPar));
             }
 
             return timLogCmdRecords;

@@ -21,7 +21,8 @@ namespace TimBrowser.Model
             List<TimParameterItem> parameters, ObservableCollection<TimChosenParameterItem> chosenParameters)
         {
             _number = number;
-            _dateTimeString = dateTimeString;
+            //_dateTimeString = dateTimeString;
+            DateTime.TryParse(dateTimeString, out _dateTimeString);
             _name = name;
             _isSet = isSet;
             _parameters = parameters;
@@ -31,7 +32,7 @@ namespace TimBrowser.Model
         #region Fields
 
         private int _number;
-        private string _dateTimeString;
+        private DateTime _dateTimeString;
         private string _name;
         private bool _isSet;
         private List<TimParameterItem> _parameters;
@@ -50,7 +51,7 @@ namespace TimBrowser.Model
         /// <summary>
         /// Строкое значение даты и времени события
         /// </summary>
-        public string DateTimeString
+        public DateTime DateTimeString
         {
             get { return _dateTimeString; }
         }

@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="887">
 	<UserControl.Resources>
 		<SolidColorBrush x:Key="TimMenuButtonBrush" Color="#7F707070"/>
 	</UserControl.Resources>
     
     <Grid Margin="12,0" VerticalAlignment="Center">
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Margin="0,0,-107,0">
         	<StackPanel Orientation="Horizontal" Height="60" Margin="0">
 
                 <Button x:Name="Download" Margin="12,0" Width="70" Height="60" Background="{x:Null}" BorderBrush="{StaticResource TimMenuButtonBrush}" Foreground="Black">
@@ -66,7 +66,7 @@
         				<TextBlock Text="Печать" VerticalAlignment="Center" HorizontalAlignment="Center" />
         			</StackPanel>
         		</Button>
-        		<Button x:Name="Help" Margin="12,0" Width="70" Height="60" BorderBrush="{StaticResource TimMenuButtonBrush}" Background="{x:Null}">
+        		<Button x:Name="Help" Margin="12,0" Width="70" Height="60" BorderBrush="{StaticResource TimMenuButtonBrush}" Background="{x:Null}" Click="Help_Click">
         			<StackPanel>
         				<Image Source="../Assets/help-256.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30" Height="30" />
         				<TextBlock Text="Справка" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -74,9 +74,28 @@
         		</Button>
 
         	</StackPanel>
-        	<TextBlock x:Name="MenuTitleTextBlock" TextWrapping="Wrap"
-        		HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,12,0,4"
-                       Text="{Binding MenuTitleText}" />
+            <StackPanel Margin="100,0,0,0" HorizontalAlignment="Right">
+                    <TextBlock x:Name="MenuTitleTextBlock" Grid.Column="1"
+            		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
+            		Text="{Binding MenuTitleText}" FontWeight="Bold"/>
+                
+                    <TextBlock  Grid.Column="0" x:Name="MenuVersionTextBlock"
+            			HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
+            			Text="{Binding BlockVersionText}" FontWeight="Bold"/>
+
+                    <TextBlock   Grid.Column="1" x:Name="MenuVersionTextBlock2"
+            			HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
+            			Text="{Binding FactoryNumberText}" FontWeight="Bold"/>
+                
+                    <TextBlock x:Name="MenuTypeBlock"
+            		    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
+            		    Text="{Binding TypeBlockText}" FontWeight="Bold" />
+
+                    <TextBlock x:Name="MenuTypeDriveBlock"
+            		    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
+            		    Text="{Binding TypeDriveText}" FontWeight="Bold"/>
+            </StackPanel>
+            <!-- TextWrapping="Wrap"-->
         </StackPanel>
 
     </Grid>

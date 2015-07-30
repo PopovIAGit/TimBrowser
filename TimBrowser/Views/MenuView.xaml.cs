@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,6 +24,12 @@ namespace TimBrowser.Views
         public MenuView()
         {
             InitializeComponent();
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            string currDir = Environment.CurrentDirectory.ToString();
+            Process.Start(currDir + "/doc/РЭ Tim Browser v2.doc");
         }
     }
 }

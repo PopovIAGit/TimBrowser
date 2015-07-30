@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/appicon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/excel-26.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/pdf-26.png")]
 
 

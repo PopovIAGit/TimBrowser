@@ -83,7 +83,7 @@ namespace TimBrowser.Services.Print
             {
                 if (informationModule.DeviceLogs.CommandLog.Count > 0)
                 {
-                    int columnsCount = 3;
+                    int columnsCount = 4;
 
                     //string[] strings = { "№", "Дата и время", "Команда" };
 
@@ -92,12 +92,14 @@ namespace TimBrowser.Services.Print
                     columnsHeader[0] = "№";
                     columnsHeader[1] = "Дата и время";
                     columnsHeader[2] = "Команда";
+                    columnsHeader[3] = "Источник команд";
 
                     // Определяем ширину колонок
                     GridLength[] columnsWidths = 
                     {
                         new GridLength(0.15, GridUnitType.Star),
                         new GridLength(0.2, GridUnitType.Star),
+                        new GridLength(0.6, GridUnitType.Star),
                         new GridLength(0.6, GridUnitType.Star)
                     };
 
@@ -118,7 +120,15 @@ namespace TimBrowser.Services.Print
                         currentColum[1] = lc.DateAndTime.ToString(Helper.Constants.DATE_TIME_FORMAT_STRING);
 
                         var field = lc.Command.ValueDescription.Fields
-                            .Where(f => f.BitValue == (int)lc.Command.Value).FirstOrDefault();
+                            .Where(f => f.BitValue == ((int)lc.Command.Value & 0x000F)).FirstOrDefault();
+
+                        var fieldSource = lc.Command.ValueDescription.Fields
+                            .Where(f => f.BitValue == ((int)lc.Command.Value & 0xF000)).FirstOrDefault();
+
+                        if (fieldSource != null)
+                        {
+                            currentColum[3] = fieldSource.Description;
+                        }
 
                         if (field != null)
                         {

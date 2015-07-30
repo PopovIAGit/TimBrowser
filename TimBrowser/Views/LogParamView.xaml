@@ -35,7 +35,7 @@
 					Binding="{Binding Number, Mode=OneWay}" 
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
                 <DataGridTextColumn Header="Дата и время" Width="0.2*"
-					Binding="{Binding DateTimeString, Mode=OneWay}"
+					Binding="{Binding DateTimeString, Mode=OneWay, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" 
                                     ElementStyle="{StaticResource DataGridTextTemplate}"/>
                 <DataGridTextColumn Header="Параметр" Width="0.5*"
 					Binding="{Binding Name, Mode=OneWay}"
@@ -45,7 +45,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-       
+
         <contrl:BitParameterControl Grid.Column="1" x:Name="ParameterFieldsControl"
                                     Title="{Binding ParameterTitle}" BitFields="{Binding ParameterFields}"/>
         

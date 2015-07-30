@@ -222,6 +222,7 @@ namespace TimBrowser.Services.Print
             PackageStore.RemovePackage(new Uri(pack));
             PackageStore.AddPackage(new Uri(pack), pkg);
             XpsDocument doc = new XpsDocument(pkg, CompressionOption.NotCompressed, pack);
+
             XpsSerializationManager rsm = new XpsSerializationManager(new XpsPackagingPolicy(doc), false);
 
             DocumentPaginator paginator = ((IDocumentPaginatorSource)flowDocument).DocumentPaginator;

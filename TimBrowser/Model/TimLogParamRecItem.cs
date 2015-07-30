@@ -18,7 +18,8 @@ namespace TimBrowser.Model
             List<TimParameterFieldItem> timFields)
         {
             _number = number;
-            _dateTimeString = dateTimeString;
+            //_dateTimeString = dateTimeString;
+            DateTime.TryParse(dateTimeString, out _dateTimeString);
             _name = name;
             _valueString = valueString;
 
@@ -28,7 +29,7 @@ namespace TimBrowser.Model
         #region Fields
 
         private int _number;
-        private string _dateTimeString;
+        private DateTime _dateTimeString;
         private string _name;
         private string _valueString;
 
@@ -46,7 +47,7 @@ namespace TimBrowser.Model
         /// <summary>
         /// Строковое значение даты и времени
         /// </summary>
-        public string DateTimeString
+        public DateTime DateTimeString
         {
             get { return _dateTimeString; }
         }

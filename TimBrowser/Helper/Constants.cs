@@ -13,9 +13,13 @@ namespace TimBrowser.Helper
 
         public const string CHOOSE_ALL_INDEX = "ChooseAll";
 
-        public const string FILE_EXT = ".tim";
-        public const string FILE_EXT_FILTER = "*.tim";
-        public const string FILE_FILTER = "Tomzel Informational Module (.tim)|*.tim";
+        public const string FILE_EXT = ".tim;.tima";
+        public const string FILE_EXT_FILTER = "*.tim;*.tima";
+        public const string FILE_FILTER = "Tomzel Informational Module (.tim;.tima)|*.tim;*.tima";
+
+        public const string FILE_SAVE_EXT = ".tim";
+        public const string FILE_SAVE_EXT_FILTER = "*.tim";
+        public const string FILE_SAVE_FILTER = "Tomzel Informational Module (.tim)|*.tim";
 
 
         public static string AppVersion
