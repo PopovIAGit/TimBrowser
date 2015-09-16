@@ -18,6 +18,11 @@ namespace TimBrowser.DataCore.Download.Model
             _firmwareVersion = firmwareVersion;
         }
 
+        public FuncOneData()
+        {
+            // TODO: Complete member initialization
+        }
+
         private int _idOfDevice;
         private int _parametersNumber;
         private int _logsNumber;

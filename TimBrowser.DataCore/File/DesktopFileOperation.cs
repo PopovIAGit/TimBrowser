@@ -347,7 +347,7 @@ namespace TimBrowser.DataCore.File
 
             funcDownloadData = new FuncDownloadData(funcOneData, funcTwoData, funcThreeData,
                 funcFourData, funcFiveData, funcSixData, _dateTimeDownload);
-            desktopFileTime = new DesktopFileItem("Кокоето имя", "Версия которуя я не знаю", funcDownloadData);
+            desktopFileTime = new DesktopFileItem("Какоето имя", "Версия которуя я не знаю", funcDownloadData);
             //desktopFileTime.FuncDownloadData = new FuncDownloadData(funcOneData, funcTwoData, funcThreeData,
             //     funcFourData, funcFiveData, funcSixData, _dateTimeDownload);
 

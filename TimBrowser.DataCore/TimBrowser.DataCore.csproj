@@ -12,8 +12,7 @@
     <AssemblyName>TimBrowser.DataCore</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,9 +101,13 @@
     <Compile Include="Download\Model\FuncTwoData.cs" />
     <Compile Include="Download\Utils.cs" />
     <Compile Include="File\DesktopFileItem.cs" />
+    <Compile Include="File\DesktopFileItemM.cs" />
     <Compile Include="File\DesktopFileOperation.cs" />
+    <Compile Include="File\DesktopFileOperationM.cs" />
     <Compile Include="File\IFileItem.cs" />
+    <Compile Include="File\IFileItemM.cs" />
     <Compile Include="File\IFileOperation.cs" />
+    <Compile Include="File\IFileOperationM.cs" />
     <Compile Include="Helpers\Codes.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\ImData.cs" />

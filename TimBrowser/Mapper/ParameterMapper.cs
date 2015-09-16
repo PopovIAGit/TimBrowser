@@ -243,7 +243,7 @@ namespace TimBrowser.Mapper
 
                         string bufParindex = bufPar.Index;
                         string bufParName = bufPar.Name;
-                        string bufParValueString = bufPar.Value.ToString() + bufPar.ValueDescription.Unit;
+                        string bufParValueString = bufPar.Value.ToString() + " " + bufPar.ValueDescription.Unit;
 
                         List<TimParameterFieldItem> bufTimFields =
                               MapParameterValueFields((int)bufPar.Value, bufPar.ValueDescription.ValueType,
@@ -349,7 +349,7 @@ namespace TimBrowser.Mapper
             }
             else
             {
-                valueString = parameter.Value.ToString();
+                valueString = parameter.Value.ToString() + " " + parameter.ValueDescription.Unit;
             }
 
             if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||

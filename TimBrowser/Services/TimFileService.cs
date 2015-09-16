@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TimBrowser.DataCore.Download.Model;
 using TimBrowser.DataCore.File;
 
 namespace TimBrowser.Services
@@ -18,15 +19,17 @@ namespace TimBrowser.Services
 
             // по хорошему нужно как-то передавать реализацию, а не создавать новую в этом классе
             _fileOperation = new DesktopFileOperation();
+            _fileOperationM = new DesktopFileOperationM();
         }
 
         #region Fields
 
-        private readonly TimDataService _timDataService;
-        private readonly TimDataServiceM _timDataServiceM;
-        private readonly IFileOperation _fileOperation;
+        private  TimDataService _timDataService;
+        private  TimDataServiceM _timDataServiceM;
+        private  IFileOperation _fileOperation;
+        private  IFileOperationM _fileOperationM;
         private IFileItem _currentFileItem;
-
+        //readonly
 
         private bool _canSaveFile;
         private string _typeInputSignal = "";
@@ -72,8 +75,122 @@ namespace TimBrowser.Services
             if (!savePath.Contains(Helper.Constants.FILE_SAVE_EXT))
                 savePath += Helper.Constants.FILE_SAVE_EXT;
 
-            IFileItem fileItem = new DesktopFileItem(fileName, appVer, _timDataService.CurrentFuncDownloadData);
-            bool isSaveSuccess = _fileOperation.SaveFile(fileItem, savePath);
+
+            bool isSaveSuccess = false;
+            FuncOneData funcOneData = null;
+            FuncTwoData funcTwoData = null;
+            FuncThreeData funcThreeData = null;
+            FuncFourData funcFourData = null;
+            FuncFiveData funcFiveData = null;
+            FuncSixData funcSixData = null;
+
+
+            if (_timDataService.CurrentFuncDownloadData == null)
+            {
+                /*byte[] _logsTypes = new byte[3];
+                for (int i = 0; i < 3; i++)
+                {
+                    _logsTypes[i] = _timDataServiceM.CurrentFuncDownloadData.FuncOne.LogsTypes[i];
+                }*/
+
+                funcOneData = new FuncOneData(_timDataServiceM.CurrentFuncDownloadData.FuncOne.IdOfDevice,
+                                                _timDataServiceM.CurrentFuncDownloadData.FuncOne.ParametersNumber,
+                                                _timDataServiceM.CurrentFuncDownloadData.FuncOne.LogsNumber,
+                                                _timDataServiceM.CurrentFuncDownloadData.FuncOne.LogsTypes,
+                                                _timDataServiceM.CurrentFuncDownloadData.FuncOne.FirmwareVersion);
+                
+                List<FuncTwoItem> _logsData;
+                _logsData = new List<FuncTwoItem>();
+                for(int i=0; i<_timDataServiceM.CurrentFuncDownloadData.FuncTwo.LogsData.Count; i++)
+                {
+                    _logsData.Add(new FuncTwoItem(_timDataServiceM.CurrentFuncDownloadData.FuncTwo.LogsData[i].LogCurrentAddress, _timDataServiceM.CurrentFuncDownloadData.FuncTwo.LogsData[i].LogRecordsNumber));
+                }
+                funcTwoData = new FuncTwoData(_logsData);
+
+                List<FuncThreeItem> _list = new List<FuncThreeItem>();
+                for (int i = 0; i < _timDataServiceM.CurrentFuncDownloadData.FuncThree.LogsData.Count; i++)
+                {
+                    _list.Add(new FuncThreeItem(_timDataServiceM.CurrentFuncDownloadData.FuncThree.LogsData[i].LogCellNumber,
+                                                _timDataServiceM.CurrentFuncDownloadData.FuncThree.LogsData[i].LogCellFieldNumber));
+                }
+
+                funcThreeData = new FuncThreeData(_list);
+
+
+                List<FuncFourCells> _logsData4 = new List<FuncFourCells>();
+                for (int i = 0; i < _timDataServiceM.CurrentFuncDownloadData.FuncFour.LogsData.Count; i++)
+                {
+
+                    List<FuncFourFieldsAddress> _logsDataCells4 = new List<FuncFourFieldsAddress>();
+                    for (int x = 0; x < _timDataServiceM.CurrentFuncDownloadData.FuncFour.LogsData[i].LogsCells.Count; x++)
+                    {
+                        /*List<int> LogFieldsAddress4 = new List<int>();
+                        for (int y = 0; y < _timDataServiceM.CurrentFuncDownloadData.FuncFour.LogsData[i].LogsCells[x].LogFieldsAddress.Count; y++)
+                        {
+                            LogFieldsAddress4.Add(new int(_timDataServiceM.CurrentFuncDownloadData.FuncFour.LogsData[i].LogsCells[x].LogFieldsAddress));
+                        }*/
+                        _logsDataCells4.Add(new FuncFourFieldsAddress(_timDataServiceM.CurrentFuncDownloadData.FuncFour.LogsData[i].LogsCells[x].LogFieldsAddress));
+                    }
+
+                    _logsData4.Add(new FuncFourCells(_logsDataCells4));
+                }
+
+                funcFourData = new FuncFourData(_logsData4);
+
+                List<FuncFiveRecords> _logsData5 = new List<FuncFiveRecords>();
+                for (int i = 0; i < _timDataServiceM.CurrentFuncDownloadData.FuncFive.LogsData.Count; i++)
+                {
+
+                    List<FuncFiveCells> _logFieldRecords5 = new List<FuncFiveCells>();
+                    for (int x = 0; x < _timDataServiceM.CurrentFuncDownloadData.FuncFive.LogsData[i].LogFieldRecords.Count; x++)
+                    {
+                        List<FuncFiveValues> _logFieldCells5 = new List<FuncFiveValues>();
+                        for (int y = 0; y < _timDataServiceM.CurrentFuncDownloadData.FuncFive.LogsData[i].LogFieldRecords[x].LogFieldCells.Count; y++)
+                        {
+                            _logFieldCells5.Add(new FuncFiveValues(_timDataServiceM.CurrentFuncDownloadData.FuncFive.LogsData[i].LogFieldRecords[x].LogFieldCells[y].LogFieldValues));
+                        }
+
+                        _logFieldRecords5.Add(new FuncFiveCells(_logFieldCells5));
+                    }
+
+                    _logsData5.Add(new FuncFiveRecords(_logFieldRecords5));
+                }
+
+                funcFiveData = new FuncFiveData(_logsData5);
+
+
+                /*List<int> ParametersValues = new List<int>();
+                for (int i = 0; i < _timDataServiceM.CurrentFuncDownloadData.FuncSix.ParametersValues.Count; i++)
+                {
+                    _logsData.Add(new FuncTwoItem(_timDataServiceM.CurrentFuncDownloadData.FuncTwo.LogsData[i].LogCurrentAddress, _timDataServiceM.CurrentFuncDownloadData.FuncTwo.LogsData[i].LogRecordsNumber));
+                }*/
+
+                funcSixData = new FuncSixData(_timDataServiceM.CurrentFuncDownloadData.FuncSix.ParametersValues);
+
+                /*
+                funcSixData = new FuncSixData;
+
+                _timDataServiceM.CurrentFuncDownloadData.FuncFive,
+                _timDataServiceM.CurrentFuncDownloadData.FuncSix,
+                _timDataServiceM.CurrentFuncDownloadData.DateTimeDownload);
+                 */
+
+                _timDataService.CurrentFuncDownloadData = new FuncDownloadData(funcOneData,funcTwoData,funcThreeData,funcFourData,funcFiveData,funcSixData,
+                                                                               _timDataServiceM.CurrentFuncDownloadData.DateTimeDownload);
+            
+            }
+
+            /*if (_timDataService.CurrentFuncDownloadData != null)
+            {*/
+                IFileItem fileItem = new DesktopFileItem(fileName, appVer, _timDataService.CurrentFuncDownloadData);
+                isSaveSuccess = _fileOperation.SaveFile(fileItem, savePath);
+            /*}
+            else if (_timDataServiceM.CurrentFuncDownloadData != null)
+            {
+                IFileItemM fileItem = new DesktopFileItemM(fileName, appVer, _timDataServiceM.CurrentFuncDownloadData);
+                isSaveSuccess = _fileOperationM.SaveFile(fileItem, savePath);
+            }*/
+            
         }
 
         #endregion
@@ -142,7 +259,7 @@ namespace TimBrowser.Services
                     {
                         if (item.Name.Contains("Тип входного сигнала"))
                         {
-                            typeTU = _typeInputSignal + item.ValueDescription.Fields[(int)item.Value].Description;
+                            typeTU = _typeInputSignal + item.ValueDescription.Fields[(int)item.Value].Description.Replace("В", "");
                         }
                     }
 
@@ -154,11 +271,11 @@ namespace TimBrowser.Services
                     int typeBlockValue = (int)(_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value);
                     string typeBlockString = _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].ValueDescription.Fields[typeBlockValue].Description;
                     string typeTU = "M220";
-                    foreach (var item in _timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters)
+                    foreach (var item in _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters)
                     {
                         if (item.Name.Contains("Тип входного сигнала"))
                         {
-                            typeTU = "T" + item.ValueDescription.Fields[(int)item.Value].Description;
+                            typeTU = "T" + item.ValueDescription.Fields[(int)item.Value].Description.Replace("В","");
                         }
                     }
 
@@ -261,11 +378,11 @@ namespace TimBrowser.Services
 
                 else if (_timDataServiceM.CurrentInformationModule != null)
                 {
-                    if (_timDataService.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-М" || _timDataService.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-M")
+                    if (_timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-М" || _timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-M")
                     {
                         mode = "М";
                     }
-                    else if (_timDataService.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-Т" || _timDataService.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-T" || _timDataService.CurrentInformationModule.DeviceInfo.DeviceName.Contains("БУР-2"))
+                    else if (_timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-Т" || _timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName == "БУР-T" || _timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName.Contains("БУР-2"))
                     {
                         mode = "Т";
                     }

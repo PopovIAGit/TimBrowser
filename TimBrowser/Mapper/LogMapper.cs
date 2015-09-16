@@ -150,8 +150,7 @@ namespace TimBrowser.Mapper
 
                 string dateTimeString = lpr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
                 string name = p.Index + " " + p.Name;
-                string valueString = p.Value.ToString() +
-                    p.ValueDescription.Unit;
+                string valueString = p.Value.ToString() + " " + p.ValueDescription.Unit; //string bufParValueString = bufPar.Value.ToString() + " " + bufPar.ValueDescription.Unit;
 
 
                 if (p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||

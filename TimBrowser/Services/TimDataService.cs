@@ -227,6 +227,7 @@ namespace TimBrowser.Services
         public FuncDownloadData CurrentFuncDownloadData
         {
             get { return _currentFuncDownloadData; }
+            set { _currentFuncDownloadData = value; }
         }
 
         /// <summary>

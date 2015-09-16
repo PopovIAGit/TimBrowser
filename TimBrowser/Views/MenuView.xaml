@@ -75,23 +75,23 @@
 
         	</StackPanel>
             <StackPanel Margin="100,0,0,0" HorizontalAlignment="Right">
-                    <TextBlock x:Name="MenuTitleTextBlock" Grid.Column="1"
+                <TextBlock x:Name="MenuTitleTextBlock" Grid.Column="1"
             		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             		Text="{Binding MenuTitleText}" FontWeight="Bold"/>
                 
-                    <TextBlock  Grid.Column="0" x:Name="MenuVersionTextBlock"
+                    <TextBlock Grid.Column="0" x:Name="MenuVersionTextBlock"
             			HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             			Text="{Binding BlockVersionText}" FontWeight="Bold"/>
 
-                    <TextBlock   Grid.Column="1" x:Name="MenuVersionTextBlock2"
+                <TextBlock Grid.Column="1" x:Name="MenuVersionTextBlock2"
             			HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             			Text="{Binding FactoryNumberText}" FontWeight="Bold"/>
-                
-                    <TextBlock x:Name="MenuTypeBlock"
+
+                <TextBlock x:Name="MenuTypeBlock"
             		    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             		    Text="{Binding TypeBlockText}" FontWeight="Bold" />
 
-                    <TextBlock x:Name="MenuTypeDriveBlock"
+                <TextBlock x:Name="MenuTypeDriveBlock"
             		    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             		    Text="{Binding TypeDriveText}" FontWeight="Bold"/>
             </StackPanel>

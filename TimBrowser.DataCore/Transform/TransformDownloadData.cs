@@ -332,7 +332,7 @@ namespace TimBrowser.DataCore.Transform
                                 bool prevSet = (((prevValueArray[evRegNum] >> iBit) & 1) == 1) && !firstEvent;
 
                                 // флаг, который определяет выставлено событие или снято
-                                bool? eventWasSet = null;
+                                bool? eventWasSet = null; //ma 30_07
 
                                 // предыдущий выставлен, а текущий не выставлен = событие снято!
                                 if (!currentSet && prevSet)                 // UnSet

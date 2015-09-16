@@ -24,7 +24,6 @@ namespace TimBrowser.DataCore.Download.Model
             _dateTimeDownload = dateTimeDownload;
         }
 
-
         #region Fields
 
         private FuncOneData _funcOneData;
@@ -37,6 +36,13 @@ namespace TimBrowser.DataCore.Download.Model
         private DateTime _dateTimeDownload;
 
         private bool _isSaved;
+        private DownloadM.Model.FuncOneData funcOneData;
+        private DownloadM.Model.FuncTwoData funcTwoData;
+        private DownloadM.Model.FuncThreeData funcThreeData;
+        private DownloadM.Model.FuncFourData funcFourData;
+        private DownloadM.Model.FuncFiveData funcFiveData;
+        private DownloadM.Model.FuncSixData funcSixData;
+        private DateTime dateTime;
 
         #endregion
 
