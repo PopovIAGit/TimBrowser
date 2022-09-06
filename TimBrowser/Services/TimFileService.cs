@@ -180,16 +180,16 @@ namespace TimBrowser.Services
             
             }
 
-            /*if (_timDataService.CurrentFuncDownloadData != null)
-            {*/
+            if (_timDataService.CurrentFuncDownloadData != null)
+            {
                 IFileItem fileItem = new DesktopFileItem(fileName, appVer, _timDataService.CurrentFuncDownloadData);
                 isSaveSuccess = _fileOperation.SaveFile(fileItem, savePath);
-            /*}
+            }
             else if (_timDataServiceM.CurrentFuncDownloadData != null)
             {
                 IFileItemM fileItem = new DesktopFileItemM(fileName, appVer, _timDataServiceM.CurrentFuncDownloadData);
                 isSaveSuccess = _fileOperationM.SaveFile(fileItem, savePath);
-            }*/
+            }
             
         }
 
@@ -249,37 +249,45 @@ namespace TimBrowser.Services
             get
             {
                 string typeDrive;
+                string typeBlockString = "";
 
                 if (_timDataService.CurrentInformationModule != null)
                 {
-                    int typeBlockValue = (int)(_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value);
-                    string typeBlockString = _timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].ValueDescription.Fields[typeBlockValue].Description;
-                    string typeTU = "M220";
+                    if (_timDataService.CurrentInformationModule.CurrentParameters.DeviceId<8001){
+                        int typeBlockValue = (int)(_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue);
+                        typeBlockString = _timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].ValueDescription.Fields[typeBlockValue].Description;
+                    } 
+
+                        string typeTU = "M220";
+
                     foreach (var item in _timDataService.CurrentInformationModule.CurrentParameters.Groups[1].Parameters)
                     {
                         if (item.Name.Contains("Тип входного сигнала"))
                         {
-                            typeTU = _typeInputSignal + item.ValueDescription.Fields[(int)item.Value].Description.Replace("В", "");
+                            typeTU = _typeInputSignal + item.ValueDescription.Fields[(int)item.DValue].Description.Replace("В", "");
                         }
                     }
 
-                    typeDrive = "Электропривод:             " + typeBlockString + "." + typeTU;
+                    typeDrive = "Электропривод:             " + typeBlockString;// + "." + typeTU;
                 }
 
                 else if (_timDataServiceM.CurrentInformationModule != null)
                 {
-                    int typeBlockValue = (int)(_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value);
-                    string typeBlockString = _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].ValueDescription.Fields[typeBlockValue].Description;
+                    if (_timDataServiceM.CurrentInformationModule.CurrentParameters.DeviceId<8001){
+                        int typeBlockValue = (int)(_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue);
+                        typeBlockString = _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].ValueDescription.Fields[typeBlockValue].Description;
+                    }else{typeBlockString="";}
+
                     string typeTU = "M220";
                     foreach (var item in _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters)
                     {
                         if (item.Name.Contains("Тип входного сигнала"))
                         {
-                            typeTU = "T" + item.ValueDescription.Fields[(int)item.Value].Description.Replace("В","");
+                            typeTU = "T" + item.ValueDescription.Fields[(int)item.DValue].Description.Replace("В","");
                         }
                     }
 
-                    typeDrive = "Электропривод:             " + typeBlockString + "." + typeTU;
+                    typeDrive = "Электропривод:             " + typeBlockString;// + "." + typeTU;
                 }
                 else return String.Empty;
 
@@ -291,26 +299,41 @@ namespace TimBrowser.Services
         {
             get
             {
-                string version;
+                string version="";
 
                 if (_timDataService.CurrentInformationModule != null)
                 {
-                    if (_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[57].Name.Contains("Подверсия ПО"))
-                    {
-                        version = "Версия ПО:                      v_" + (_timDataService.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," + 
-                            _timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[57].Value.ToString();
+                    if (_timDataService.CurrentInformationModule.CurrentParameters.DeviceId<8001){
+                                                                                                //Parameters[57] для старых версий
+                        if (_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[10].Name.Contains("Подверсия ПО"))
+                        {
+                            version = "Версия ПО:                      v_" + (_timDataService.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," +
+                            _timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[10].sValue.ToString();
+                        }
                     }
-                    else version = "Версия ПО:                      v_" + (_timDataService.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," + 0;
+                    else
+                    {
+                        version = "Версия ПО:                      v_" + (_timDataService.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," + 0;
+                    }
                 }
 
                 else if (_timDataServiceM.CurrentInformationModule != null)
                 {
-                    if (_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[57].Name.Contains("Подверсия ПО"))
+                    if (_timDataServiceM.CurrentInformationModule.CurrentParameters.DeviceId < 8001)
                     {
-                        version = "Версия ПО:                      v_" + (_timDataServiceM.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," +
-                            _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[57].Value.ToString();
+                        if (
+                            _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[10].Name
+                                .Contains("Подверсия ПО"))
+                        {
+                            version = "Версия ПО:                      v_" +
+                                      (_timDataServiceM.CurrentInformationModule.DeviceInfo.FirmwareVersion/1000).ToString() + "," +
+                                      _timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[10].sValue.ToString();
+                        }
                     }
-                    else version = "Версия ПО:                      v_" + (_timDataServiceM.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," + 0;
+                    else
+                    {
+                        version = "Версия ПО:                      v_" + (_timDataServiceM.CurrentInformationModule.DeviceInfo.FirmwareVersion / 1000).ToString() + "," + 0;
+                    }
                 }
                 else return String.Empty;
 
@@ -339,14 +362,19 @@ namespace TimBrowser.Services
                     {
                         mode = "Т";
                     }
+                    else if (_timDataService.CurrentInformationModule.DeviceInfo.DeviceName == "РЭД")
+                    {
+                        mode = "";
+                        typeBlock = "БКП-8";
+                    }
                     else
                     {
-                        mode = "R";
-                        typeBlock = "БКД-";
+                        mode = "";
+                        typeBlock = "БКЭП";
                     }
                     _typeInputSignal = mode;
 
-                    switch((int)(_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value))
+                    switch((int)(_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue))
                     {
                         case 1:
                             mode2 = "01-01.";
@@ -361,7 +389,7 @@ namespace TimBrowser.Services
 
                     if (_timDataService.CurrentInformationModule.DeviceInfo.DeviceName.Contains("БУР-2"))
                     {
-                        switch((int)(_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value))
+                        switch((int)_timDataService.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue)
                         {
                             case 1:
                                 mode2 = "10Д10.";
@@ -386,14 +414,19 @@ namespace TimBrowser.Services
                     {
                         mode = "Т";
                     }
+                    else if (_timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName == "РЭД")
+                    {
+                        mode = "";
+                        typeBlock = "БКП-8";
+                    }
                     else
                     {
-                        mode = "R";
-                        typeBlock = "БКД-";
+                        mode = "";
+                        typeBlock = "БКЭП";
                     }
                     _typeInputSignal = mode;
 
-                    switch ((int)(_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value))
+                    switch ((int)_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue)
                     {
                         case 1:
                             mode2 = "01-01.";
@@ -408,7 +441,7 @@ namespace TimBrowser.Services
 
                     if (_timDataServiceM.CurrentInformationModule.DeviceInfo.DeviceName.Contains("БУР-2"))
                     {
-                        switch ((int)(_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].Value))
+                        switch ((int)_timDataServiceM.CurrentInformationModule.CurrentParameters.Groups[2].Parameters[1].DValue)
                         {
                             case 1:
                                 mode2 = "10Д10.";

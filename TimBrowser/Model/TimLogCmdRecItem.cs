@@ -15,15 +15,31 @@ namespace TimBrowser.Model
         /// /// <param name="srcCmdName">Наименование источника команды</param>
         /// <param name="statusParameter">Статусный регистр устройства во время команды</param>
         public TimLogCmdRecItem(int number, string dateTimeString, string cmdName, string srcCmdName, string moveDateTimeString,
-            TimParameterItem statusParameter)
+            TimParameterItem statusParameter, string drivePosition)
         {
             _number = number;
+            _drivePosition = drivePosition;
             //_dateTimeString = dateTimeString;
             DateTime.TryParse(dateTimeString, out _dateTimeString);
             _cmdName = cmdName;
             _srcCmdName = srcCmdName;
             _moveDateTimeString = moveDateTimeString;
             _statusParameter = statusParameter;
+            _statusDigitalOut = null;
+        }
+
+        public TimLogCmdRecItem(int number, string dateTimeString, string cmdName, string srcCmdName, string moveDateTimeString,
+            TimParameterItem statusParameter, TimParameterItem statusDigitalOut, string drivePosition)
+        {
+            _number = number;
+            _drivePosition = drivePosition;
+            //_dateTimeString = dateTimeString;
+            DateTime.TryParse(dateTimeString, out _dateTimeString);
+            _cmdName = cmdName;
+            _srcCmdName = srcCmdName;
+            _moveDateTimeString = moveDateTimeString;
+            _statusParameter = statusParameter;
+            _statusDigitalOut = statusDigitalOut;
         }
 
         #region Fields
@@ -33,7 +49,9 @@ namespace TimBrowser.Model
         private string _cmdName;
         private string _srcCmdName;
         private string _moveDateTimeString;
+        private string _drivePosition;
         private TimParameterItem _statusParameter;
+        private TimParameterItem _statusDigitalOut;
         
         #endregion
 
@@ -77,11 +95,27 @@ namespace TimBrowser.Model
         }
 
         /// <summary>
+        /// Положение привода
+        /// </summary>
+        public string DrivePosition
+        {
+            get { return _drivePosition; }
+        }
+
+        /// <summary>
         /// Статусный регистр устройства, записанный во время команды
         /// </summary>
         public TimParameterItem StatusParameter
         {
             get { return _statusParameter; }
+        }
+
+        /// <summary>
+        /// Регистр состояния дискретных выходов, записанный во время команды
+        /// </summary>
+        public TimParameterItem StatusDigitalOut
+        {
+            get { return _statusDigitalOut; }
         }
 
         #endregion

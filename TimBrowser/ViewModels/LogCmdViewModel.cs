@@ -18,6 +18,7 @@ namespace TimBrowser.ViewModels
             _timDataServiceM = timDataServiceM;
             _timDataServiceM.OnTimDataChangedM += TimDataChanged;
             StatusRegName = "статусный регистр устройства";
+            StatusRegTSName = "состояние дискретных выходов блока";
         }
 
         #region Fields
@@ -27,6 +28,7 @@ namespace TimBrowser.ViewModels
         private ObservableCollection<TimLogCmdRecItem> _logCmd;
         private TimLogCmdRecItem _selectedLogCmdItem;
         private List<TimParameterFieldItem> _statusReg;
+        private List<TimParameterFieldItem> _statusRegTS;
         private string _moveTimeString;
 
         #endregion
@@ -46,7 +48,8 @@ namespace TimBrowser.ViewModels
         private void SelectedItemChanged()
         {
             if (_selectedLogCmdItem != null)
-                StatusReg = _selectedLogCmdItem.StatusParameter.TimFields;
+                StatusReg = _selectedLogCmdItem.StatusParameter.TimFields; //TODO про дискретные сигналы
+            if (_selectedLogCmdItem.StatusDigitalOut!=null) StatusRegTS = _selectedLogCmdItem.StatusDigitalOut.TimFields;
         }
 
         #region Properties
@@ -79,6 +82,12 @@ namespace TimBrowser.ViewModels
             private set;
         }
 
+        public string StatusRegTSName
+        {
+            get;
+            private set;
+        }
+
         public List<TimParameterFieldItem> StatusReg
         {
             get { return _statusReg; }
@@ -86,6 +95,17 @@ namespace TimBrowser.ViewModels
             {
                 _statusReg = value;
                 NotifyOfPropertyChange("StatusReg");
+            }
+        }
+
+        public List<TimParameterFieldItem> StatusRegTS
+        {
+            get { return _statusRegTS; }
+            set
+            {
+                //if (value[1].BitValue == 1 && value[2].BitValue == 1)//в промежуточном положении
+                _statusRegTS = value;
+                NotifyOfPropertyChange("StatusRegTS");
             }
         }
 

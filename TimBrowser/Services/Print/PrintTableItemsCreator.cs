@@ -17,7 +17,7 @@ namespace TimBrowser.Services.Print
 
         public const string SET_SYMBOL = "\u2714";
 
-        public PrintTableItem CreateEvLogPrintTable(InformationModuleData informationModule)
+        public PrintTableItem CreateEvLogPrintTable(InformationModuleData informationModule, string mainTitle, string subTitle)
         {
             if (informationModule.DeviceLogs.EventLog != null)
             {
@@ -27,10 +27,16 @@ namespace TimBrowser.Services.Print
 
                     // создаем заголовки
                     string[] columnsHeader = new string[columnsCount];
+                    string[] columnsHeader2 = new string[1];
+                    string[] columnsHeader3 = new string[1];
+                    columnsHeader2[0] = mainTitle;
+                    columnsHeader3[0] = subTitle;
+
                     columnsHeader[0] = "№";
                     columnsHeader[1] = "Дата и время";
                     columnsHeader[2] = "Наименование";
-                    columnsHeader[3] = "Выставлено";
+                    //TODO выставлено 4-ая колонка при выводе журнала 
+                    columnsHeader[3] = "Состояние Защиты/Аварии/Неисправности";
 
                     // Определяем ширину колонок
                     GridLength[] columnsWidths = 
@@ -47,6 +53,8 @@ namespace TimBrowser.Services.Print
                     List<string[]> columns = new List<string[]>();
 
                     columns.Add(columnsHeader);
+                    //columns.Add(columnsHeader2);
+                    //columns.Add(columnsHeader3);
 
                     foreach (var le in informationModule.DeviceLogs.EventLog)
                     {
@@ -59,9 +67,9 @@ namespace TimBrowser.Services.Print
                         currentColum[2] = le.LogEventMainCell.Id;
 
                         if (le.LogEventMainCell.Set)
-                            currentColum[3] = SET_SYMBOL;
+                            currentColum[3] = "Срабатывание";//SET_SYMBOL;
                         else
-                            currentColum[3] = " ";
+                            currentColum[3] = "Деблокировка";
 
                         columns.Add(currentColum);
                     }
@@ -120,10 +128,12 @@ namespace TimBrowser.Services.Print
                         currentColum[1] = lc.DateAndTime.ToString(Helper.Constants.DATE_TIME_FORMAT_STRING);
 
                         var field = lc.Command.ValueDescription.Fields
-                            .Where(f => f.BitValue == ((int)lc.Command.Value & 0x000F)).FirstOrDefault();
+                            .Where(f => f.BitValue == ((int)Convert.ToInt32(lc.Command.DValue) & 0x000F)).FirstOrDefault();
+
+                        
 
                         var fieldSource = lc.Command.ValueDescription.Fields
-                            .Where(f => f.BitValue == ((int)lc.Command.Value & 0xF000)).FirstOrDefault();
+                            .Where(f => f.BitValue == ((int)Convert.ToInt32(lc.Command.DValue) & 0xFE00)).FirstOrDefault();
 
                         if (fieldSource != null)
                         {
@@ -191,7 +201,7 @@ namespace TimBrowser.Services.Print
                         currentColum[0] = logParamRecCnt.ToString();
                         currentColum[1] = lp.DateAndTime.ToString(Helper.Constants.DATE_TIME_FORMAT_STRING);
                         currentColum[2] = lp.ParamWithNewValue.Name;
-                        currentColum[3] = lp.ParamWithNewValue.Value.ToString();
+                        currentColum[3] = lp.ParamWithNewValue.sValue.ToString();
 
                         if (lp.ParamWithNewValue.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
                             lp.ParamWithNewValue.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
@@ -256,7 +266,7 @@ namespace TimBrowser.Services.Print
 
                             currentColum[0] = p.Index;
                             currentColum[1] = p.Name;
-                            currentColum[2] = p.Value.ToString();
+                            currentColum[2] = p.sValue.ToString();
 
                             if (p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
                                 p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
@@ -266,11 +276,11 @@ namespace TimBrowser.Services.Print
                             }
                             else if (p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Time)
                             {
-                                currentColum[2] = DataCore.Transform.Utils.GenerateTimeString((int)p.Value);
+                                currentColum[2] = p.sValue;// DataCore.Transform.Utils.GenerateTimeString((int)Convert.ToInt32(p.sValue));
                             }
                             else if (p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Date)
                             {
-                                currentColum[2] = DataCore.Transform.Utils.GenerateDateString((int)p.Value);
+                                currentColum[2] = p.sValue;// DataCore.Transform.Utils.GenerateDateString((int)Convert.ToInt32(p.sValue));
                             }
                             else
                                 currentColum[2] += p.ValueDescription.Unit;

@@ -93,7 +93,9 @@ namespace TimBrowser.Services
             {
                 LogEvents = Mapper.LogMapper.MapLogEv(_currentInformationModule.DeviceLogs.EventLog);
                 LogCmd = Mapper.LogMapper.MapLogCmd(_currentInformationModule.DeviceLogs.CommandLog);
+                LogEventsAndCmd = Mapper.LogMapper.MapLogEvAndCmd(_currentInformationModule.DeviceLogs.EventAndCmdLog);
                 LogParameter = Mapper.LogMapper.MapLogParameter(_currentInformationModule.DeviceLogs.ChangeParameterLog);
+                LogSim = Mapper.LogMapper.MapLogSim(_currentInformationModule.DeviceLogs.SimLog);
                 GroupOfParameters = Mapper.ParameterMapper.MapGroupsOfParameters(_currentInformationModule.CurrentParameters.Groups);
 
                 CalculateMovementTime();
@@ -125,7 +127,7 @@ namespace TimBrowser.Services
                 foreach (var cmdRec in _currentInformationModule.DeviceLogs.CommandLog)
                 {
                     var cmdValue = cmdRec.Command.ValueDescription.Fields
-                        .Where(f => f.BitValue == (int)cmdRec.Command.Value).FirstOrDefault();
+                        .Where(f => f.BitValue == (int)cmdRec.Command.DValue).FirstOrDefault();
 
                     if (cmdValue != null)
                     {
@@ -186,6 +188,15 @@ namespace TimBrowser.Services
         }
 
         /// <summary>
+        /// Преобразованные данные журнала событий и комманд
+        /// </summary>
+        public ObservableCollection<TimLogEvAndCmdRecItem> LogEventsAndCmd
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Преобразованные данные журнала команд
         /// </summary>
         public ObservableCollection<TimLogCmdRecItem> LogCmd
@@ -207,6 +218,15 @@ namespace TimBrowser.Services
         /// Преобразованные данные групп с параметрами
         /// </summary>
         public ObservableCollection<TimParametersGroup> GroupOfParameters
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Преобразованные данные журнала команд
+        /// </summary>
+        public ObservableCollection<TimLogSimRecItem> LogSim
         {
             get;
             private set;

@@ -19,6 +19,8 @@
 
             <SolidColorBrush x:Key="LogEvSetColor" Color="#7FD22308"/>
             <SolidColorBrush x:Key="LogEvUnsetColor"  Color="#7F2FBA51"/>
+            <SolidColorBrush x:Key="LogEvCommandColor"  Color="White"/>
+            
 
             <SolidColorBrush x:Key="TimListBackgroundBrush" Color="#FFFBFBFB"/>
             <SolidColorBrush x:Key="TimListAltBrush" Color="#FFEBEBEB"/>

@@ -53,6 +53,117 @@ namespace TimBrowser.Mapper
             return timLogEvRecords;
         }
 
+        /// <returns>Преобразованный список журнала событий</returns>
+        public static ObservableCollection<TimLogEvAndCmdRecItem> MapLogEvAndCmd(List<LogEventAndCmdRecordItem> logEventAndCmdRecords)
+        {
+            if (logEventAndCmdRecords == null)
+                return null;
+
+            ObservableCollection<TimLogEvAndCmdRecItem> timLogEvAndCmdRecords = new ObservableCollection<TimLogEvAndCmdRecItem>();
+
+            int numberCounter = 0;
+            int f_Command = 0;
+            DateTime DeltaDateTime = new DateTime();
+            TimeSpan DeltaDateTime1 = new TimeSpan();
+
+            foreach (var lcr in logEventAndCmdRecords)
+            {
+                numberCounter++;
+
+                int isSet = 0;
+
+                //lcr.LogEventAndCmdMainCell.Set;
+                if (lcr.LogEventAndCmdMainCell.Set == true) { isSet = 1; }
+                if (lcr.LogEventAndCmdMainCell.Set == false) { isSet = 0; }
+                
+                string name = lcr.LogEventAndCmdMainCell.Id.ToString();
+                List<TimParameterItem> parameters = ParameterMapper.MapLogEvAndCmdParameters(lcr);
+                ObservableCollection<TimChosenParameterItem> chosenParameters = ParameterMapper.MapLogEvAndCmdChosenParametersCol(lcr);
+
+
+                string dateTimeString = lcr.LogEventAndCmdMainCell.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
+                string srcCmdName = String.Empty;
+                string moveDateTimeString = String.Empty;
+
+                int cmdValue = (int)lcr.LogEventAndCmdMainCell.Command.DValue & 0x000F;
+                int srcCmdValue = (int)lcr.LogEventAndCmdMainCell.Command.DValue & 0xFE00;
+
+                if (cmdValue > 15)
+                {
+                    //TODO вывод источника команд
+                    cmdValue = 0;
+                }
+                else if (cmdValue == 14)
+                {
+                    //cmdValue = 1;
+                }
+
+                if (lcr.LogEventAndCmdMainCell.Command.ValueDescription != null)
+                {
+                    // ищем поле, которое имеет числовое значение команды
+                    var cmd = (from c in lcr.LogEventAndCmdMainCell.Command.ValueDescription.Fields
+                               where c.BitValue == cmdValue
+                               select c).FirstOrDefault();
+                    if (cmd == null && cmdValue == 14)
+                    {
+
+                    }
+
+                    var srcCmd = (from c in lcr.LogEventAndCmdMainCell.Command.ValueDescription.Fields
+                                  where c.BitValue == srcCmdValue
+                                  select c).FirstOrDefault();
+
+
+
+                    if (cmd.Description == "Закрыть" || cmd.Description == "Открыть")
+                    {
+                        f_Command = 1;
+                        DeltaDateTime = lcr.LogEventAndCmdMainCell.DateAndTime;
+                    }
+
+                    if (f_Command == 1 && (cmd.Description == "Стоп" || cmd.Description == "Стоп по аварии"))
+                    {
+                        f_Command = 0;
+                        DeltaDateTime1 = lcr.LogEventAndCmdMainCell.DateAndTime - DeltaDateTime;
+                        moveDateTimeString = DeltaDateTime1.ToString();
+                    }
+
+
+                    if (cmd != null)
+                    {
+                        name = cmd.Description;
+                        isSet = 2;
+                    }
+
+                    if (srcCmd != null)
+                    {
+                        srcCmdName = srcCmd.Description;
+                    }
+                }
+
+                //здесь начинается магия с Источником команд (Источник команд)
+
+                TimParameterItem statusPar = ParameterMapper.MapParameter(0, lcr.LogEventAndCmdMainCell.Status, lcr.LogEventAndCmdMainCell.DateAndTime);
+
+                TimParameterItem statusDigOut = null;
+                if (lcr.LogEventAndCmdMainCell.StatusDig != null) statusDigOut = ParameterMapper.MapParameter(0, lcr.LogEventAndCmdMainCell.StatusDig, lcr.LogEventAndCmdMainCell.DateAndTime);
+
+                if (lcr.LogEventAndCmdMainCell.StatusDig != null)
+                {
+                    timLogEvAndCmdRecords.Add(new TimLogEvAndCmdRecItem(numberCounter, dateTimeString, name, isSet, parameters, chosenParameters,
+                        srcCmdName, moveDateTimeString, statusPar, statusDigOut));
+                }
+                else
+                {
+                    timLogEvAndCmdRecords.Add(new TimLogEvAndCmdRecItem(numberCounter, dateTimeString, name, isSet, parameters, chosenParameters,
+                        srcCmdName, moveDateTimeString, statusPar));
+                }
+
+            }
+            return timLogEvAndCmdRecords;
+        }
+
+
         /// <summary>
         /// Преобразование списка журнала команд для использования во ViewModel
         /// </summary>
@@ -73,6 +184,8 @@ namespace TimBrowser.Mapper
 
             foreach (var lcr in logCmdRecords)
             {
+                string position = lcr.position;
+
                 numberCounter++;
 
                 string dateTimeString = lcr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
@@ -80,17 +193,37 @@ namespace TimBrowser.Mapper
                 string srcCmdName = String.Empty;
                 string moveDateTimeString = String.Empty;
 
-                int cmdValue = (int)lcr.Command.Value & 0x000F;
-                int srcCmdValue = (int)lcr.Command.Value & 0xFC00;
+                int cmdValue = (int)lcr.Command.DValue & 0x000F;
+                int srcCmdValue = (int)lcr.Command.DValue & 0xFE00;
+
+                if (cmdValue > 15)
+                {
+                    //TODO вывод источника команд
+                    cmdValue = 0;
+                } else if (cmdValue == 14)
+                {
+                    //cmdValue = 1;
+                }
+
+                if (numberCounter ==7)
+                {
+                    numberCounter = 7;
+                }
 
                 // ищем поле, которое имеет числовое значение команды
                 var cmd = (from c in lcr.Command.ValueDescription.Fields
                            where c.BitValue == cmdValue
                            select c).FirstOrDefault();
+                if (cmd == null && cmdValue == 14)
+                {
+                
+                }
 
                 var srcCmd = (from c in lcr.Command.ValueDescription.Fields
                            where c.BitValue == srcCmdValue
                            select c).FirstOrDefault();
+
+               
 
                 if (cmd.Description == "Закрыть" || cmd.Description == "Открыть")
                 {
@@ -116,15 +249,101 @@ namespace TimBrowser.Mapper
                     srcCmdName = srcCmd.Description;
                 }
 
+                
                 //здесь начинается магия с Источником команд (Источник команд)
 
                 TimParameterItem statusPar = ParameterMapper.MapParameter(0, lcr.Status, lcr.DateAndTime);
 
-                timLogCmdRecords.Add(new TimLogCmdRecItem(numberCounter,
-                    dateTimeString, cmdName, srcCmdName, moveDateTimeString, statusPar));
+                TimParameterItem statusDigOut = null;
+                if (lcr.StatusDig!=null) statusDigOut = ParameterMapper.MapParameter(0, lcr.StatusDig, lcr.DateAndTime);
+                // TODO - исправить ввести параметр положение
+                if (lcr.StatusDig != null)
+                {
+                    timLogCmdRecords.Add(new TimLogCmdRecItem(numberCounter,
+                        dateTimeString, cmdName, srcCmdName, moveDateTimeString, statusPar, statusDigOut, position));
+                }
+                else
+                {
+                    timLogCmdRecords.Add(new TimLogCmdRecItem(numberCounter,
+                    dateTimeString, cmdName, srcCmdName, moveDateTimeString, statusPar, position));
+                }
             }
 
             return timLogCmdRecords;
+
+        }
+
+        /// <summary>
+        /// Преобразование списка журнала команд для использования во ViewModel
+        /// </summary>
+        /// <param name="logSimRecords">Оригинальный список журанала подключений</param>
+        /// <returns>Преобразованный список журнала команд</returns>
+        public static ObservableCollection<TimLogSimRecItem> MapLogSim(List<LogSimRecordItem> logSimRecords)
+        {
+            if (logSimRecords == null)
+                return null;
+
+            ObservableCollection<TimLogSimRecItem> timLogSimRecords = new ObservableCollection<TimLogSimRecItem>();
+
+            int numberCounter = 0;
+
+            int f_Command = 0;
+            DateTime DeltaDateTime = new DateTime();
+            TimeSpan DeltaDateTime1 = new TimeSpan();
+
+            foreach (var lcr in logSimRecords)
+            {
+                numberCounter++;
+
+                string dateTimeString = lcr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
+                string simId = String.Empty;
+
+                simId = lcr.DataSimValue; /*cmd.Description;
+
+                int simValue = (int)lcr.Command.DValue & 0x000F;
+                
+                // ищем поле, которое имеет числовое значение команды
+                var cmd = (from c in lcr.Command.ValueDescription.Fields
+                           where c.BitValue == cmdValue
+                           select c).FirstOrDefault();
+
+                var srcCmd = (from c in lcr.Command.ValueDescription.Fields
+                              where c.BitValue == srcCmdValue
+                              select c).FirstOrDefault();
+
+                if (cmd.Description == "Закрыть" || cmd.Description == "Открыть")
+                {
+                    f_Command = 1;
+                    DeltaDateTime = lcr.DateAndTime;
+                }
+
+                if (f_Command == 1 && (cmd.Description == "Стоп" || cmd.Description == "Стоп по аварии"))
+                {
+                    f_Command = 0;
+                    DeltaDateTime1 = lcr.DateAndTime - DeltaDateTime;
+                    moveDateTimeString = DeltaDateTime1.ToString();
+                }
+
+
+                if (cmd != null)
+                {
+                    cmdName = cmd.Description;
+                }
+
+                if (srcCmd != null)
+                {
+                    srcCmdName = srcCmd.Description;
+                }
+                */
+                //здесь начинается магия с Источником команд (Источник команд)
+
+                //TimParameterItem statusPar = ParameterMapper.MapParameter(0, 0, lcr.DateAndTime);
+
+                timLogSimRecords.Add(new TimLogSimRecItem(numberCounter,
+                    dateTimeString, simId));
+            }
+
+            return timLogSimRecords;
 
         }
 
@@ -150,7 +369,7 @@ namespace TimBrowser.Mapper
 
                 string dateTimeString = lpr.DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
                 string name = p.Index + " " + p.Name;
-                string valueString = p.Value.ToString() + " " + p.ValueDescription.Unit; //string bufParValueString = bufPar.Value.ToString() + " " + bufPar.ValueDescription.Unit;
+                string valueString = p.sValue.ToString() + " " + p.ValueDescription.Unit; //string bufParValueString = bufPar.Value.ToString() + " " + bufPar.ValueDescription.Unit;
 
 
                 if (p.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
@@ -159,7 +378,7 @@ namespace TimBrowser.Mapper
                     valueString += " (код)";
 
                 List<TimParameterFieldItem> timFields = 
-                    ParameterMapper.MapParameterValueFields((int)p.Value, p.ValueDescription.ValueType,
+                    ParameterMapper.MapParameterValueFields((int)p.DValue, p.ValueDescription.ValueType,
                     p.ValueDescription.Fields);
 
                 timLogParamRecords.Add(new TimLogParamRecItem(numberCounter,

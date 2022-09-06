@@ -13,7 +13,8 @@ namespace TimBrowser.DataCore.Helpers
         None = 0,
         EventLog = 1,                       // Журнал событий
         CommandLog,                         // Журнал команд
-        ParameterLog                        // Журнал изменения параметров
+        ParameterLog,                       // Журнал изменения параметров
+        SimIDLog                            // Журнал SimID
     }
 
     /// <summary>

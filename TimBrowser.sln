@@ -1,16 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser", "TimBrowser\TimBrowser.csproj", "{EEC7FBDE-D07E-4A9B-B929-EDAE976DF610}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16A337EF-95FF-4099-B847-C7B62447184F} = {16A337EF-95FF-4099-B847-C7B62447184F}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser.Bluetooth", "TimBrowser.Bluetooth\TimBrowser.Bluetooth.csproj", "{D0B33FF0-DBE8-41C2-BF7C-B9124A3A03E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16A337EF-95FF-4099-B847-C7B62447184F} = {16A337EF-95FF-4099-B847-C7B62447184F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser.DataCore", "TimBrowser.DataCore\TimBrowser.DataCore.csproj", "{C85EED4F-98D6-4558-BBC2-4436E5EFE868}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16A337EF-95FF-4099-B847-C7B62447184F} = {16A337EF-95FF-4099-B847-C7B62447184F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpeParameters", "..\..\..\Application\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj", "{16A337EF-95FF-4099-B847-C7B62447184F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpeParameters", "Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj", "{16A337EF-95FF-4099-B847-C7B62447184F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,18 +83,24 @@ Global
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16A337EF-95FF-4099-B847-C7B62447184F}.Debug|x86.Build.0 = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|Any CPU.ActiveCfg = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|Any CPU.Build.0 = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|Mixed Platforms.Build.0 = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|x86.ActiveCfg = Debug|Any CPU
+		{16A337EF-95FF-4099-B847-C7B62447184F}.Design|x86.Build.0 = Debug|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|x86.ActiveCfg = Release|Any CPU
+		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26CD1B93-D516-4B6A-A6D5-632CF782377A}
 	EndGlobalSection
 EndGlobal

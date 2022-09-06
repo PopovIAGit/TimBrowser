@@ -37,17 +37,17 @@ namespace TimBrowser.Mapper
                 string index = mainPar.Index;
                 string name = mainPar.Name;
 
-                string valueString = mainPar.Value.ToString() + mainPar.ValueDescription.Unit;
+                string valueString = mainPar.sValue.ToString() + mainPar.ValueDescription.Unit;
 
                 if (mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
                     mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
                     mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
                 {
-                    valueString = mainPar.Value.ToString() + " (код)";
+                    valueString = mainPar.sValue.ToString() + " (код)";
                 }
 
                 List<TimParameterFieldItem> timFields =
-                    MapParameterValueFields((int)mainPar.Value, mainPar.ValueDescription.ValueType,
+                    MapParameterValueFields((int)mainPar.DValue, mainPar.ValueDescription.ValueType,
                     mainPar.ValueDescription.Fields);
 
                 logEvTimParameters.Add(new TimParameterItem(numberCounter,
@@ -66,18 +66,18 @@ namespace TimBrowser.Mapper
 
                         string bufParIndex = parBuf.Index;
                         string bufName = parBuf.Name;
-                        string bufValueString = parBuf.Value + parBuf.ValueDescription.Unit;
+                        string bufValueString = parBuf.sValue + parBuf.ValueDescription.Unit;
 
 
                         if (parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
                             parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
                             parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
                         {
-                            bufValueString = parBuf.Value.ToString() + " (код)";
+                            bufValueString = parBuf.sValue.ToString() + " (код)";
                         }
 
                         List<TimParameterFieldItem> bufTimFields =
-                            MapParameterValueFields((int)parBuf.Value, parBuf.ValueDescription.ValueType,
+                            MapParameterValueFields((int)parBuf.DValue, parBuf.ValueDescription.ValueType,
                             parBuf.ValueDescription.Fields);
 
                         logEvTimParameters.Add(new TimParameterItem(numberCounter,
@@ -132,6 +132,78 @@ namespace TimBrowser.Mapper
             return logEvTimParameters;
         }
 
+        public static List<TimParameterItem> MapLogEvAndCmdParameters(LogEventAndCmdRecordItem logEventAndCmdRecord)
+        {
+            List<TimParameterItem> logEvTimParameters = new List<TimParameterItem>();
+
+            int numberCounter = 0;
+
+            string mainDateTimeString = logEventAndCmdRecord.LogEventAndCmdMainCell.
+                DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
+
+            List<TimParameterItem> mainParameter = new List<TimParameterItem>();
+            List<TimParameterItem> bufParameter = new List<TimParameterItem>();
+
+            foreach (var mainPar in logEventAndCmdRecord.LogEventAndCmdMainCell.Parameters)
+            {
+                numberCounter++;
+
+                string index = mainPar.Index;
+                string name = mainPar.Name;
+
+                string valueString = mainPar.sValue.ToString() + mainPar.ValueDescription.Unit;
+
+                if (mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
+                    mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
+                    mainPar.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
+                {
+                    valueString = mainPar.sValue.ToString() + " (код)";
+                }
+
+                List<TimParameterFieldItem> timFields =
+                    MapParameterValueFields((int)mainPar.DValue, mainPar.ValueDescription.ValueType,
+                    mainPar.ValueDescription.Fields);
+
+                logEvTimParameters.Add(new TimParameterItem(numberCounter,
+                    index, mainDateTimeString, name, valueString, timFields));
+
+                foreach (var logEvBufRec in logEventAndCmdRecord.LogEventAndCmdBufferCells)
+                {
+                    var parBuf = logEvBufRec.Parameters.Where(p => p.Id == mainPar.Id).FirstOrDefault();
+
+                    if (parBuf != null)
+                    {
+                        numberCounter++;
+
+                        string logEvBufDateTimeString = logEvBufRec.DateAndTime.
+                            ToString(Constants.DATE_TIME_FORMAT_STRING);
+
+                        string bufParIndex = parBuf.Index;
+                        string bufName = parBuf.Name;
+                        string bufValueString = parBuf.sValue + parBuf.ValueDescription.Unit;
+
+
+                        if (parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
+                            parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
+                            parBuf.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
+                        {
+                            bufValueString = parBuf.sValue.ToString() + " (код)";
+                        }
+
+                        List<TimParameterFieldItem> bufTimFields =
+                            MapParameterValueFields((int)parBuf.DValue, parBuf.ValueDescription.ValueType,
+                            parBuf.ValueDescription.Fields);
+
+                        logEvTimParameters.Add(new TimParameterItem(numberCounter,
+                            bufParIndex, logEvBufDateTimeString, bufName, bufValueString, bufTimFields));
+                    }
+                }
+
+                numberCounter = 0;
+            }
+            return logEvTimParameters;
+        }
+
         public static ObservableCollection<TimChosenParameterItem> MapLogEvChosenParametersCol(LogEventRecordItem logEventRecord)
         {
             ObservableCollection<TimChosenParameterItem> logEvTimChosenParametersCol = new ObservableCollection<TimChosenParameterItem>();
@@ -152,10 +224,10 @@ namespace TimBrowser.Mapper
 
                 string index = mainP.Index;
                 string name = index + " " + mainP.Name;
-                string valueString = mainP.Value.ToString() + mainP.ValueDescription.Unit;
+                string valueString = mainP.sValue.ToString() + mainP.ValueDescription.Unit;
 
                 List<TimParameterFieldItem> timFields =
-                    MapParameterValueFields((int)mainP.Value, mainP.ValueDescription.ValueType,
+                    MapParameterValueFields((int)mainP.DValue, mainP.ValueDescription.ValueType,
                     mainP.ValueDescription.Fields);
 
                 List<TimParameterItem> chosenParametersList = new List<TimParameterItem>();
@@ -176,10 +248,73 @@ namespace TimBrowser.Mapper
 
                         string bufParindex = bufPar.Index;
                         string bufParName = bufPar.Name;
-                        string bufParValueString = bufPar.Value.ToString() + bufPar.ValueDescription.Unit;
+                        string bufParValueString = bufPar.sValue.ToString() + bufPar.ValueDescription.Unit;
 
                         List<TimParameterFieldItem> bufTimFields =
-                              MapParameterValueFields((int)bufPar.Value, bufPar.ValueDescription.ValueType,
+                              MapParameterValueFields((int)bufPar.DValue, bufPar.ValueDescription.ValueType,
+                              bufPar.ValueDescription.Fields);
+
+                        chosenParametersList.Add(new TimParameterItem(numberCounter,
+                            bufParindex, logEvBufDateTimeString, bufParName, bufParValueString, bufTimFields));
+                    }
+                }
+
+                numberCounter = 0;
+
+                logEvTimChosenParametersCol.Add(new TimChosenParameterItem(name, chosenParametersList));
+            }
+
+            return logEvTimChosenParametersCol;
+        }
+
+        public static ObservableCollection<TimChosenParameterItem> MapLogEvAndCmdChosenParametersCol(LogEventAndCmdRecordItem logEventAndCmdRecord)
+        {
+            ObservableCollection<TimChosenParameterItem> logEvTimChosenParametersCol = new ObservableCollection<TimChosenParameterItem>();
+
+            // счетчик должен инкрементироваться при смене типа параметра!
+            int numberCounter = 0;
+
+            string mainDateTimeString = logEventAndCmdRecord.LogEventAndCmdMainCell.
+                DateAndTime.ToString(Constants.DATE_TIME_FORMAT_STRING);
+
+            var chMainPars = from chp in logEventAndCmdRecord.LogEventAndCmdMainCell.Parameters
+                             where chp.Configuration.IsChosen
+                             select chp;
+
+            foreach (var mainP in chMainPars)
+            {
+                numberCounter++;
+
+                string index = mainP.Index;
+                string name = index + " " + mainP.Name;
+                string valueString = mainP.sValue.ToString() + mainP.ValueDescription.Unit;
+
+                List<TimParameterFieldItem> timFields =
+                    MapParameterValueFields((int)mainP.DValue, mainP.ValueDescription.ValueType,
+                    mainP.ValueDescription.Fields);
+
+                List<TimParameterItem> chosenParametersList = new List<TimParameterItem>();
+
+                chosenParametersList.Add(new TimParameterItem(numberCounter,
+                    index, mainDateTimeString, name, valueString, timFields));
+
+                foreach (var logEvBufRec in logEventAndCmdRecord.LogEventAndCmdBufferCells)
+                {
+                    var bufPar = logEvBufRec.Parameters.Where(p => p.Id == mainP.Id).FirstOrDefault();
+
+                    if (bufPar != null)
+                    {
+                        numberCounter++;
+
+                        string logEvBufDateTimeString = logEvBufRec.DateAndTime.
+                            ToString(Constants.DATE_TIME_FORMAT_STRING);
+
+                        string bufParindex = bufPar.Index;
+                        string bufParName = bufPar.Name;
+                        string bufParValueString = bufPar.sValue.ToString() + bufPar.ValueDescription.Unit;
+
+                        List<TimParameterFieldItem> bufTimFields =
+                              MapParameterValueFields((int)bufPar.DValue, bufPar.ValueDescription.ValueType,
                               bufPar.ValueDescription.Fields);
 
                         chosenParametersList.Add(new TimParameterItem(numberCounter,
@@ -221,10 +356,10 @@ namespace TimBrowser.Mapper
 
                 string index = mainP.Index;
                 string name = mainP.Name;
-                string valueString = mainP.Value.ToString() + mainP.ValueDescription.Unit;
+                string valueString = mainP.sValue.ToString() + mainP.ValueDescription.Unit;
 
                 List<TimParameterFieldItem> timFields =
-                    MapParameterValueFields((int)mainP.Value, mainP.ValueDescription.ValueType,
+                    MapParameterValueFields((int)Convert.ToInt32(mainP.sValue), mainP.ValueDescription.ValueType,
                     mainP.ValueDescription.Fields);
 
                 logEvTimChosenParameters.Add(new TimParameterItem(numberCounter,
@@ -243,10 +378,10 @@ namespace TimBrowser.Mapper
 
                         string bufParindex = bufPar.Index;
                         string bufParName = bufPar.Name;
-                        string bufParValueString = bufPar.Value.ToString() + " " + bufPar.ValueDescription.Unit;
+                        string bufParValueString = bufPar.sValue.ToString() + " " + bufPar.ValueDescription.Unit;
 
                         List<TimParameterFieldItem> bufTimFields =
-                              MapParameterValueFields((int)bufPar.Value, bufPar.ValueDescription.ValueType,
+                              MapParameterValueFields((int)Convert.ToInt32(bufPar.sValue), bufPar.ValueDescription.ValueType,
                               bufPar.ValueDescription.Fields);
 
                         logEvTimChosenParameters.Add(new TimParameterItem(numberCounter,
@@ -338,32 +473,38 @@ namespace TimBrowser.Mapper
             string index = parameter.Index;
             string name = index + " " + parameter.Name;
             string valueString = String.Empty;
+            TimParameterItem timParameter = null;
 
-            if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Time)
+            if (parameter.ValueDescription != null)
             {
-                valueString = DataCore.Transform.Utils.GenerateTimeString((int)parameter.Value);
+                if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Time)
+                {
+                    //valueString = parameter.sValue;  //DataCore.Transform.Utils.GenerateTimeString((int)Convert.ToInt32(parameter.sValue));
+                    valueString = DataCore.Transform.Utils.GenerateTimeString((int)Convert.ToInt32(parameter.DValue));
+                }
+                else if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Date)
+                {
+                    //valueString = parameter.sValue;// DataCore.Transform.Utils.GenerateDateString((int)Convert.ToInt32(parameter.sValue));
+                    valueString = DataCore.Transform.Utils.GenerateDateString((int)Convert.ToInt32(parameter.DValue));
+                }
+                else
+                {
+                    valueString = parameter.sValue.ToString() + " " + parameter.ValueDescription.Unit;
+                }
+
+                if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
+                    parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
+                    parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
+                    valueString += " (код)";
+
+                List<TimParameterFieldItem> timFields =
+                    MapParameterValueFields((int)parameter.DValue, parameter.ValueDescription.ValueType,
+                    parameter.ValueDescription.Fields);
+
+                timParameter = new TimParameterItem(number,
+                    index, dateTimeString, name, valueString, timFields);
             }
-            else if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Date)
-            {
-                valueString = DataCore.Transform.Utils.GenerateDateString((int)parameter.Value);
-            }
-            else
-            {
-                valueString = parameter.Value.ToString() + " " + parameter.ValueDescription.Unit;
-            }
-
-            if (parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Enum ||
-                parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.List ||
-                parameter.ValueDescription.ValueType == TpeParameters.Helpers.ParamValueTypes.Union)
-                valueString += " (код)";
-
-            List<TimParameterFieldItem> timFields = 
-                MapParameterValueFields((int)parameter.Value, parameter.ValueDescription.ValueType,
-                parameter.ValueDescription.Fields);
-
-            TimParameterItem timParameter = new TimParameterItem(number,
-                index, dateTimeString, name, valueString, timFields);
-
+            
             return timParameter;
         }
 
@@ -373,7 +514,7 @@ namespace TimBrowser.Mapper
         /// <param name="value">Значение параметра</param>
         /// <param name="parameterFieldItems">Поля параметра</param>
         /// <returns>преобразованные поля</returns>
-        public static List<TimParameterFieldItem> MapParameterValueFields(int value, TpeParameters.Helpers.ParamValueTypes valueType,
+        public static List<TimParameterFieldItem> MapParameterValueFields(Int32 value, TpeParameters.Helpers.ParamValueTypes valueType,
             List<ParameterFieldItem> parameterFieldItems)
         {
             if (parameterFieldItems == null)

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Media;
 using TimBrowser.Model;
 
@@ -15,9 +16,9 @@ namespace TimBrowser.Services.CreateXlsFile
     {
         public XlsEngine()
         {
-            _fontFamily = new FontFamily("Arial");
+            //_fontFamily = new FontFamily("Arial");
         }
-
+        /*
         #region Fields
 
         Microsoft.Office.Interop.Excel.Application _app;
@@ -100,7 +101,16 @@ namespace TimBrowser.Services.CreateXlsFile
            
             //_app.Visible = true;//???                                       //делаем объект видимым
             //_app.WindowState = XlWindowState.xlMaximized;//???              //разворачиваем на весь экран
-            _workbook.SaveAs("C:\\Temp\\vitoshacademy.xls");
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Exel-файл|*.xlsx";
+            saveFileDialog1.Title = "Сохранить опросный лист в формате Exel";
+            saveFileDialog1.FileName = _documentMainTitle+"_" + _documentSubTitle+".xlsx";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                _workbook.SaveAs(saveFileDialog1.FileName);
+            }
             _workbook.Close(0);
             _app.Quit();
         }
@@ -131,31 +141,7 @@ namespace TimBrowser.Services.CreateXlsFile
             cells.Borders[XlBordersIndex.xlEdgeRight].Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick;          // правая внешняя
             cells.Borders[XlBordersIndex.xlEdgeLeft].Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick;           // левая внешняя
             cells.Borders[XlBordersIndex.xlEdgeBottom].Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick;         // нижняя внешняя
-            /*
-            //добавили книгу
-            application.Workbooks.Add(missing);
-            Excel.Worksheet sheet = (Excel.Worksheet)application.ActiveSheet;
-            //вписываем текст
-            sheet.Cells[1, 1] = "hi!";
-            ((Excel.Range)sheet.Columns).ColumnWidth = 15;
-            //жирность
-            (sheet.Cells[1, 1] as Excel.Range).Font.Bold = true;
-            //размер шрифта
-            (sheet.Cells[1, 1] as Excel.Range).Font.Size = 16;
-            //название шрифта
-            (sheet.Cells[1, 1] as Excel.Range).Font.Name = "Times New Roman";
-            //стиль границы
-            (sheet.Cells[1, 1] as Excel.Range).Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDouble;
-            //толщина границы
-            (sheet.Cells[1, 1] as Excel.Range).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = Excel.XlBorderWeight.xlMedium;
-            //выравнивание по горизонтали
-            (sheet.Cells[1, 1] as Excel.Range).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-            //выравнивание по вертикали
-            (sheet.Cells[1, 1] as Excel.Range).VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-            //объединение ячеек
-            sheet.get_Range(sheet.Cells[2, 2], sheet.Cells[4, 4]).Merge(missing);
-            application.Visible = true;
-            */
+            
 
             cells.HorizontalAlignment =  Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
@@ -184,5 +170,6 @@ namespace TimBrowser.Services.CreateXlsFile
                 }
             }
         }
+        */
     }
 }

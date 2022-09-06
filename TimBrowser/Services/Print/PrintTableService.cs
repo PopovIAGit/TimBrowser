@@ -19,7 +19,8 @@ namespace TimBrowser.Services.Print
 
         #region Methods
 
-        public List<PrintTableItem> PrintTablesRequest(List<PrintSelectionItem> printSelections, InformationModuleData informationModule)
+        public List<PrintTableItem> PrintTablesRequest(List<PrintSelectionItem> printSelections, InformationModuleData informationModule,
+                                                                string mainTitle, string subTitle)
         {
             PrintTableItemsCreator printTableCreator = new PrintTableItemsCreator();
             List<PrintTableItem> printTables = new List<PrintTableItem>();
@@ -34,7 +35,7 @@ namespace TimBrowser.Services.Print
                 switch (ps.Id)
                 {
                     case PrintSelectionIds.LogEvId: currentPrintTableItem = 
-                            printTableCreator.CreateEvLogPrintTable(informationModule); break;
+                            printTableCreator.CreateEvLogPrintTable(informationModule, mainTitle, subTitle); break;
 
                     case PrintSelectionIds.LogCmdId: currentPrintTableItem = 
                             printTableCreator.CreateCmdLogPrintTable(informationModule); break;

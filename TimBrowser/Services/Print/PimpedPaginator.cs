@@ -13,11 +13,19 @@ namespace TimBrowser.Services.Print
     {
         private double pageNumOffset = 30;
 
-        public PimpedPaginator(FlowDocument document, Definition def)
+        
+        private string _documentMainTitle;
+        private string _documentSubTitle;
+
+        public PimpedPaginator(FlowDocument document, Definition def, string MainTitle, string SubTitle)
         {
             // Create a copy of the flow document,
             // so we can modify it without modifying
             // the original.
+
+            _documentMainTitle = MainTitle;
+            _documentSubTitle = SubTitle;
+
             MemoryStream stream = new MemoryStream();
             TextRange sourceDocument = new TextRange(document.ContentStart, document.ContentEnd);
             sourceDocument.Save(stream, DataFormats.Xaml);
@@ -67,9 +75,11 @@ namespace TimBrowser.Services.Print
                     typeface = new Typeface("Arial");
                 }
 
-                FormattedText text = new FormattedText("" + (pageNumber + 1 + definition.StartPageNum),
-                    System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
-                    typeface, 14, Brushes.Black);
+                string title1 = _documentMainTitle + " / " + _documentSubTitle + "                                                               ";
+
+                FormattedText text = new FormattedText(title1 + (pageNumber + 1 + definition.StartPageNum),
+                    System.Globalization.CultureInfo.CurrentCulture, FlowDirection.RightToLeft,
+                    typeface, 12, Brushes.Black);
 
                 ctx.DrawText(text, new Point(page.Size.Width + pageNumOffset, page.Size.Height + pageNumOffset));
             }

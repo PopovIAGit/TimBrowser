@@ -65,7 +65,7 @@ namespace TimBrowser.DataCore.DownloadM
                 txData[1] = (ushort)currentParamMsb;                         // Передаем старший байт адреса первого параметра в группе
                 txData[2] = (ushort)currentParamLsb;                         // Передаем младший байт адреса первого параметра в группе
                 TransmitBytes(_communication.DeviceAddress, 65123, txData);
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(30);
 
                 rxData = ReceiveBytes(_communication.DeviceAddress, 65123, readParamsNum * 2+4); //ReceiveBytes(readParamsNum * 2);          // Умножением на 2 учитываем старший и младший байты
 

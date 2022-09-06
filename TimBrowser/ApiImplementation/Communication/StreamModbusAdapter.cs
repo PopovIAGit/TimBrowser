@@ -15,8 +15,8 @@ namespace TimBrowser.ApiImplementation.Communication
             _stream = stream;
         }
 
-        public const int READ_REQUEST_DELAY_MS = 10;
-        public const int WRITE_REQUEST_DELAY_MS = 10;
+        public const int READ_REQUEST_DELAY_MS = 150;
+        public const int WRITE_REQUEST_DELAY_MS = 150;
         private const int INFINITE_TIMEOUT_VALUE = 0;
 
         private Stream _stream;

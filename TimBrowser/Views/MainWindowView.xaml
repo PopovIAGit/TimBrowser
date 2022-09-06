@@ -69,16 +69,24 @@
 			<TabItem Header="Журнал команд">
 				<ContentControl x:Name="LogCmdViewControl" />
 			</TabItem>
-			
-			<TabItem Header="Журнал изменения параметров">
+
+            <TabItem Header="Журнал событий и команд">
+                <ContentControl x:Name="LogEvAndCmdMainViewControl" />
+            </TabItem>
+
+            <TabItem Header="Журнал изменения параметров">
 				<ContentControl x:Name="LogParamViewControl" />
 			</TabItem>
 			
 			<TabItem Header="Список параметров">
                 <ContentControl x:Name="ParametersTableControl" />
 			</TabItem>
-			
-		</TabControl>
+
+            <TabItem Header="Журнал подключений">
+                <ContentControl x:Name="LogSimViewControl" />
+            </TabItem>
+
+        </TabControl>
         
         <Rectangle x:Name="DeactivationRectangle" Fill="#99CFCFCF" Grid.Row="1"
                    Visibility="{Binding DeactivationRectangleVisibility}"/>

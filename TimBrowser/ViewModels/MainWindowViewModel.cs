@@ -14,13 +14,15 @@ namespace TimBrowser.ViewModels
     public class MainWindowViewModel : Screen
     {
         public MainWindowViewModel(IWindowManager windowManager, LogEvMainViewModel logEvMainViewControl,
-            LogCmdViewModel logCmdViewControl, LogParamViewModel logParamViewControl, 
+            LogCmdViewModel logCmdViewControl, LogEvAndCmdMainViewModel logEvAndCmdMainViewControl,  LogParamViewModel logParamViewControl, LogSimViewModel logSimViewControl,
             ParametersTableViewModel parametersTableControl, MenuViewModel menuControl)
         {
             _windowManager = windowManager;
             LogEvMainViewControl = logEvMainViewControl;
+            LogEvAndCmdMainViewControl = logEvAndCmdMainViewControl;
             LogCmdViewControl = logCmdViewControl;
             LogParamViewControl = logParamViewControl;
+            LogSimViewControl = logSimViewControl;
             ParametersTableControl = parametersTableControl;
             MenuControl = menuControl;
 
@@ -32,6 +34,11 @@ namespace TimBrowser.ViewModels
                     MainTabEnabled = true;
                     DeactivationRectangleVisibility = Visibility.Collapsed;
                 };
+            LogEvAndCmdMainViewControl.DataLoadedAction += () =>
+            {
+                MainTabEnabled = true;
+                DeactivationRectangleVisibility = Visibility.Collapsed;
+            };
         }
 
         public List<TimBrowser.Model.TimParameterFieldItem> BitFieldsProp
@@ -81,6 +88,12 @@ namespace TimBrowser.ViewModels
             private set;
         }
 
+        public LogEvAndCmdMainViewModel LogEvAndCmdMainViewControl
+        {
+            get;
+            private set;
+        }
+
         public LogCmdViewModel LogCmdViewControl
         {
             get;
@@ -88,6 +101,12 @@ namespace TimBrowser.ViewModels
         }
 
         public LogParamViewModel LogParamViewControl
+        {
+            get;
+            private set;
+        }
+
+        public LogSimViewModel LogSimViewControl
         {
             get;
             private set;

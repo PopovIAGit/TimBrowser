@@ -6,11 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Management;
 using System.Windows.Threading;
 using TimBrowser.Helper;
 using TimBrowser.Services;
+using MessageBox = System.Windows.MessageBox;
+using Screen = Caliburn.Micro.Screen;
 
 namespace TimBrowser.ViewModels
 {
@@ -45,6 +49,7 @@ namespace TimBrowser.ViewModels
         private string _factoryNumber;
         private bool _saveButtonEnable;
         private bool _printButtonEnable;
+        private bool _onAlarm;
 
         #endregion
 
@@ -80,6 +85,13 @@ namespace TimBrowser.ViewModels
                 _timFileService.LoadFile(openFileDialog.FileName);
             }
         }
+
+        public void OnAlarm()
+        {
+            if (_onAlarm == false) _onAlarm = true;
+            else _onAlarm = false;
+        }
+
 
         public void SaveFile()
         {
@@ -128,8 +140,10 @@ namespace TimBrowser.ViewModels
             _windowManager.ShowDialog(DownloadViewModel, null, settings);
         }
 
+
         public void Print()
         {
+            
             dynamic settings = new ExpandoObject();
             settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             settings.SizeToContent = SizeToContent.WidthAndHeight;
@@ -159,6 +173,7 @@ namespace TimBrowser.ViewModels
 
         private void ActivatePrintPreview()
         {
+            
             dynamic settings = new ExpandoObject();
             settings.WindowStartupLocation = WindowStartupLocation.Manual;
             settings.SizeToContent = SizeToContent.Manual;

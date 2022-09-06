@@ -26,7 +26,7 @@ namespace TimBrowser.DataCore.Services
         {
             string filePath = GetTpeFilePath(deviceId);
 
-            var fileStream = _fileOperations.LoadFileStream(filePath); //_tpeFile.GetTpeFileStream(filePath);
+            var fileStream = _fileOperations.LoadFileStream(filePath); //_tpeFile.GetTpeFileStream(filePath);D:\Work\TimBrowser\TimBrowser\bin\Debug\Templates
             var xmlDoc = _tpeCryptor.DecryptTpeFromTpeFile(fileStream);
             var table = _xmlParser.Parse(xmlDoc);
 

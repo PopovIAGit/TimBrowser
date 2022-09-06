@@ -22,7 +22,10 @@ namespace TimBrowser.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            //TODO выбор цвета строки
+            //
             return (bool)value == true ? SetColor : UnsetColor;
+            //return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

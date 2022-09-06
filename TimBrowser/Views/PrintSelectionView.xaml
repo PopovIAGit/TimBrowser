@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <UserControl.Resources>
-        
+
         <DataTemplate x:Key="PrintSelectionListBoxDataTemplate">
             <Grid>
                 <CheckBox Margin="0,0,0,4" d:LayoutOverrides="Width, Height" BorderThickness="0" FontSize="14"
@@ -19,9 +19,9 @@
             </Grid>
 
         </DataTemplate>
-        
+
     </UserControl.Resources>
-    
+
     <StackPanel>
         <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"                 
                  ItemsSource="{Binding PrintSelections}"
@@ -39,18 +39,11 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        
+
         <Button x:Name="Print" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/print.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" />
                 <TextBlock Text="Предпросмотр и печать" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </StackPanel>
-        </Button>
-
-        <Button x:Name="SaveXls" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/excel-26.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" />
-                <TextBlock Text="Сохранить в *.xls" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </StackPanel>
         </Button>
 
@@ -60,7 +53,13 @@
                 <TextBlock Text="Сохранить в *.pdf" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </StackPanel>
         </Button>
+        <Button x:Name="SaveXls" Margin="77,8" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8" Visibility="Hidden">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/excel-26.png" Stretch="Fill" Margin="8,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" />
+                <TextBlock Text="Сохранить в *.xls" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </StackPanel>
+        </Button>
 
     </StackPanel>
-    
+
 </UserControl>

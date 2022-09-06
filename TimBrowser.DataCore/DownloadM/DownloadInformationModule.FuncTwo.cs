@@ -21,7 +21,7 @@ namespace TimBrowser.DataCore.DownloadM
             TransmitByte(_communication.DeviceAddress, 65123, Data);
             System.Threading.Thread.Sleep(30);
             Data[0] = 0;
-            Data = ReceiveBytes(_communication.DeviceAddress, 65123, 14);
+            Data = ReceiveBytes(_communication.DeviceAddress, 65123, 18);
 
             byte funcCodeReceive = (byte)Data[0]; // ReceiveByte();                                       // Считываем ответный код функции
             byte funcDataSize = (byte)Data[1];    // Считанный размер ответного пакета

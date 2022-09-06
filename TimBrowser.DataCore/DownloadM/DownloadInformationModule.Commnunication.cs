@@ -22,7 +22,7 @@ namespace TimBrowser.DataCore.DownloadM
             byte[] dat;
             return dat;// _communication.ProtocolCommunicationFunc.ReadBytes();    // ReceiveBytes(count);
             */
-            return _communication.ProtocolCommunicationFunc.ReadBytes(deviceAddr, startAddr, count); ;
+            return _communication.ProtocolCommunicationFunc.ReadBytes(deviceAddr, startAddr, count); 
         }
 
         private void TransmitByte(int deviceAddr, int startAddr, ushort[] buffer)

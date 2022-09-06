@@ -44,12 +44,13 @@ namespace TimBrowser.ViewModels
 
         #endregion
 
-
+        
 
         #region Properties
 
         #region View Models
 
+       
         public LogEvEventsViewModel LogEvEventsControl
         {
             get;

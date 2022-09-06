@@ -74,7 +74,7 @@ namespace TimBrowser.Services.Print
 
                 fixedDocSequenceList.Add(xpsSeq);
 
-                pageNum += xps.FixedDocumentSequenceReader.FixedDocuments[0].FixedPages.Count;
+                pageNum += xps.FixedDocumentSequenceReader.FixedDocuments[0]. FixedPages.Count;
             }
 
             List<PageContent> fixedPages = GetAllFixedPages(fixedDocSequenceList);
@@ -86,12 +86,15 @@ namespace TimBrowser.Services.Print
             return fixedDocument;
         }
 
-
+        
 
         private Table CreateTableDocument(PrintTableItem tableItem)
         {
             // число колонок
             int columnsCount = tableItem.Columns.First().Length;
+            int columnsCount2 = 1;
+            int columnsCount3 = 1;
+            
             // число рядов (строк)
             int rowsCount = tableItem.Columns.Count;
 
@@ -120,6 +123,26 @@ namespace TimBrowser.Services.Print
             table.CellSpacing = tableCellSpacing;
             table.Resources.Add(typeof(TableCell), cellStyle);
 
+           
+            /*
+            // Создаем колонки
+            for (int iColumn = 0; iColumn < columnsCount2; iColumn++)
+            {
+                table.Columns.Add(new TableColumn());                                       // Создаем новую колонку
+
+                table.Columns[iColumn].Width = tableItem.ColumnsWidths[iColumn];            // Устанавливаем ширину колонки  
+            
+            }
+            //table.RowGroups[0].Rows.Add(new TableRow());
+            // Создаем колонки
+            for (int iColumn = 1; iColumn < columnsCount3; iColumn++)
+            {
+                table.Columns.Add(new TableColumn());                                       // Создаем новую колонку
+
+                table.Columns[iColumn].Width = tableItem.ColumnsWidths[iColumn];            // Устанавливаем ширину колонки  
+            }
+            */
+            //table.RowGroups[1].Rows.Add(new TableRow());
             // Создаем колонки
             for (int iColumn = 0; iColumn < columnsCount; iColumn++)
             {
@@ -127,11 +150,13 @@ namespace TimBrowser.Services.Print
 
                 table.Columns[iColumn].Width = tableItem.ColumnsWidths[iColumn];            // Устанавливаем ширину колонки  
             }
-
+            
             // добавляем группу рядов. все ряды текущий таблицы будут в ней
             table.RowGroups.Add(new TableRowGroup());
 
             // Шапка таблицы
+            //table.RowGroups[0].Rows.Add(new TableRow());
+            //table.RowGroups[1].Rows.Add(new TableRow());
             table.RowGroups[0].Rows.Add(new TableRow());
 
             for (int iColumn = 0; iColumn < columnsCount; iColumn++)
@@ -177,8 +202,8 @@ namespace TimBrowser.Services.Print
                 document.PageWidth = DOCUMENT_PAGE_WIDTH;
 
                 // Добавляем основные заголовки
-                if (docCounter == 0)
-                {
+                //if (docCounter == 0)
+                //{
                     Block docTitleOne = new Paragraph(new Run(_documentMainTitle));
                     docTitleOne.TextAlignment = System.Windows.TextAlignment.Center;
                     docTitleOne.FontSize = DOCUMENT_MAIN_TITILE_FONTSIZE;
@@ -193,16 +218,19 @@ namespace TimBrowser.Services.Print
                         docTitleTwo.FontFamily = _fontFamily;
                         document.Blocks.Add(docTitleTwo);
                     }
-                }
+                //}
 
                 // Заголовок
                 Block title = new Paragraph(new Run(tableTitles[docCounter]));
                 title.TextAlignment = System.Windows.TextAlignment.Center;
                 title.FontSize = DOCUMENT_PAGE_TITILE_FONTSIZE;
                 title.FontFamily = _fontFamily;
+                
                 document.Blocks.Add(title);
 
                 document.Blocks.Add(tableDocuments[docCounter]);
+                document.Blocks.Add(tableDocuments[docCounter]);
+                //document.Blocks.Add(title);
 
                 flowDocList.Add(document);
 
@@ -232,7 +260,7 @@ namespace TimBrowser.Services.Print
 
             def.PageSize = paginator.PageSize;
 
-            paginator = new PimpedPaginator(flowDocument, def);
+            paginator = new PimpedPaginator(flowDocument, def, _documentMainTitle,  _documentSubTitle);
 
             rsm.SaveAsXaml(paginator);
 

@@ -36,7 +36,7 @@ namespace TimBrowser.DataCore.DownloadM
                 System.Threading.Thread.Sleep(30);
 
                 byte funcCodeReceive = 0;// ReceiveByte();                                   // Считываем ответный код функции
-                byte logTypeReceive = 0;// ReceiveByte();                                   // Считываем ответный тип журнала
+                byte logTypeReceive = 0;// ReceiveByte();                                    // Считываем ответный тип журнала
                 byte funcDataSize = 0;// ReceiveByte();                                      // Считываем размер ответного пакета
                 rxData = ReceiveBytes(_communication.DeviceAddress, 65123, 10);
                 funcCodeReceive = (byte)rxData[0];

@@ -19,8 +19,9 @@ namespace TimBrowser.DataCore.Transform
             foreach (var g in paramTable.Groups)
             {
                 parameterItem = (from p in g.Parameters
-                                where p.Configuration.Appointment == paramAppointment
-                                select p).FirstOrDefault();
+                        where p.Configuration.Appointment == paramAppointment
+                        select p).FirstOrDefault();
+                
 
                 if (parameterItem != null)
                     return parameterItem;
@@ -41,12 +42,29 @@ namespace TimBrowser.DataCore.Transform
             if (parameter != null)
                 return parameter;
 
-            foreach (var g in paramTable.Groups)
+            if (address == 76543)
             {
-                parameter = g.Parameters.Find(p => p.Address == address);
+                foreach (var g in paramTable.Groups)
+                {
+                    parameter = g.Parameters.Find(p => p.Address == 0);
 
-                if (parameter != null)
-                    return parameter;
+                    if (parameter != null)
+                    {
+                        //parameter.VariableName = "";
+                        address = 1;
+                    }
+                        return parameter;
+                }
+            }
+            else
+            {
+                foreach (var g in paramTable.Groups)
+                {
+                    parameter = g.Parameters.Find(p => p.Address == address);
+
+                    if (parameter != null)
+                        return parameter;
+                }
             }
 
             return null;
@@ -65,8 +83,8 @@ namespace TimBrowser.DataCore.Transform
         internal static DateTime GenerateLogDateTime(ParameterItem dateParameter, ParameterItem timeParameter, 
             ParameterItem secondsParameter)
         {
-            int dateValue = (int)dateParameter.Value;
-            int timeValue = (int)timeParameter.Value;
+            int dateValue = (int)dateParameter.DValue;
+            int timeValue = (int)timeParameter.DValue;
 
             int day = dateValue & 31;
             int month = (dateValue >> 5) & 15;
@@ -75,7 +93,7 @@ namespace TimBrowser.DataCore.Transform
             if (year > DateTime.Now.Year)
                 year = 2000;
 
-            if (day <= 0)   day = 1;
+            if (day <= 0) day = 1;
             if (month <= 0) month = 1;
 
             int minutes = timeValue & 63;
@@ -84,7 +102,57 @@ namespace TimBrowser.DataCore.Transform
             if (hours > 24)
                 hours = 0;
 
-            return new DateTime(year, month, day, hours, minutes, (int)secondsParameter.Value);
+            return new DateTime(year, month, day, hours, minutes, (int)secondsParameter.DValue);
+            
+            /*DateTime dateValue;
+            DateTime timeValue;
+
+            int day = 1;
+            int month = 1;
+            int year = 2000;
+
+            int minutes = 0;
+            int hours = 0;
+
+            try{
+                 
+                 dateValue = Convert.ToDateTime(dateParameter.sValue);
+                 timeValue = Convert.ToDateTime(timeParameter.sValue);
+
+                 //dateValue = (int)Convert.ToInt32(Convert.ToDateTime(dateParameter.sValue));
+                 //dateValue = (int)Convert.ToInt32((DateTime)(dateParameter.sValue)); 
+                 //timeValue = (int)Convert.ToInt32(timeParameter.sValue);
+
+                 day = dateValue.Day;
+                 month = dateValue.Month;
+                 year = dateValue.Year;
+                 //day =  dateValue.day;
+                 //month = (dateValue >> 5) & 15;
+                 //year = (dateValue >> 9) + 2000;
+
+                if (year > DateTime.Now.Year)
+                    year = 2000;
+                if (year < 2000) year = 2000;
+
+                if (day <= 0)   day = 1;
+                if (day < 1) day = 1;
+                if (month <= 0) month = 1;
+                if (month < 1) month = 1;
+
+                minutes = timeValue.Minute;
+                hours = timeValue.Hour;
+
+                if (hours > 24)
+                    hours = 0;
+
+               
+            } catch (Exception e)
+                {
+                    day = 1;
+                    month = 1;
+                    year = 2000;       
+                }
+            return new DateTime(year, month, day, hours, minutes, (int)Convert.ToInt32(secondsParameter.sValue));*/
         }
 
         public static string GenerateTimeString(int timeValue)

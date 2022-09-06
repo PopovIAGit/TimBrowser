@@ -20,9 +20,9 @@ namespace TimBrowser.DataCore.DownloadM
             //TransmitByte(funcCodeTransmit);                                                     // Передаем код функции
             Data[0] = (ushort)funcCodeTransmit;
             TransmitByte(_communication.DeviceAddress, 65123, Data);
-            System.Threading.Thread.Sleep(30);
+            System.Threading.Thread.Sleep(50);
             Data[0] = 0;
-            Data = ReceiveBytes(_communication.DeviceAddress, 65123, 13);
+            Data = ReceiveBytes(_communication.DeviceAddress, 65123, 14);
 
             byte funcCodeReceive = (byte)Data[0];
             byte funcDataSize    = (byte)Data[1];

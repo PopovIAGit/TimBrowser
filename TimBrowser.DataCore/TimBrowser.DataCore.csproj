@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,9 +10,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimBrowser.DataCore</RootNamespace>
     <AssemblyName>TimBrowser.DataCore</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -114,6 +116,8 @@
     <Compile Include="Model\Device\DeviceInfo.cs" />
     <Compile Include="Model\Device\DeviceLogInfo.cs" />
     <Compile Include="Model\InformationModuleData.cs" />
+    <Compile Include="Model\Logs\LogEventAndCmdRecordItem.cs" />
+    <Compile Include="Model\Logs\LogSimRecordItem.cs" />
     <Compile Include="Model\Logs\DeviceLogs.cs" />
     <Compile Include="Model\Logs\LogCmdRecordItem.cs" />
     <Compile Include="Model\Logs\LogParamRecordItem.cs" />
@@ -137,12 +141,11 @@
     <Compile Include="Download\DownloadInformationModule.Commnunication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Application\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
-      <Project>{16a337ef-95ff-4099-b847-c7b62447184f}</Project>
+    <ProjectReference Include="..\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
+      <Project>{16A337EF-95FF-4099-B847-C7B62447184F}</Project>
       <Name>TpeParameters</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

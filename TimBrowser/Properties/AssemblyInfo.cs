@@ -48,8 +48,13 @@ using System.Windows;
 //      Build Number
 //      Revision
 //
+// 2.1.6 БКЭП БУР Т,М
+// 2.1.6.0 - с этой версии добавлен 4 журнал
+// 2.1.7 БКЭП БУР Т,М + БКП-8
+// 2.2.0 добавлен общий журнал команд и событий
+// 2.2.1 проверка и доработка считывание ИМ со всех устройств
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.5.2")]
-[assembly: AssemblyFileVersion("2.1.5.2")]
+[assembly: AssemblyVersion("2.3.1.0")]
+[assembly: AssemblyFileVersion("2.3.1.0")]

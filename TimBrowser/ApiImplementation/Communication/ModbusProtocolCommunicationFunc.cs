@@ -17,9 +17,9 @@ namespace TimBrowser.ApiImplementation.Communication
             _modbusMaster = ModbusSerialMaster.CreateRtu(streamResource);
 
             _modbusMaster.Transport.Retries = 0;
-            _modbusMaster.Transport.WaitToRetryMilliseconds = 120;//220
-            _modbusMaster.Transport.ReadTimeout = 150;
-            _modbusMaster.Transport.WriteTimeout = 150;
+            _modbusMaster.Transport.WaitToRetryMilliseconds = 120;// 120;//220
+            _modbusMaster.Transport.ReadTimeout = 150;// 150;
+            _modbusMaster.Transport.WriteTimeout = 150;// 150;
         }
 
         private const int MAX_DATA_COUNT = 220;

@@ -12,6 +12,7 @@ using TimBrowser.DataCore.Model.Logs;
 using TpeParameters.Helpers;
 using TimBrowser.DataCore.Services;
 using TpeParameters.Model;
+using System.Diagnostics;
 
 namespace TimBrowser.DataCore.Transform
 {
@@ -70,8 +71,10 @@ namespace TimBrowser.DataCore.Transform
                 List<DeviceLogInfo> deviceLogsInfo = GetDeviceLogsInfo(funcDownloadData, deviceInfo);
 
                 List<LogEventRecordItem> logEvent = null;
+                List<LogEventAndCmdRecordItem> logEventAndCmd = null;
                 List<LogCmdRecordItem> logCmd = null;
                 List<LogParamRecordItem> logParamRecord = null;
+                List<LogSimRecordItem> logSimRecord = null;
 
                 for (int logNum = 0; logNum < deviceInfo.LogsCount; logNum++)
                 {
@@ -90,16 +93,25 @@ namespace TimBrowser.DataCore.Transform
                         case LogTypes.ParameterLog:
                             logParamRecord = GetLogParam(funcDownloadData, deviceLogsInfo, paramTable);
                             break;
+                        //ma LogSim
+                        case LogTypes.SimIDLog:
+                            logSimRecord = GetLogSim(funcDownloadData, deviceLogsInfo, paramTable);
+                            break;
                     }
                 }
 
-                DeviceLogs deviceLogs = new DeviceLogs(logEvent, logCmd, logParamRecord);
+                logEventAndCmd = GetLogEventsAndCmd(funcDownloadData, deviceLogsInfo, paramTable, logEvent, logCmd);
+
+                DeviceLogs deviceLogs;
+                if (logSimRecord == null) deviceLogs = new DeviceLogs(logEvent, logCmd, logParamRecord, logEventAndCmd);
+                else deviceLogs = new DeviceLogs(logEvent, logCmd, logParamRecord, logEventAndCmd, logSimRecord);
 
                 im = new InformationModuleData(deviceInfo, deviceLogsInfo, deviceLogs, paramTable);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                int test = 9;
+                test = 5;
             }
 
             return im;
@@ -125,8 +137,16 @@ namespace TimBrowser.DataCore.Transform
                     {
                         int paramAddress = gr.Parameters[iParam].Address;
 
+                        if (iParam == 103)
+                        {
+                            iParam = 103;
+                        }
+
                         if (paramAddress < funcDownloadData.FuncSix.ParametersValues.Count)
+                        {
+                            gr.Parameters[iParam].SetTextValue(funcDownloadData.FuncSix.ParametersValues[paramAddress].ToString(), funcDownloadData.FuncSix.ParametersValues[paramAddress]);
                             gr.Parameters[iParam].SetUnsValue(funcDownloadData.FuncSix.ParametersValues[paramAddress]);
+                        }
 
                         //gr.Parameters[iParam] = TransformParamValue(gr.Parameters[iParam]);
                     }
@@ -138,7 +158,7 @@ namespace TimBrowser.DataCore.Transform
             }
             catch (Exception e)
             {
-
+                Debug.WriteLine("Ошибка преобразования считанных данных (проблема в .pte-файле)");
             }
 
             return parametersTemplate;
@@ -157,8 +177,8 @@ namespace TimBrowser.DataCore.Transform
             if (productYearParameter == null || factoryNumberParameter == null)
                 throw new TransformDownloadDataException(TranformErrorCodes.GetDeviceInfoErr);
 
-            int productYear = (int)productYearParameter.Value;
-            int factoryNumber = (int)factoryNumberParameter.Value;
+            int productYear = (int)Convert.ToInt32(productYearParameter.DValue);
+            int factoryNumber = (int)Convert.ToInt32(factoryNumberParameter.DValue);
             string deviceNumStr = GetDeviceNumber(productYear, factoryNumber, 
                 factoryNumberParameter.ValueDescription.Maximum.ToString().Length);
             string deviceName = paramTable.DeviceName;
@@ -284,6 +304,9 @@ namespace TimBrowser.DataCore.Transform
             int recNumDbg = 0;
             int evRegNumDbg = 0;
             int iBitDbg = 0;
+            int ind1 = 0;
+            int ind2 = 0;
+
 
             try
             {
@@ -295,11 +318,11 @@ namespace TimBrowser.DataCore.Transform
                     bool firstEvent = (funcDownloadData.FuncFive.LogsData[indexEventLog].
                         LogFieldRecords[recNum].LogFieldCells[Codes.MainCellIndex].LogFieldValues
 
-                    // индекс значения текущего fault параметра = последнее поле в основной ячейке
+                        // индекс значения текущего fault параметра = последнее поле в основной ячейке
                         // последнее поле считаем по общему число полей в основной ячейке журнала
                         // если это значение равно константе FirstEventIndex значит - первое событие
-                    [(deviceLogsInfo[indexEventLog].CellFields[Codes.MainCellIndex].ParamAddress.Length - 1)] ==
-                        Codes.FirstEventIndex);
+                        [(deviceLogsInfo[indexEventLog].CellFields[Codes.MainCellIndex].ParamAddress.Length - 1)] ==
+                            Codes.FirstEventIndex);
 
                     int[] currentValueArray = new int[eventRegValues.Count];
                     int[] prevValueArray = new int[eventRegValues.Count];
@@ -319,7 +342,7 @@ namespace TimBrowser.DataCore.Transform
 
                             // присываеваем текущее значение текущего fault регистра
                             currentValueArray[evRegNum] = eventRegValues[evRegNum][recNum];
-
+                            
                             // анализируем каждый бит fault регистра
                             for (int iBit = 15; iBit >= 0; iBit--)
                             {
@@ -339,9 +362,12 @@ namespace TimBrowser.DataCore.Transform
                                     eventWasSet = false;
                                 else if ((currentSet && !prevSet))          // Set
                                     eventWasSet = true;
-
+                                else if ((currentSet && prevSet))          // Set
+                                    eventWasSet = true;
+                                
                                 if (eventWasSet != null)
                                 {
+                                    
                                     EventCode code = new EventCode();
 
                                     var bitValue = registerParam.ValueDescription.Fields.Where(
@@ -357,7 +383,13 @@ namespace TimBrowser.DataCore.Transform
                                         code.Set = eventWasSet;
 
                                         eventCodesTemp.Add(code);
+                                    } else
+                                    {
+                                        ind1++;
                                     }
+                                } else
+                                {
+                                    ind2++;
                                 }
                             }
                         }
@@ -392,6 +424,11 @@ namespace TimBrowser.DataCore.Transform
                 {
                     dbgCode = iCode;
 
+                    if (iCode == 3)
+                    {
+                        iCode = 3;
+                    }
+
                     bool convErr = false;
 
                     LogEventMainCellItem mainCell = null;
@@ -412,7 +449,7 @@ namespace TimBrowser.DataCore.Transform
 
                         for (int iParam = 0; iParam < paramsNum; iParam++)
                         {
-                            if (iParam == 19)
+                            if (iParam == 17)
                             {
                                 dbgParam = iParam;
                             }
@@ -428,59 +465,83 @@ namespace TimBrowser.DataCore.Transform
                                 // находим шаблонный параметр
                                 ParameterItem tempPar = Utils.FindParameterByAddress(address, paramTable);
 
-                                if (tempPar != null)
+                                try
                                 {
-                                    ParameterItem parameter = new ParameterItem(tempPar);
-                                    bool regFlag = false;
-
-                                    //проверяем, что текущий параметр является Fault параметр
-                                    if (parameter.Configuration.Appointment == ParamAppointments.Fault)
-                                    { regFlag = true; }
-
-                                    if (!regFlag)           // Проверяем, что параметр не является регистром события
+                                    if (tempPar != null)
                                     {
-                                        parameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexEventLog].LogFieldRecords[
-                                            eventCodes[iCode].RecordIndex].LogFieldCells[iCell].LogFieldValues[iParam]);
+                                        ParameterItem parameter = new ParameterItem(tempPar);
+                                        bool regFlag = false;
 
-                                        // трансформация значения параметра будет происходит непосредственно в классе ParamterItem
-                                        //parameter = new ParameterItem(TransformParamValue(parameter));
+                                        //проверяем, что текущий параметр является Fault параметр
+                                        if (parameter.Configuration.Appointment == ParamAppointments.Fault)
+                                        { regFlag = true; }
 
-                                        // параметры даты и времени могут быть только в основной ячейке
-                                        if (iCell == Codes.MainCellIndex)
+                                        if (!regFlag)           // Проверяем, что параметр не является регистром события
                                         {
-                                            if (parameter.Configuration.Appointment == ParamAppointments.Date)
-                                                dateParameter = parameter;
-                                            else if (parameter.Configuration.Appointment == ParamAppointments.Time)
-                                                timeParameter = parameter;
-                                            else if (parameter.Configuration.Appointment == ParamAppointments.Seconds)
-                                                secondsParameter = parameter;
+
+                                            try
+                                            {
+                                                parameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexEventLog].LogFieldRecords[
+                                                    eventCodes[iCode].RecordIndex].LogFieldCells[iCell].LogFieldValues[iParam]);
+                                                parameter.SetTextValue(funcDownloadData.FuncFive.LogsData[indexEventLog].LogFieldRecords[
+                                                    eventCodes[iCode].RecordIndex].LogFieldCells[iCell].LogFieldValues[iParam].ToString(),
+                                                    funcDownloadData.FuncFive.LogsData[indexEventLog].LogFieldRecords[
+                                                    eventCodes[iCode].RecordIndex].LogFieldCells[iCell].LogFieldValues[iParam]);
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                string m = e.Message;
+                                            }
+
+                                            // трансформация значения параметра будет происходит непосредственно в классе ParamterItem
+                                            //parameter = new ParameterItem(TransformParamValue(parameter));
+
+                                            // параметры даты и времени могут быть только в основной ячейке
+                                            if (iCell == Codes.MainCellIndex)
+                                            {
+                                                if (parameter.Configuration.Appointment == ParamAppointments.Date)
+                                                    dateParameter = parameter;
+                                                else if (parameter.Configuration.Appointment == ParamAppointments.Time)
+                                                    timeParameter = parameter;
+                                                else if (parameter.Configuration.Appointment == ParamAppointments.Seconds)
+                                                    secondsParameter = parameter;
+                                            }
+
+                                            bool dateTimeFlag = false;
+
+                                            if (parameter.Configuration.Appointment == ParamAppointments.Date ||
+                                                parameter.Configuration.Appointment == ParamAppointments.Time ||
+                                                parameter.Configuration.Appointment == ParamAppointments.Seconds)
+                                            {
+                                                dateTimeFlag = true;
+                                            }
+
+                                            if (!dateTimeFlag)
+                                            {
+                                                cellParameters.Add(parameter);
+                                            }
+
                                         }
-
-                                        bool dateTimeFlag = false;
-
-                                        if (parameter.Configuration.Appointment == ParamAppointments.Date ||
-                                            parameter.Configuration.Appointment == ParamAppointments.Time ||
-                                            parameter.Configuration.Appointment == ParamAppointments.Seconds)
-                                        {
-                                            dateTimeFlag = true;
-                                        }
-
-                                        if (!dateTimeFlag)
-                                        {
-                                            cellParameters.Add(parameter);
-                                        }
-
                                     }
+                                }
+                                catch (Exception e)
+                                {
+
+                                    string m = e.Message;
                                 }
                             }
                         }
-
                         try
                         {
                             // создаем объекты записей журнала
                             if (iCell == Codes.MainCellIndex)
                             {
                                 recordMainDateTime = Utils.GenerateLogDateTime(dateParameter, timeParameter, secondsParameter);
+
+                                /*String Descript = "";
+
+                                if ((bool)eventCodes[iCode].Set == true) Descript = "Выставлено - " + eventCodes[iCode].Description;
+                                else if ((bool)eventCodes[iCode].Set == false) Descript = "Снято - " + eventCodes[iCode].Description; */
 
                                 mainCell = new LogEventMainCellItem(recordMainDateTime, eventCodes[iCode].Name,
                                     eventCodes[iCode].Description, eventCodes[iCode].RecordIndex,
@@ -501,7 +562,11 @@ namespace TimBrowser.DataCore.Transform
                     }
 
                     if (!convErr)
-                        logEventRecods.Add(new LogEventRecordItem(mainCell, bufferCells));
+                    {
+                        //TODO вывод только записей о возникновении аварии или событии
+                        //if (eventCodes[iCode].Set==true) 
+                            logEventRecods.Add(new LogEventRecordItem(mainCell, bufferCells));
+                    }
                 }
 
             }
@@ -513,6 +578,77 @@ namespace TimBrowser.DataCore.Transform
             #endregion
 
             return logEventRecods;
+
+        }
+
+        internal class DateCompare : IComparer<LogEventAndCmdRecordItem>
+        {
+            public int Compare(LogEventAndCmdRecordItem o1, LogEventAndCmdRecordItem o2)
+            {
+                long a = o1.LogEventAndCmdMainCell.DateAndTime.Ticks;
+                long b = o2.LogEventAndCmdMainCell.DateAndTime.Ticks;
+
+                if (a > b) return 1;
+                else if (b > a) return -1;
+                return 0;
+            }
+        }
+        
+        private List<LogEventAndCmdRecordItem> GetLogEventsAndCmd(FuncDownloadData funcDownloadData,
+            List<DeviceLogInfo> deviceLogsInfo, TableItem paramTable, List<LogEventRecordItem> logEvent, List<LogCmdRecordItem> logCmd)
+        {
+
+            List<LogEventAndCmdRecordItem> logComboRecords = new List<LogEventAndCmdRecordItem>();
+            DateCompare dc = new DateCompare();
+
+            int sizeListEvents = logEvent.Count();
+            int sizeListCmd = logCmd.Count();
+
+            foreach (var p in logEvent)
+            {
+
+                //bool set = 0;
+                //if (p.LogEventMainCell.Set == true) set = 1;
+
+                List<LogEventAndCmdBufferCellItem> list = new List<LogEventAndCmdBufferCellItem>();
+
+                foreach (var l in p.LogEventBufferCells)
+                {
+                    list.Add(new LogEventAndCmdBufferCellItem(l.DateAndTime, l.Parameters));
+
+                }
+
+                logComboRecords.Add(new LogEventAndCmdRecordItem(new LogEventAndCmdMainCellItem(p.LogEventMainCell.DateAndTime,
+                                                                                            p.LogEventMainCell.Code,
+                                                                                            p.LogEventMainCell.Id,
+                                                                                            p.LogEventMainCell.RecordIndex,
+                                                                                            p.LogEventMainCell.Set,
+                                                                                            new ParameterItem(),
+                                                                                            new ParameterItem(),
+                                                                                            new ParameterItem(),
+                                                                                            CommandSource.None,
+                                                                                            p.LogEventMainCell.Parameters),
+                                                                                            list));
+            }
+
+            foreach (var p in logCmd)
+            {
+               logComboRecords.Add(new LogEventAndCmdRecordItem(new LogEventAndCmdMainCellItem(p.DateAndTime,
+                                                                                            "",
+                                                                                            "",
+                                                                                            0,
+                                                                                            false,
+                                                                                            p.Command,
+                                                                                            p.Status,
+                                                                                            p.StatusDig,
+                                                                                            p.commandSource,
+                                                                                            new List<ParameterItem>()),
+                                                                                            new List<LogEventAndCmdBufferCellItem>()));
+                
+            }
+
+            logComboRecords.Sort(dc);
+            return logComboRecords;
 
         }
 
@@ -547,15 +683,24 @@ namespace TimBrowser.DataCore.Transform
             int logCmdRecsCnt = deviceLogsInfo[indexCmdLog].RecsCnt;
 
             ParameterItem statusTemplatePar = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Status);
+            ParameterItem statusDigTemplatePar = Utils.FindParameterByAppointment(paramTable, ParamAppointments.StatusDigOut);
             ParameterItem commandsTemplatePar = Utils.FindParameterByAppointment(paramTable, ParamAppointments.LogCmdControlWord);
             ParameterItem dateTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Date);
             ParameterItem timeTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Time);
             ParameterItem secondsTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Seconds);
+            ParameterItem positionTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Position);
+
 
             ParameterItem commandsSourePar = Utils.FindParameterByAppointment(paramTable, ParamAppointments.LogCmdControlWord);
 
             int statusParFieldIndex = Utils.GetParamFieldIndex(statusTemplatePar.Address, Codes.MainCellIndex,
                 deviceLogsInfo[indexCmdLog]);
+            int statusDigParFieldIndex=0;
+            if (statusDigTemplatePar != null)
+            {
+                statusDigParFieldIndex = Utils.GetParamFieldIndex(statusDigTemplatePar.Address, Codes.MainCellIndex,
+                deviceLogsInfo[indexCmdLog]);
+            }
             int commandParParFieldIndex = Utils.GetParamFieldIndex(commandsTemplatePar.Address, Codes.MainCellIndex,
                 deviceLogsInfo[indexCmdLog]);
             int dateParFieldIndex = Utils.GetParamFieldIndex(dateTemaplateParameter.Address, Codes.MainCellIndex,
@@ -565,49 +710,88 @@ namespace TimBrowser.DataCore.Transform
             int secondsParFieldIndex = Utils.GetParamFieldIndex(secondsTemaplateParameter.Address, Codes.MainCellIndex,
                 deviceLogsInfo[indexCmdLog]);
 
+            int positionParFieldIndex = 0;
+            if (positionTemaplateParameter != null)
+            {
+                positionParFieldIndex = Utils.GetParamFieldIndex(positionTemaplateParameter.Address, Codes.MainCellIndex,
+                   deviceLogsInfo[indexCmdLog]);
+            }
+
             for (int iRec = 0; iRec < logCmdRecsCnt; iRec++)
             {
                 ParameterItem status = new ParameterItem(statusTemplatePar);
+                ParameterItem statusDig = null;
+                if (statusDigTemplatePar != null)
+                {
+                    statusDig = new ParameterItem(statusDigTemplatePar);
+                }
                 ParameterItem command = new ParameterItem(commandsTemplatePar);
                 //ParameterItem commandS = new ParameterItem(commandsTemplatePar);
 
-                // проверяем, что поле не содержит дефектных данных
-                if (funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                    LogFieldCells[Codes.MainCellIndex].LogFieldValues[statusParFieldIndex] != 65535)
+                try
                 {
-                    status.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[statusParFieldIndex]);
-
-                    command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);
-
-                    /*command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);*/
-
-                    dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[dateParFieldIndex]);
-
-                    timeTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[timeParFieldIndex]);
-
-                    secondsTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
-                            LogFieldCells[Codes.MainCellIndex].LogFieldValues[secondsParFieldIndex]);
-
-                    DateTime cmdRecordDateTime = new DateTime();
-
-                    try
+                    // проверяем, что поле не содержит дефектных данных
+                    if (funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
+                        LogFieldCells[Codes.MainCellIndex].LogFieldValues[statusParFieldIndex] != 65535)
                     {
-                        cmdRecordDateTime = Utils.GenerateLogDateTime(dateTemaplateParameter,
-                            timeTemaplateParameter, secondsTemaplateParameter);
-                    }
-                    catch (Exception)
-                    {
+                        status.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
+                                LogFieldCells[Codes.MainCellIndex].LogFieldValues[statusParFieldIndex]);
+
+                        if (statusDigTemplatePar != null && statusDigParFieldIndex!= -1)
+                        {
+                            statusDig.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[statusDigParFieldIndex]);
+                        }
+
+                        command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);
+
+                        /*command.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].
+                                LogFieldCells[Codes.MainCellIndex].LogFieldValues[commandParParFieldIndex]);*/
+
+                        dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[dateParFieldIndex]);
+
+                        if (timeParFieldIndex != -1) timeTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[timeParFieldIndex]);
+
+                        secondsTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[secondsParFieldIndex]);
+
+                        if (positionTemaplateParameter != null)
+                        {
+                            if (positionTemaplateParameter != null && positionParFieldIndex > 0)
+                            {
+
+                                positionTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexCmdLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[positionParFieldIndex]);
+                            }
+                        }
+                        DateTime cmdRecordDateTime = new DateTime();
+
+                        try
+                        {
+                            cmdRecordDateTime = Utils.GenerateLogDateTime(dateTemaplateParameter,
+                                timeTemaplateParameter, secondsTemaplateParameter);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+                        // Источник команд пока выставляем вручную  TimLogCmdRecItem
+                        if (statusDigTemplatePar != null)
+                        {
+                            if (positionTemaplateParameter != null)
+                            {
+                                if (positionTemaplateParameter != null && positionParFieldIndex > 0)
+                                {
+                                    logCmdRecords.Add(new LogCmdRecordItem(cmdRecordDateTime, command, status, statusDig, CommandSource.None, positionTemaplateParameter.DValue.ToString()));
+                                }
+                                else logCmdRecords.Add(new LogCmdRecordItem(cmdRecordDateTime, command, status, statusDig, CommandSource.None));
+                            } else logCmdRecords.Add(new LogCmdRecordItem(cmdRecordDateTime, command, status, statusDig, CommandSource.None));
+                        }
+                        else logCmdRecords.Add(new LogCmdRecordItem(cmdRecordDateTime, command, status, CommandSource.None));
 
                     }
-
-                    // Источник команд пока выставляем вручную
-                    logCmdRecords.Add(new LogCmdRecordItem(cmdRecordDateTime, command, status, CommandSource.None));
-
+                }
+                catch (Exception e)
+                {
+                    int a = 0;
                 }
             }
 
@@ -645,35 +829,142 @@ namespace TimBrowser.DataCore.Transform
 
                 ParameterItem parameterTemplate = Utils.FindParameterByAddress(paramAddress, paramTable);
 
-                if (parameterTemplate != null)
+                try
                 {
-                    // параметр необходимо скопировать, чтобы не переприсваивать значения тех параметров, которые в шаблоне
-                    ParameterItem parameter = new ParameterItem(parameterTemplate);
-
-                    if (funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
-                    iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex] != 65535)
+                    if (parameterTemplate != null)
                     {
-                        parameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
-                        iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex]);
+                        if (iRec == 339)
+                        {
+                            iRec = 339;
+                        }
+                        // параметр необходимо скопировать, чтобы не переприсваивать значения тех параметров, которые в шаблоне
+                        ParameterItem parameter = new ParameterItem(parameterTemplate);
 
-                        dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                        if (funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                        iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex] != 65535)
+                        {
+
+                            parameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                            iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex]);
+
+                            //TODO setUnsValue сигнатура функции непонятная и сложная
+                            parameter.SetTextValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                            iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex].ToString(),
+                            funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                            iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[newParamValueIndex]);
+
+                            dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                            iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[dateParFieldIndex]);
+
+                            if (timeParFieldIndex!= -1) timeTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                                iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[timeParFieldIndex]);
+
+                            secondsTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                                iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[secondsParFieldIndex]);
+
+                            DateTime logParamRecordDateTime = Utils.GenerateLogDateTime(dateTemaplateParameter,
+                                timeTemaplateParameter, secondsTemaplateParameter);
+
+                            logParamRecords.Add(new LogParamRecordItem(logParamRecordDateTime, parameter));
+                        }
+                    }
+                } catch(Exception e){
+                    String str = "2";
+                    str = str + "3";
+                }
+            }
+
+            return logParamRecords;
+        }
+
+        private List<LogSimRecordItem> GetLogSim(FuncDownloadData funcDownloadData, List<DeviceLogInfo> deviceLogsInfo,
+            TableItem paramTable)
+        {
+            List<LogSimRecordItem> logSimRecords = new List<LogSimRecordItem>();
+
+            //List<ParameterItem> param = new List<ParameterItem>();
+            String param = ""; 
+
+            int indexSimLog = deviceLogsInfo.Find(p => p.Type == LogTypes.SimIDLog).Index;
+            int logSimCnt = deviceLogsInfo[indexSimLog].RecsCnt;
+
+            ParameterItem dateTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Date);
+            ParameterItem timeTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Time);
+            ParameterItem secondsTemaplateParameter = Utils.FindParameterByAppointment(paramTable, ParamAppointments.Seconds);
+
+            int dateParFieldIndex = Utils.GetParamFieldIndex(dateTemaplateParameter.Address, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int timeParFieldIndex = Utils.GetParamFieldIndex(timeTemaplateParameter.Address, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int secondsParFieldIndex = Utils.GetParamFieldIndex(secondsTemaplateParameter.Address, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+
+            int data_0_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_0, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_1_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_1, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_2_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_2, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_3_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_3, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_4_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_4, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_5_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_5, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_6_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_6, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_7_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_7, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_8_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_8, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+            int data_9_FieldIndex = Utils.GetParamFieldIndex(Codes.SimId_Data_9, Codes.MainCellIndex,
+                deviceLogsInfo[indexSimLog]);
+
+            for (int iRec = 0; iRec < logSimCnt; iRec++)
+            {
+                int data_Sim_0 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_0_FieldIndex];
+                int data_Sim_1 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_1_FieldIndex];
+                int data_Sim_2 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_2_FieldIndex];
+                int data_Sim_3 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_3_FieldIndex];
+                int data_Sim_4 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_4_FieldIndex];
+                int data_Sim_5 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_5_FieldIndex];
+                int data_Sim_6 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_6_FieldIndex];
+                int data_Sim_7 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_7_FieldIndex];
+                int data_Sim_8 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_8_FieldIndex];
+                int data_Sim_9 = funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[data_9_FieldIndex];
+
+                if (data_Sim_0 != 65535)
+                {
+                    if (data_Sim_0 != 65535)
+                    {
+                        param = (data_Sim_0 >> 8).ToString() + (data_Sim_0 & 0x00ff).ToString();
+                        param += (data_Sim_1 >> 8).ToString() + (data_Sim_1 & 0x00ff).ToString();
+                        param += (data_Sim_2 >> 8).ToString() + (data_Sim_2 & 0x00ff).ToString();
+                        param += (data_Sim_3 >> 8).ToString() + (data_Sim_3 & 0x00ff).ToString();
+                        param += (data_Sim_4 >> 8).ToString() + (data_Sim_4 & 0x00ff).ToString();
+                        param += (data_Sim_5 >> 8).ToString() + (data_Sim_5 & 0x00ff).ToString();
+                        param += (data_Sim_6 >> 8).ToString() + (data_Sim_6 & 0x00ff).ToString();
+                        param += (data_Sim_7 >> 8).ToString() + (data_Sim_7 & 0x00ff).ToString();
+                        param += (data_Sim_8 >> 8).ToString() + (data_Sim_8 & 0x00ff).ToString();
+                        param += (data_Sim_9 >> 8).ToString() + (data_Sim_9 & 0x00ff).ToString();
+                      
+                        dateTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[
                         iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[dateParFieldIndex]);
 
-                        timeTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                        timeTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[
                             iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[timeParFieldIndex]);
 
-                        secondsTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexParamLog].LogFieldRecords[
+                        secondsTemaplateParameter.SetUnsValue(funcDownloadData.FuncFive.LogsData[indexSimLog].LogFieldRecords[
                             iRec].LogFieldCells[Codes.MainCellIndex].LogFieldValues[secondsParFieldIndex]);
 
                         DateTime logParamRecordDateTime = Utils.GenerateLogDateTime(dateTemaplateParameter,
                             timeTemaplateParameter, secondsTemaplateParameter);
 
-                        logParamRecords.Add(new LogParamRecordItem(logParamRecordDateTime, parameter));
+                        if (param.Length==20) logSimRecords.Add(new LogSimRecordItem(logParamRecordDateTime, param));
                     }
-                }
+                } 
             }
-
-            return logParamRecords;
+            return logSimRecords;
         }
     }
 }

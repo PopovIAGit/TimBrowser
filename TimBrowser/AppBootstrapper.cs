@@ -13,7 +13,7 @@ namespace TimBrowser
 {
     public class AppBootstrapper : Bootstrapper<MainWindowViewModel>
     {
-        // используем Simple Injector: http://www.cshandler.com/2013/03/basics-of-caliburn-micro-with-simple.html
+        /* используем Simple Injector:  ttp://www.cshandler.com/2013/03/basics-of-caliburn-micro-with-simple.html*/
         private Container _container;
 
         protected override void Configure()
@@ -21,6 +21,9 @@ namespace TimBrowser
             try
             {
                 _container = new Container();
+
+                
+
 
                 // регистрация сервисов и ViewModel
                 _container.Register<IWindowManager, WindowManager>();

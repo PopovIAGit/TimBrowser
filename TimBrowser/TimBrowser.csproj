@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TimBrowser</RootNamespace>
     <AssemblyName>TimBrowser</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -75,6 +75,30 @@
       <HintPath>..\libs\Caliburn.Micro.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Interop.FoxitPDFInfoLib">
+      <HintPath>obj\x86\Debug\Interop.FoxitPDFInfoLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFPrevHndlrLib">
+      <HintPath>obj\x86\Debug\Interop.PDFPrevHndlrLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFShellLib">
+      <HintPath>obj\x86\Debug\Interop.PDFShellLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFSHELLSERVERLib">
+      <HintPath>obj\x86\Debug\Interop.PDFSHELLSERVERLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.pdfa.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -109,6 +133,8 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\System.Windows.Interactivity.dll</HintPath>
@@ -142,6 +168,7 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Converters\AltIndexBackgroundConverter.cs" />
     <Compile Include="Converters\BooleanLogEvColorValueExt.cs" />
+    <Compile Include="Converters\Row3EvToIndexConverter.cs" />
     <Compile Include="Converters\RowToIndexConverter.cs" />
     <Compile Include="EmbeddedAssembly.cs" />
     <Compile Include="Helper\ViewModelUtils.cs" />
@@ -149,9 +176,12 @@
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Mapper\LogMapper.cs" />
     <Compile Include="Mapper\ParameterMapper.cs" />
+    <Compile Include="Messages\LogEvAndCmdSelectedMessage.cs" />
     <Compile Include="Messages\LogEvSelectedMessage.cs" />
     <Compile Include="Messages\TimErrorEventArgs.cs" />
     <Compile Include="Model\ComSources.cs" />
+    <Compile Include="Model\TimLogEvAndCmdRecItem.cs" />
+    <Compile Include="Model\TimLogSimRecItem.cs" />
     <Compile Include="Model\PrintSelectionItem.cs" />
     <Compile Include="Model\PrintTableItem.cs" />
     <Compile Include="Model\SerialPortData.cs" />
@@ -179,6 +209,11 @@
     <Compile Include="ViewModels\Bluetooth\BluetoothAuthViewModel.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.Behaviours.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdChosenParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdEventsViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdMainViewModel.cs" />
+    <Compile Include="ViewModels\LogSimViewModel.cs" />
     <Compile Include="ViewModels\Download\DownloadCommBase.cs" />
     <Compile Include="ViewModels\Download\DownloadInformationModuleViewModel.cs" />
     <Compile Include="ViewModels\Download\DownloadViewModel.cs" />
@@ -208,6 +243,18 @@
     <Compile Include="Views\Controls\FieldsValueConverter.cs" />
     <Compile Include="Views\Controls\WaitingControl.xaml.cs">
       <DependentUpon>WaitingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdChosenParametersView.xaml.cs">
+      <DependentUpon>LogEvAndCmdChosenParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdMainView.xaml.cs">
+      <DependentUpon>LogEvAndCmdMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdEventsView.xaml.cs">
+      <DependentUpon>LogEvAndCmdEventsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogSimView.xaml.cs">
+      <DependentUpon>LogSimView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DownloadInformationModuleView.xaml.cs">
       <DependentUpon>DownloadInformationModuleView.xaml</DependentUpon>
@@ -277,7 +324,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="doc\РЭ Tim Browser v2.doc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -286,10 +335,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Application\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
-      <Project>{16a337ef-95ff-4099-b847-c7b62447184f}</Project>
-      <Name>TpeParameters</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TimBrowser.Bluetooth\TimBrowser.Bluetooth.csproj">
       <Project>{D0B33FF0-DBE8-41C2-BF7C-B9124A3A03E5}</Project>
       <Name>TimBrowser.Bluetooth</Name>
@@ -297,6 +342,10 @@
     <ProjectReference Include="..\TimBrowser.DataCore\TimBrowser.DataCore.csproj">
       <Project>{C85EED4F-98D6-4558-BBC2-4436E5EFE868}</Project>
       <Name>TimBrowser.DataCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
+      <Project>{16a337ef-95ff-4099-b847-c7b62447184f}</Project>
+      <Name>TpeParameters</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +376,22 @@
     <Page Include="Views\Controls\WaitingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvAndCmdChosenParametersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogEvAndCmdMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogEvAndCmdEventsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogSimView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DownloadInformationModuleView.xaml">
       <SubType>Designer</SubType>

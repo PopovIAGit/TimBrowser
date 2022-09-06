@@ -58,9 +58,12 @@ namespace TimBrowser.ViewModels
 					DiscoverButtonContent = "Поиск устройств";
 					ConnectButtonContent = "Соединение с устройством";
 
-					if (_prevStateId == StateId.Discovering)
-						SetInfoText("Поиск устройств выполнен");
-					/*
+			        if (_prevStateId == StateId.Discovering)
+			        {
+                        SetInfoText("Поиск устройств выполнен");
+                        MessageBox.Show("Наличие посторонних устройств Bluetooth, Wi-Fi может снижать качество связи. При возникновении ошибок считывания или останова процесса считывания произведите повторное считывание информационного модуля!","Внимание",0,MessageBoxImage.Warning);
+			        }
+			        /*
 				else
 					SetInfoText(" ");
 				*/

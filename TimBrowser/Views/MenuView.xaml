@@ -73,7 +73,7 @@
         			</StackPanel>
         		</Button>
 
-        	</StackPanel>
+            </StackPanel>
             <StackPanel Margin="100,0,0,0" HorizontalAlignment="Right">
                 <TextBlock x:Name="MenuTitleTextBlock" Grid.Column="1"
             		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
@@ -94,9 +94,13 @@
                 <TextBlock x:Name="MenuTypeDriveBlock"
             		    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0"
             		    Text="{Binding TypeDriveText}" FontWeight="Bold"/>
+                
             </StackPanel>
+            
+            
             <!-- TextWrapping="Wrap"-->
         </StackPanel>
+        
 
     </Grid>
 </UserControl>
