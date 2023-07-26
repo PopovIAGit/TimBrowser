@@ -8,7 +8,7 @@ using TimBrowser.Services;
 using Caliburn.Micro;
 using System.Windows;
 using TimBrowser.Messages;
-
+using System.Windows.Forms;
 
 namespace TimBrowser.ViewModels
 {
@@ -35,6 +35,7 @@ namespace TimBrowser.ViewModels
         private TimErrorService _timErrorService;
         private ITimCommunication _communication;
         private ICommunicationSource _communicationM;
+        private IBLECommunication _communicationBLE;
         private Visibility _downloadVisibility;
         private Visibility _downloadButtonVisibility;
         public int TypeComm;
@@ -57,12 +58,15 @@ namespace TimBrowser.ViewModels
 
         /// <summary>
         /// Инициирует процесс считывания
+        /// ТОЧКА ВХОДА
         /// </summary>
+        //todo Добавить точку входа для БЛЕ 
+
         public void DownloadStart()
         {
             switch (TypeComm)
             {
-                case 1:
+                case 1: // блютуз
                     if (_communication != null)
                     RaiseDownloadAction(true);
 
@@ -72,7 +76,7 @@ namespace TimBrowser.ViewModels
                             RaiseDownloadAction(false);
                         });
                     break;
-                case 2:
+                case 2: // модбас
                     if (_communicationM != null)
                     RaiseDownloadAction(true);
 
@@ -82,6 +86,16 @@ namespace TimBrowser.ViewModels
                             RaiseDownloadAction(false);
                         });
                     
+                    break;
+                case 3: // БЛЕ
+                    if (_communicationBLE != null)
+                        RaiseDownloadAction(true);
+                    _timDownloadService.DownloadAsyncBLE(_communicationBLE,
+                        () =>
+                        {
+                            RaiseDownloadAction(false);
+                        });
+
                     break;
             }
             
@@ -114,6 +128,17 @@ namespace TimBrowser.ViewModels
             _communicationM = communication;
 
             if (_communicationM != null)
+                DownloadVisibility = Visibility.Visible;
+            else
+                DownloadVisibility = Visibility.Collapsed;
+        }
+
+        //todo change interface
+        public void ActivateCommunicationBLE(IBLECommunication communication)
+        {
+            _communicationBLE = communication;
+
+            if (_communicationBLE != null)
                 DownloadVisibility = Visibility.Visible;
             else
                 DownloadVisibility = Visibility.Collapsed;

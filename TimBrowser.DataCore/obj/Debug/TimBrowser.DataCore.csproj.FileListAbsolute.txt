@@ -80,3 +80,12 @@ D:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TimBrowser.DataCore.pdb
 D:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.dll
 D:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.pdb
 D:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csproj.CopyComplete
+E:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TimBrowser.DataCore.dll
+E:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TimBrowser.DataCore.pdb
+E:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.dll
+E:\Work\TimBrowser\TimBrowser.DataCore\bin\Debug\TpeParameters.pdb
+E:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csproj.AssemblyReference.cache
+E:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csproj.CoreCompileInputs.cache
+E:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.csproj.CopyComplete
+E:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.dll
+E:\Work\TimBrowser\TimBrowser.DataCore\obj\Debug\TimBrowser.DataCore.pdb

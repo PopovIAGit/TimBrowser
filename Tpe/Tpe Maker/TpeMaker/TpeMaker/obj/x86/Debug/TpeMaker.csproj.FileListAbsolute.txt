@@ -1,0 +1,15 @@
+D:\Work\Projects\TpeMaker\TpeMaker\bin\Debug\TpeMaker.exe
+D:\Work\Projects\TpeMaker\TpeMaker\bin\Debug\TpeMaker.pdb
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\Views\MainWindow.baml
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\Views\MainWindow.g.cs
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\App.g.cs
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker_MarkupCompile.cache
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.g.resources
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.Properties.Resources.resources
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.exe
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.pdb
+z:\applications\Tpe\Tpe Maker\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.exe
+z:\applications\Tpe\Tpe Maker\TpeMaker\TpeMaker\obj\x86\Debug\TpeMaker.pdb

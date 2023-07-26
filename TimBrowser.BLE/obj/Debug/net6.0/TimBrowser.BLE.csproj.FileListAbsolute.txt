@@ -1,0 +1,12 @@
+E:\Work\TimBrowser\TimBrowser.BLE\bin\Debug\net6.0\TimBrowser.BLE.deps.json
+E:\Work\TimBrowser\TimBrowser.BLE\bin\Debug\net6.0\TimBrowser.BLE.dll
+E:\Work\TimBrowser\TimBrowser.BLE\bin\Debug\net6.0\TimBrowser.BLE.pdb
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.csproj.AssemblyReference.cache
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.AssemblyInfoInputs.cache
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.AssemblyInfo.cs
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.csproj.CoreCompileInputs.cache
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.dll
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\refint\TimBrowser.BLE.dll
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\TimBrowser.BLE.pdb
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net6.0\ref\TimBrowser.BLE.dll

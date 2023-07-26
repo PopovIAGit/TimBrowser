@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser", "TimBrowser\TimBrowser.csproj", "{EEC7FBDE-D07E-4A9B-B929-EDAE976DF610}"
 	ProjectSection(ProjectDependencies) = postProject
 		{16A337EF-95FF-4099-B847-C7B62447184F} = {16A337EF-95FF-4099-B847-C7B62447184F}
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59} = {B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser.Bluetooth", "TimBrowser.Bluetooth\TimBrowser.Bluetooth.csproj", "{D0B33FF0-DBE8-41C2-BF7C-B9124A3A03E5}"
@@ -19,6 +20,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser.DataCore", "TimB
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpeParameters", "Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj", "{16A337EF-95FF-4099-B847-C7B62447184F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimBrowser.BLE", "TimBrowser.BLE\TimBrowser.BLE.csproj", "{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16A337EF-95FF-4099-B847-C7B62447184F} = {16A337EF-95FF-4099-B847-C7B62447184F}
+		{C85EED4F-98D6-4558-BBC2-4436E5EFE868} = {C85EED4F-98D6-4558-BBC2-4436E5EFE868}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +103,24 @@ Global
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|x86.ActiveCfg = Release|Any CPU
 		{16A337EF-95FF-4099-B847-C7B62447184F}.Release|x86.Build.0 = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|x86.ActiveCfg = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Design|x86.Build.0 = Debug|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6BE998A-B968-43AC-BD01-F0D2D9B8ED59}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,13 @@
+D:\Work\Projects\TpeMaker\TpeMaker\bin\Release\TpeMaker.exe
+D:\Work\Projects\TpeMaker\TpeMaker\bin\Release\TpeMaker.pdb
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\Views\MainWindow.baml
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\Views\MainWindow.g.cs
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\App.g.cs
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\TpeMaker_MarkupCompile.cache
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\TpeMaker.g.resources
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\TpeMaker.Properties.Resources.resources
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\TpeMaker.exe
+D:\Work\Projects\TpeMaker\TpeMaker\obj\x86\Release\TpeMaker.pdb

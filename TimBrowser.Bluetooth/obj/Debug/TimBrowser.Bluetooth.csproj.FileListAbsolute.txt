@@ -102,3 +102,14 @@ D:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csproj.Co
 D:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csproj.CopyComplete
 D:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.dll
 D:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.pdb
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.dll
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.Bluetooth.pdb
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.dll
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TpeParameters.dll
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TimBrowser.DataCore.pdb
+E:\Work\TimBrowser\TimBrowser.Bluetooth\bin\Debug\TpeParameters.pdb
+E:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csproj.AssemblyReference.cache
+E:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csproj.CoreCompileInputs.cache
+E:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.csproj.CopyComplete
+E:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.dll
+E:\Work\TimBrowser\TimBrowser.Bluetooth\obj\Debug\TimBrowser.Bluetooth.pdb

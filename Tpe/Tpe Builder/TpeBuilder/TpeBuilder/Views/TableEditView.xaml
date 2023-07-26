@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="TpeBuilder.Views.TableEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:TpeBuilder.ViewModel"
+             mc:Ignorable="d"                         
+             d:DesignHeight="300" Width="180" Height="300">
+    
+    <UserControl.DataContext>
+        <vm:TableEditViewModel />
+    </UserControl.DataContext>
+    
+    <Grid>
+    	<StackPanel>
+    		<TextBlock x:Name="DeviceIdTitleTexBlock" TextWrapping="Wrap" Height="15"><Run Language="ru-ru" Text="Идентификатор устройства"/><LineBreak/></TextBlock>
+            <TextBox x:Name="DeviceIdTitleTextBox" TextWrapping="Wrap" Text="{Binding CurrentTpeTable.DeviceId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    		<TextBlock x:Name="DeviceNameTitleTextBlock" TextWrapping="Wrap" Height="19.253" Margin="0,12,0,0"><Run Language="ru-ru" Text="Наименование устройства"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="DeviceNameTitletextBox" TextWrapping="Wrap" Text="{Binding CurrentTpeTable.DeviceName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    		<TextBlock x:Name="FirmwareVersionTextBlockTitle" TextWrapping="Wrap" Text="Версия прошивки" Margin="0,12,0,0"/>
+            <TextBox x:Name="FirmwareVersionTextBox" TextWrapping="Wrap" Text="{Binding CurrentTpeTable.FirmwareVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    	</StackPanel>
+            
+    </Grid>
+</UserControl>

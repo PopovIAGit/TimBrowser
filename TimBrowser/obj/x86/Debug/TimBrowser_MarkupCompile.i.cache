@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Work\TimBrowser\TimBrowser\obj\x86\Debug\
+E:\Work\TimBrowser\TimBrowser\obj\x86\Debug\
 TimBrowser
 none
 false
 TRACE;DEBUG
-D:\Work\TimBrowser\TimBrowser\App.xaml
+E:\Work\TimBrowser\TimBrowser\App.xaml
 27753100315
 
-101-1564030098
-37-984100771
+1051510951069
+37-1331635875
 Resources\ScrollBar.xaml;Resources\TimDataGridStyle.xaml;Views\Bluetooth\BluetoothAuthView.xaml;Views\Bluetooth\BluetoothView.xaml;Views\Controls\BitParameterControl.xaml;Views\Controls\BitParameterResourceDictionary.xaml;Views\Controls\WaitingControl.xaml;Views\LogEvAndCmdChosenParametersView.xaml;Views\LogEvAndCmdMainView.xaml;Views\LogEvAndCmdEventsView.xaml;Views\LogSimView.xaml;Views\DownloadInformationModuleView.xaml;Views\DownloadView.xaml;Views\ListUserControl.xaml;Views\LogChosenView.xaml;Views\LogCmdView.xaml;Views\LogEvChosenParametersView.xaml;Views\LogEvEventsView.xaml;Views\LogEvMainView.xaml;Views\LogEvParametersView.xaml;Views\LogParamView.xaml;Views\MainWindowView.xaml;Views\MenuView.xaml;Views\Modbus\ModBusView.xaml;Views\ParametersTableView.xaml;Views\PrintPreviewView.xaml;Views\PrintSelectionView.xaml;
 
-True
+False
 

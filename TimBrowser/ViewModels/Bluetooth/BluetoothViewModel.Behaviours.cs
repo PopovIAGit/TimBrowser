@@ -11,7 +11,6 @@ namespace TimBrowser.ViewModels
 	// Behaviours
 	public partial class BluetoothViewModel : DownloadCommBase
 	{
-
 		#region Fields
 
 		private string _discoverButtonContent;

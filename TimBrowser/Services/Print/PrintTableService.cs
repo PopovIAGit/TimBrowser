@@ -43,6 +43,10 @@ namespace TimBrowser.Services.Print
                     case PrintSelectionIds.LogParamId: currentPrintTableItem = 
                             printTableCreator.CreateParamLogPrintTable(informationModule); break;
 
+                    case PrintSelectionIds.ParamGroupShow: currentPrintTableItem =
+                            printTableCreator.CreateParamListPrintTable(informationModule, GroupTypes.Show,
+                            "Параметры группы A"); break;
+
                     case PrintSelectionIds.ParamGroupUser: currentPrintTableItem = 
                             printTableCreator.CreateParamListPrintTable(informationModule, GroupTypes.User,
                             "Параметры группы B"); break;
@@ -71,6 +75,7 @@ namespace TimBrowser.Services.Print
                 new PrintSelectionItem(PrintSelectionIds.LogEvId,           "Журнал событий", false),
                 new PrintSelectionItem(PrintSelectionIds.LogCmdId,          "Журнал команд", false),
                 new PrintSelectionItem(PrintSelectionIds.LogParamId,        "Журнал изменения параметров", false),
+                new PrintSelectionItem(PrintSelectionIds.ParamGroupShow,    "Параметры группы A", false),
                 new PrintSelectionItem(PrintSelectionIds.ParamGroupUser,    "Параметры группы B", false),
                 new PrintSelectionItem(PrintSelectionIds.ParamGroupFactory, "Параметры группы C", false),
                 new PrintSelectionItem(PrintSelectionIds.ParamGroupHide,    "Параметры группы H", false)

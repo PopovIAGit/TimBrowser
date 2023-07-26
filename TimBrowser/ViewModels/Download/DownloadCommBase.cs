@@ -38,6 +38,11 @@ namespace TimBrowser.ViewModels
             get;
         }
 
+        public abstract IBLECommunication CommunicationBLE
+        {
+            get;
+        }
+
         public abstract bool IsBusy { get; set; }
 
         public Action<bool> ConnectAction { get; set; }

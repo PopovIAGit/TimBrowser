@@ -1,0 +1,79 @@
+D:\Work\Projects\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.exe
+D:\Work\Projects\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.pdb
+D:\Work\Projects\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.dll
+D:\Work\Projects\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.pdb
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\App.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.cache
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.g.resources
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.Properties.Resources.resources
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.exe
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.pdb
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.lref
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.g.cs
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.baml
+D:\Work\Projects\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.exe
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.pdb
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.dll
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.pdb
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\App.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.cache
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.lref
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.baml
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.g.resources
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.Properties.Resources.resources
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.exe
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.pdb
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.csprojResolveAssemblyReference.cache
+z:\applications\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.csproj.GenerateResource.Cache
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.exe
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.pdb
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.exe
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeBuilder.pdb
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.dll
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\bin\Debug\TpeParameters.pdb
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.csprojResolveAssemblyReference.cache
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\App.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.cache
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder_MarkupCompile.lref
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\BitFieldsEditView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\GroupEditView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\MainWindowView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\ParameterEditView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableEditView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\Views\TableTreeView.baml
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.g.resources
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.Properties.Resources.resources
+D:\Application\Tpe\Tpe Builder\TpeBuilder\TpeBuilder\obj\x86\Debug\TpeBuilder.csproj.GenerateResource.Cache

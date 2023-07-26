@@ -62,8 +62,29 @@
     <Compile Include="Communication\CommunicationException.cs" />
     <Compile Include="Communication\ICommunicationSource.cs" />
     <Compile Include="Communication\ILowCommunicationFunc.cs" />
+    <Compile Include="Communication\IBLECommunication.cs" />
     <Compile Include="Communication\IProtocolCommunicationFunc.cs" />
     <Compile Include="Communication\ITimCommunication.cs" />
+    <Compile Include="DownloadBLE\Codes.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.Commnunication.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.Events.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncFive.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncFour.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncOne.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncSix.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncThree.cs" />
+    <Compile Include="DownloadBLE\DownloadInformationModule.FuncTwo.cs" />
+    <Compile Include="DownloadBLE\Event\DownloadException.cs" />
+    <Compile Include="DownloadBLE\Event\DownloadProgressChangedEventArgs.cs" />
+    <Compile Include="DownloadBLE\Model\FuncDownloadDataBLE.cs" />
+    <Compile Include="DownloadBLE\Model\FuncFiveData.cs" />
+    <Compile Include="DownloadBLE\Model\FuncFourData.cs" />
+    <Compile Include="DownloadBLE\Model\FuncOneData.cs" />
+    <Compile Include="DownloadBLE\Model\FuncSixData.cs" />
+    <Compile Include="DownloadBLE\Model\FuncThreeData.cs" />
+    <Compile Include="DownloadBLE\Model\FuncTwoData.cs" />
+    <Compile Include="DownloadBLE\Utils.cs" />
     <Compile Include="DownloadM\Codes.cs" />
     <Compile Include="DownloadM\DownloadInformationModule.Commnunication.cs" />
     <Compile Include="DownloadM\DownloadInformationModule.cs" />
@@ -123,12 +144,14 @@
     <Compile Include="Model\Logs\LogParamRecordItem.cs" />
     <Compile Include="Model\Logs\LogEventRecordItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataServiceBLE.cs" />
     <Compile Include="Services\DataServiceM.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\ParametersTemplateService.cs" />
     <Compile Include="Storage\Data.cs" />
     <Compile Include="Transform\Codes.cs" />
     <Compile Include="Transform\EventCode.cs" />
+    <Compile Include="Transform\TransformDownloadDataBLE.cs" />
     <Compile Include="Transform\TransformDownloadData.cs" />
     <Compile Include="Transform\TransformDownloadDataException.cs" />
     <Compile Include="Transform\TransformDownloadDataM.cs" />
@@ -146,6 +169,7 @@
       <Name>TpeParameters</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

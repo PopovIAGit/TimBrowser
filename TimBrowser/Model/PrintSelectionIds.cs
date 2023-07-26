@@ -13,6 +13,7 @@ namespace TimBrowser.Model
         LogParamId,
         ParamGroupUser,
         ParamGroupFactory,
-        ParamGroupHide
+        ParamGroupHide,
+        ParamGroupShow
     }
 }

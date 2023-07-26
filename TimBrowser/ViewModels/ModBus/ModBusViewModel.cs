@@ -272,6 +272,14 @@ namespace TimBrowser.ViewModels
             }
         }
 
+        public override DataCore.Communication.IBLECommunication CommunicationBLE
+        {
+            get
+            {
+                return null;
+            }
+        }
+
         #endregion
 
     }

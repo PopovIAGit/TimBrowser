@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="TpeBuilder.Views.GroupEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:TpeBuilder.ViewModel"
+             xmlns:tpe="clr-namespace:TpeParameters.Helpers;assembly=TpeParameters"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="180">
+    
+    <UserControl.DataContext>
+        <vm:GroupEditViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="GroupTypesEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="tpe:GroupTypes" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
+    <!--
+    
+
+    
+    <Window.Resources>
+    <ObjectDataProvider x:Key="aligmnments" 
+                        MethodName="GetNames" ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="VerticalAlignment" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+</Window.Resources>
+
+    
+    -->
+    
+    <Grid>
+    	<StackPanel Margin="0">
+    		<TextBlock x:Name="GroupNameTextBlock" TextWrapping="Wrap" Height="15"><Run Language="ru-ru" Text="Наименование группы"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+    		<TextBox x:Name="GroupNameTextBox" TextWrapping="Wrap" Text="{Binding CurrentTpeGroup.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock x:Name="GroupTypeComboBoxTitle" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Тип группы"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <ComboBox x:Name="GroupTypeComboBox" ItemsSource="{Binding Source={StaticResource GroupTypesEnum}}"
+                      SelectedValue="{Binding CurrentTpeGroup.GroupType}"/>
+            <TextBlock x:Name="DescriptionTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Описание группы"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="DescriptionTextBox" TextWrapping="Wrap" Text="{Binding CurrentTpeGroup.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    	</StackPanel>
+        
+    </Grid>
+    
+</UserControl>

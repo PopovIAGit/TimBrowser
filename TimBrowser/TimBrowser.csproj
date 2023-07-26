@@ -191,6 +191,7 @@
     <Compile Include="Model\TimLogParamRecItem.cs" />
     <Compile Include="Model\TimParameterItem.cs" />
     <Compile Include="Model\TimParametersGroup.cs" />
+    <Compile Include="Services\TimDataServiceBLE.cs" />
     <Compile Include="Services\TimDataServiceM.cs" />
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Model\PrintSelectionIds.cs" />
@@ -206,6 +207,9 @@
     <Compile Include="Services\TimFileService.cs" />
     <Compile Include="Services\Print\PrintTableItemsCreator.cs" />
     <Compile Include="Services\CreateXlsFile\XlsEngine.cs" />
+    <Compile Include="ViewModels\BLE\BLEAuthViewModel.cs" />
+    <Compile Include="ViewModels\BLE\BLEViewModel.Behaviours.cs" />
+    <Compile Include="ViewModels\BLE\BLEViewModel.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothAuthViewModel.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.Behaviours.cs" />
     <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.cs" />
@@ -548,6 +552,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApiImplementation\ILow\" />
+    <Folder Include="Views\BLE\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\excel-26.png" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Caliburn.Micro;
+using TimBrowser.ViewModels;
 
 namespace TimBrowser.ViewModels
 {
@@ -19,14 +20,16 @@ namespace TimBrowser.ViewModels
 
         #endif
 
-        public DownloadViewModel(BluetoothViewModel bluetoothViewModel, ModBusViewModel modBusViewModel,
+        public DownloadViewModel(BluetoothViewModel bluetoothViewModel, ModBusViewModel modBusViewModel, BLEViewModel bleViewModel,
             DownloadInformationModuleViewModel downloadInformationModuleViewModel)
         {
             _bluetoothViewModel = bluetoothViewModel;
             _modBusViewModel = modBusViewModel;
+            _bleViewModel = bleViewModel;
 
             _bluetoothViewModel.ConnectAction = OnConnectAction;
             _modBusViewModel.ConnectAction = OnConnectAction;
+            _bleViewModel.ConnectAction = OnConnectAction;
 
             _downloadInformationModuleViewModel = downloadInformationModuleViewModel;
             _downloadInformationModuleViewModel.DownloadAction = OnDownloadAction;
@@ -34,6 +37,7 @@ namespace TimBrowser.ViewModels
 
         private readonly DownloadCommBase _bluetoothViewModel;
         private readonly DownloadCommBase _modBusViewModel;
+        private readonly DownloadCommBase _bleViewModel;
         private readonly DownloadInformationModuleViewModel _downloadInformationModuleViewModel;
 
 
@@ -41,12 +45,14 @@ namespace TimBrowser.ViewModels
         {
             if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.DownloadBehaviour(isDownloading);
             else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.DownloadBehaviour(isDownloading);
+            else if (_downloadInformationModuleViewModel.TypeComm == 3) _bleViewModel.DownloadBehaviour(isDownloading);
         }
 
         protected override void OnActivate()
         {
             if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.Activate();
             else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.Activate();
+            else if (_downloadInformationModuleViewModel.TypeComm == 3) _bleViewModel.Activate();
             
         }
 
@@ -55,6 +61,7 @@ namespace TimBrowser.ViewModels
             _downloadInformationModuleViewModel.Deactivate();
             if (_downloadInformationModuleViewModel.TypeComm == 1) _bluetoothViewModel.Deactivate();
             else if (_downloadInformationModuleViewModel.TypeComm == 2) _modBusViewModel.Deactivate();
+            else if (_downloadInformationModuleViewModel.TypeComm!= 3) _bleViewModel.Deactivate();
             
         }
 
@@ -63,6 +70,7 @@ namespace TimBrowser.ViewModels
             if (canDownload){
                 if (_downloadInformationModuleViewModel.TypeComm == 1) _downloadInformationModuleViewModel.ActivateCommunication(_bluetoothViewModel.Communication);
                 else if (_downloadInformationModuleViewModel.TypeComm == 2) _downloadInformationModuleViewModel.ActivateCommunicationM(_modBusViewModel.CommunicationM);
+                else if (_downloadInformationModuleViewModel.TypeComm == 3) _downloadInformationModuleViewModel.ActivateCommunicationBLE(_bleViewModel.CommunicationBLE);
             }
                 
             else

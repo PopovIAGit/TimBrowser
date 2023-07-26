@@ -8,6 +8,7 @@ using System.Windows;
 using TimBrowser.Bluetooth;
 using System.Collections.ObjectModel;
 using TimBrowser.Mapper;
+using TimBrowser.DataCore.Communication;
 
 namespace TimBrowser.ViewModels
 {
@@ -188,6 +189,11 @@ namespace TimBrowser.ViewModels
             {
                 return null;
             }
+        }
+
+        public override IBLECommunication CommunicationBLE
+        {
+            get { return null; }
         }
 
         /*

@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="TpeBuilder.Views.ParameterEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:tpe="clr-namespace:TpeParameters.Helpers;assembly=TpeParameters"
+             xmlns:vm="clr-namespace:TpeBuilder.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:ParameterEditViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="ParamTypesEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="tpe:ParamTypes" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="ParamAppointmentsEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="tpe:ParamAppointments" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="ParamValueTypesEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="tpe:ParamValueTypes" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+    </UserControl.Resources>
+
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.5*"/>
+    		<ColumnDefinition Width="0.5*"/>
+    	</Grid.ColumnDefinitions>
+    	<StackPanel Margin="12,0">
+    		<TextBlock x:Name="ParameterIndexTextBlock" TextWrapping="Wrap" Height="15" Margin="0"><Run Language="ru-ru" Text="Индекс параметра"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="ParameterIndexTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    		<TextBlock x:Name="ParameterNameTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Наименование параметра"/><LineBreak/><Run Language="ru-ru"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="ParameterNameTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+            <TextBlock x:Name="ParameterAddressTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Адрес параметра"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="ParameterAddressTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+            <TextBlock x:Name="ParameterVariableNameTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Наименование переменной"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox x:Name="ParameterVariableNameTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.VariableName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+            <GroupBox x:Name="ConfigurationGroupBox" Header="Конфигурация" Margin="0,12,0,0">
+            	<StackPanel>
+            		<TextBlock x:Name="ParameterTypeComboBoxTitle" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Тип параметра"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            		<ComboBox x:Name="ParameterTypeComboBox" ItemsSource="{Binding Source={StaticResource ParamTypesEnum}}"
+            			SelectedValue="{Binding CurrentParameterItem.ParamType}" Margin="0"/>
+            		<TextBlock x:Name="ParameterAppointmentСomboBoxTitle" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Назначение параметра"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+                    <ComboBox x:Name="ParameterAppointmentComboBox" ItemsSource="{Binding Source={StaticResource ParamAppointmentsEnum}}"
+            			SelectedValue="{Binding CurrentParameterItem.Appointment}" Margin="0"/>
+                    <CheckBox Content="Редактируется" Margin="0,12,0,0" IsChecked="{Binding CurrentParameterItem.CanEdit}"/>
+                    <CheckBox Content="Избранный параметр" Margin="0,12,0,0" IsChecked="{Binding CurrentParameterItem.IsChosen, Mode=TwoWay}"/>
+            	</StackPanel>
+            </GroupBox>
+            
+            <GroupBox x:Name="InfoGroupBox" Header="Информация" Margin="0,12,0,0">
+            	<StackPanel>
+            		<TextBlock x:Name="ParameterDescriptionTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0" Text="Описание"/>
+                    <TextBox x:Name="ParameterDescriptionTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+            		<TextBlock x:Name="ParameterInfoTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0" Text="Комментарий"/>
+            		<TextBox x:Name="ParameterInfoTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+            	</StackPanel>
+            </GroupBox>
+    	</StackPanel>
+    	<StackPanel Grid.Column="1" Margin="12,0">
+    		<GroupBox x:Name="ValueDescriptionGroupBox" Header="Описание значения&#xa;" Margin="0">
+    			<StackPanel>
+    				<TextBlock x:Name="ParameterMinimumTextBlock" TextWrapping="Wrap" Height="15" Margin="0"><Run Language="ru-ru" Text="Минимальное значение"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+    				<TextBox x:Name="ParameterMinimumTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Minimum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    				<TextBlock x:Name="ParameterMaximumTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Максимальное значение"/><LineBreak/><Run Language="ru-ru"/><LineBreak/><Run Language="ru-ru" Text=" максимум"/></TextBlock>
+    				<TextBox x:Name="ParameterMaximumTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Maximum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    				<TextBlock x:Name="ParameterDefaulTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Значение по умолчанию"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+    				<TextBox x:Name="ParameterDefaulTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Default, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    				<TextBlock x:Name="ParameterValueTypeComboBoxTitle" TextWrapping="Wrap" Height="15" Margin="0,12,1.437,0" Text="Тип значения параметра&#xd;&#xa;"/>
+                    <ComboBox x:Name="ParameterValueTypeComboBox" ItemsSource="{Binding Source={StaticResource ParamValueTypesEnum}}"
+    					SelectedValue="{Binding CurrentParameterItem.ValueType}" Margin="0,0,1.437,0"/>
+    				<TextBlock x:Name="ParameterUnitTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0"><Run Language="ru-ru" Text="Единица измерения"/></TextBlock>
+    				<TextBox x:Name="ParameterUnitTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    				<TextBlock x:Name="ParameterCoefficientTextBlock" TextWrapping="Wrap" Height="15" Margin="0,12,0,0" Text="Коэффициент (множитель)"/>
+    				<TextBox x:Name="ParameterCoefficientTextBox" TextWrapping="Wrap" Text="{Binding CurrentParameterItem.Coefficient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
+    			</StackPanel>
+    		</GroupBox>
+    		<Button x:Name="FieldsButton" Content="Битовые поля" Width="150" Height="30" Margin="0,12,0,0" Click="FieldsButton_Click"
+                    Visibility="{Binding FieldsButtonVisibility}"/>
+    	</StackPanel>
+        
+    </Grid>
+    
+    
+    
+</UserControl>
