@@ -103,7 +103,7 @@ namespace TimBrowser.Services
                     _isBusy = true;
 
                     if (result != null)
-                        _timDataServiceM.PutFuncDownloadDataM(ServiceSources.DownloadService, _funcDownloadDataM);
+                        _timDataServiceBLE.PutFuncDownloadData(ServiceSources.DownloadService, _funcDownloadData);
                     else
                         _timErrorService.SendErrorMessage(ServiceSources.DownloadService, ErrorMessageTypes.DownloadImError);
 

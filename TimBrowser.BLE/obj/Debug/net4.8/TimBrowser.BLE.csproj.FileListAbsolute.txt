@@ -1,0 +1,5 @@
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net4.8\TimBrowser.BLE.csproj.AssemblyReference.cache
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net4.8\TimBrowser.BLE.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net4.8\TimBrowser.BLE.AssemblyInfoInputs.cache
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net4.8\TimBrowser.BLE.AssemblyInfo.cs
+E:\Work\TimBrowser\TimBrowser.BLE\obj\Debug\net4.8\TimBrowser.BLE.csproj.CoreCompileInputs.cache

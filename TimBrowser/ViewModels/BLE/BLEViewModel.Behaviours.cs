@@ -10,7 +10,7 @@ using TimBrowser.Bluetooth;
 namespace TimBrowser.ViewModels
 {
     // Behaviours
-    internal partial class BLEViewModel : DownloadCommBase
+    public partial class BLEViewModel : DownloadCommBase
     {
         #region Fields
 
@@ -74,13 +74,13 @@ namespace TimBrowser.ViewModels
 
                 case StateId.Connecting:
 
-                    SetInfoText("Соединение с " + _selectedBluetoothDevice.Name);
+                    SetInfoText("Соединение с " + _selectedBleDevice.Name);
 
                     break;
 
                 case StateId.Connected:
 
-                    SetInfoText("Связь с " + _selectedBluetoothDevice.Name + " установлена");
+                    SetInfoText("Связь с " + _selectedBleDevice.Name + " установлена");
 
                     ConnectButtonContent = "Разъединить связь";
 
@@ -95,8 +95,8 @@ namespace TimBrowser.ViewModels
                     break;
             }
 
-            IsDiscoverButtonEnabled = _bluetoothDriver.CanDiscover;
-            IsConnectButtonEnabled = _bluetoothDriver.CanConnect || _bluetoothDriver.CanDisconnect;
+            IsDiscoverButtonEnabled = _bleDriver.CanDiscover;
+            IsConnectButtonEnabled = _bleDriver.CanConnect || _bleDriver.CanDisconnect;
 
             if (stateId == StateId.Connecting || stateId == StateId.Connected ||
                 stateId == StateId.Disconnecting)
@@ -122,9 +122,9 @@ namespace TimBrowser.ViewModels
 
             IsBusy = (stateId == StateId.Discovering || stateId == StateId.Connecting);
 
-            if (_bluetoothDevices != null)
+            if (_bleDevices != null)
             {
-                if (_bluetoothDevices.Count > 0)
+                if (_bleDevices.Count > 0)
                 {
                     DeviceListVisibility = (stateId == StateId.Discovered) ? Visibility.Visible :
                         Visibility.Collapsed;
@@ -167,7 +167,7 @@ namespace TimBrowser.ViewModels
                     break;
 
                 case DriverErrCode.ConnectError:
-                    text += "нет связи с устройством " + _selectedBluetoothDevice.Name;
+                    text += "нет связи с устройством " + _selectedBleDevice.Name;
                     break;
             }
 

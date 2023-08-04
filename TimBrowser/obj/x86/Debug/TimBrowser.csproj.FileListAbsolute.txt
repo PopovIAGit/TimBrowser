@@ -843,6 +843,7 @@ D:\Work\TimBrowser\TimBrowser\obj\x86\Debug\TimBrowser.csproj.CopyComplete
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.exe.config
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.exe
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.pdb
+E:\Work\TimBrowser\TimBrowser\bin\Debug\InTheHand.BluetoothLE.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Microsoft.Practices.Unity.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Modbus.dll
@@ -850,11 +851,13 @@ E:\Work\TimBrowser\TimBrowser\bin\Debug\System.Windows.Interactivity.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.Bluetooth.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.DataCore.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TpeParameters.dll
+E:\Work\TimBrowser\TimBrowser\bin\Debug\Windows.winmd
 E:\Work\TimBrowser\TimBrowser\bin\Debug\log4net.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Unme.Common.dll
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.Bluetooth.pdb
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TimBrowser.DataCore.pdb
 E:\Work\TimBrowser\TimBrowser\bin\Debug\TpeParameters.pdb
+E:\Work\TimBrowser\TimBrowser\bin\Debug\InTheHand.BluetoothLE.xml
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Microsoft.Practices.Unity.pdb
 E:\Work\TimBrowser\TimBrowser\bin\Debug\Microsoft.Practices.Unity.Configuration.pdb
 E:\Work\TimBrowser\TimBrowser\bin\Debug\System.Windows.Interactivity.xml

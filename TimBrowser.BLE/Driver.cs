@@ -7,6 +7,7 @@ namespace TimBrowser.BLE
     {
         public Driver() 
         {
+
             
         }
 

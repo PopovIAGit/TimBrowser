@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using TimBrowser.Model;
 using TimBrowser.DataCore.Services;
 using TimBrowser.DataCore.Download.Model;
+using TimBrowser.DataCore.DownloadBLE.Model;
 
 namespace TimBrowser.Services
 {

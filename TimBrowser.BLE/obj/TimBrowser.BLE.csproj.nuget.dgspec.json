@@ -18,16 +18,20 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net4.8"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
+          "net48": {
+            "targetAlias": "net4.8",
+            "projectReferences": {
+              "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -37,26 +41,44 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "net48": {
+          "targetAlias": "net4.8",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj",
+        "projectName": "TimBrowser.DataCore",
+        "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj",
+        "projectName": "TpeParameters",
+        "projectPath": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }

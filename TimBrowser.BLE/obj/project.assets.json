@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    ".NETFramework,Version=v4.8": {
+      "TimBrowser.DataCore/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "TpeParameters": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TimBrowser.DataCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TimBrowser.DataCore.dll": {}
+        }
+      },
+      "TpeParameters/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/TpeParameters.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TpeParameters.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "TimBrowser.DataCore/1.0.0": {
+      "type": "project",
+      "path": "../TimBrowser.DataCore/TimBrowser.DataCore.csproj",
+      "msbuildProject": "../TimBrowser.DataCore/TimBrowser.DataCore.csproj"
+    },
+    "TpeParameters/1.0.0": {
+      "type": "project",
+      "path": "../Tpe/Tpe Parameters/TpeParameters/TpeParameters/TpeParameters.csproj",
+      "msbuildProject": "../Tpe/Tpe Parameters/TpeParameters/TpeParameters/TpeParameters.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    ".NETFramework,Version=v4.8": [
+      "TimBrowser.DataCore >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\myxxx\\.nuget\\packages\\": {}
@@ -24,16 +59,20 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net4.8"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "projectReferences": {}
+        "net48": {
+          "targetAlias": "net4.8",
+          "projectReferences": {
+            "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+              "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -43,25 +82,9 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
-        "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48",
-          "net481"
-        ],
-        "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+      "net48": {
+        "targetAlias": "net4.8",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
