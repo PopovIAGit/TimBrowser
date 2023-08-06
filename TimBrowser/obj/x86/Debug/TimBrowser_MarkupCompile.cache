@@ -13,8 +13,8 @@ E:\Work\TimBrowser\TimBrowser\App.xaml
 27753100315
 
 106-732269610
-145-137651112
+233-2104355237
 Resources\ScrollBar.xaml;Resources\TimDataGridStyle.xaml;Views\Bluetooth\BluetoothAuthView.xaml;Views\Bluetooth\BluetoothView.xaml;Views\Controls\BitParameterControl.xaml;Views\Controls\BitParameterResourceDictionary.xaml;Views\Controls\WaitingControl.xaml;Views\LogEvAndCmdChosenParametersView.xaml;Views\LogEvAndCmdMainView.xaml;Views\LogEvAndCmdEventsView.xaml;Views\LogSimView.xaml;Views\DownloadInformationModuleView.xaml;Views\DownloadView.xaml;Views\ListUserControl.xaml;Views\LogChosenView.xaml;Views\LogCmdView.xaml;Views\LogEvChosenParametersView.xaml;Views\LogEvEventsView.xaml;Views\LogEvMainView.xaml;Views\LogEvParametersView.xaml;Views\LogParamView.xaml;Views\MainWindowView.xaml;Views\MenuView.xaml;Views\Modbus\ModBusView.xaml;Views\ParametersTableView.xaml;Views\PrintPreviewView.xaml;Views\PrintSelectionView.xaml;
 
-False
+True
 

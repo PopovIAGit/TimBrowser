@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.props" Condition="Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EEC7FBDE-D07E-4A9B-B929-EDAE976DF610}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimBrowser</RootNamespace>
+    <AssemblyName>TimBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Design|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Design\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DESIGN_TIME</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainappicon256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TimBrowser.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=1.5.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Caliburn.Micro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.FoxitPDFInfoLib">
+      <HintPath>obj\x86\Debug\Interop.FoxitPDFInfoLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFPrevHndlrLib">
+      <HintPath>obj\x86\Debug\Interop.PDFPrevHndlrLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFShellLib">
+      <HintPath>obj\x86\Debug\Interop.PDFShellLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PDFSHELLSERVERLib">
+      <HintPath>obj\x86\Debug\Interop.PDFSHELLSERVERLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="InTheHand.BluetoothLE, Version=4.0.0.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\InTheHand.BluetoothLE.4.0.33\lib\net461\InTheHand.BluetoothLE.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\libs\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus">
+      <HintPath>..\libs\Modbus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationUI" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SimpleInjector, Version=2.3.6.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\SimpleInjector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.22621.0\Windows.winmd</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ApiImplementation\Communication\EmptyLowCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\ModbusCommunication.cs" />
+    <Compile Include="ApiImplementation\Communication\ModbusProtocolCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\SerialPortLowCommunicationFunc.cs" />
+    <Compile Include="ApiImplementation\Communication\StreamModbusAdapter.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="BLE\BLEDriver.cs" />
+    <Compile Include="Converters\AltIndexBackgroundConverter.cs" />
+    <Compile Include="Converters\BooleanLogEvColorValueExt.cs" />
+    <Compile Include="Converters\Row3EvToIndexConverter.cs" />
+    <Compile Include="Converters\RowToIndexConverter.cs" />
+    <Compile Include="EmbeddedAssembly.cs" />
+    <Compile Include="Helper\ViewModelUtils.cs" />
+    <Compile Include="Mapper\BleDevicesMapper.cs" />
+    <Compile Include="Mapper\BluetoothDevicesMapper.cs" />
+    <Compile Include="Helper\Constants.cs" />
+    <Compile Include="Mapper\LogMapper.cs" />
+    <Compile Include="Mapper\ParameterMapper.cs" />
+    <Compile Include="Messages\LogEvAndCmdSelectedMessage.cs" />
+    <Compile Include="Messages\LogEvSelectedMessage.cs" />
+    <Compile Include="Messages\TimErrorEventArgs.cs" />
+    <Compile Include="Model\ComSources.cs" />
+    <Compile Include="Model\TimLogEvAndCmdRecItem.cs" />
+    <Compile Include="Model\TimLogSimRecItem.cs" />
+    <Compile Include="Model\PrintSelectionItem.cs" />
+    <Compile Include="Model\PrintTableItem.cs" />
+    <Compile Include="Model\SerialPortData.cs" />
+    <Compile Include="Model\TimChosenParameterItem.cs" />
+    <Compile Include="Model\TimLogCmdRecItem.cs" />
+    <Compile Include="Model\TimLogEvRecItem.cs" />
+    <Compile Include="Model\TimLogParamRecItem.cs" />
+    <Compile Include="Model\TimParameterItem.cs" />
+    <Compile Include="Model\TimParametersGroup.cs" />
+    <Compile Include="Services\TimDataServiceBLE.cs" />
+    <Compile Include="Services\TimDataServiceM.cs" />
+    <Compile Include="Services\DataManager.cs" />
+    <Compile Include="Model\PrintSelectionIds.cs" />
+    <Compile Include="Services\Print\PageRangeDocumentPaginator.cs" />
+    <Compile Include="Services\Print\PimpedPaginator.cs" />
+    <Compile Include="Services\Print\PrintCode.cs" />
+    <Compile Include="Services\Print\PrintDocumentCreator.cs" />
+    <Compile Include="Services\Print\PrintEngine.cs" />
+    <Compile Include="Services\Print\PrintTableService.cs" />
+    <Compile Include="Services\TimDataService.cs" />
+    <Compile Include="Services\TimDownloadService.cs" />
+    <Compile Include="Services\TimErrorService.cs" />
+    <Compile Include="Services\TimFileService.cs" />
+    <Compile Include="Services\Print\PrintTableItemsCreator.cs" />
+    <Compile Include="Services\CreateXlsFile\XlsEngine.cs" />
+    <Compile Include="ViewModels\BLE\BLEAuthViewModel.cs" />
+    <Compile Include="ViewModels\BLE\BLEViewModel.Behaviours.cs" />
+    <Compile Include="ViewModels\BLE\BLEViewModel.cs" />
+    <Compile Include="ViewModels\Bluetooth\BluetoothAuthViewModel.cs" />
+    <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.Behaviours.cs" />
+    <Compile Include="ViewModels\Bluetooth\BluetoothViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdChosenParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdEventsViewModel.cs" />
+    <Compile Include="ViewModels\LogEvAndCmdMainViewModel.cs" />
+    <Compile Include="ViewModels\LogSimViewModel.cs" />
+    <Compile Include="ViewModels\Download\DownloadCommBase.cs" />
+    <Compile Include="ViewModels\Download\DownloadInformationModuleViewModel.cs" />
+    <Compile Include="ViewModels\Download\DownloadViewModel.cs" />
+    <Compile Include="ViewModels\LogCmdViewModel.cs" />
+    <Compile Include="ViewModels\LogEvChosenParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogEvEventsViewModel.cs" />
+    <Compile Include="ViewModels\LogEvMainViewModel.cs" />
+    <Compile Include="ViewModels\LogEvParametersViewModel.cs" />
+    <Compile Include="ViewModels\LogParamViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\ModBus\Driver.cs" />
+    <Compile Include="ViewModels\ModBus\ModBusViewModel.cs" />
+    <Compile Include="ViewModels\ModBus\ModBusViewModel.Behaviours.cs" />
+    <Compile Include="ViewModels\ParametersTableViewModel.cs" />
+    <Compile Include="ViewModels\PrintPreviewViewModel.cs" />
+    <Compile Include="ViewModels\PrintSelectionViewModel.cs" />
+    <Compile Include="Views\Bluetooth\BluetoothAuthView.xaml.cs">
+      <DependentUpon>BluetoothAuthView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bluetooth\BluetoothView.xaml.cs">
+      <DependentUpon>BluetoothView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\BitParameterControl.xaml.cs">
+      <DependentUpon>BitParameterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\FieldsValueConverter.cs" />
+    <Compile Include="Views\Controls\WaitingControl.xaml.cs">
+      <DependentUpon>WaitingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdChosenParametersView.xaml.cs">
+      <DependentUpon>LogEvAndCmdChosenParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdMainView.xaml.cs">
+      <DependentUpon>LogEvAndCmdMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvAndCmdEventsView.xaml.cs">
+      <DependentUpon>LogEvAndCmdEventsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogSimView.xaml.cs">
+      <DependentUpon>LogSimView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DownloadInformationModuleView.xaml.cs">
+      <DependentUpon>DownloadInformationModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DownloadView.xaml.cs">
+      <DependentUpon>DownloadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListUserControl.xaml.cs">
+      <DependentUpon>ListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogChosenView.xaml.cs">
+      <DependentUpon>LogChosenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogCmdView.xaml.cs">
+      <DependentUpon>LogCmdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvChosenParametersView.xaml.cs">
+      <DependentUpon>LogEvChosenParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvEventsView.xaml.cs">
+      <DependentUpon>LogEvEventsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvMainView.xaml.cs">
+      <DependentUpon>LogEvMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogEvParametersView.xaml.cs">
+      <DependentUpon>LogEvParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogParamView.xaml.cs">
+      <DependentUpon>LogParamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modbus\ModBusView.xaml.cs">
+      <DependentUpon>ModBusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ParametersTableView.xaml.cs">
+      <DependentUpon>ParametersTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintPreviewView.xaml.cs">
+      <DependentUpon>PrintPreviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintSelectionView.xaml.cs">
+      <DependentUpon>PrintSelectionView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="doc\РЭ Tim Browser v2.doc" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimBrowser.Bluetooth\TimBrowser.Bluetooth.csproj">
+      <Project>{D0B33FF0-DBE8-41C2-BF7C-B9124A3A03E5}</Project>
+      <Name>TimBrowser.Bluetooth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimBrowser.DataCore\TimBrowser.DataCore.csproj">
+      <Project>{C85EED4F-98D6-4558-BBC2-4436E5EFE868}</Project>
+      <Name>TimBrowser.DataCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tpe\Tpe Parameters\TpeParameters\TpeParameters\TpeParameters.csproj">
+      <Project>{16a337ef-95ff-4099-b847-c7b62447184f}</Project>
+      <Name>TpeParameters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\TimDataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Bluetooth\BluetoothAuthView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Bluetooth\BluetoothView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\BitParameterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\BitParameterResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\WaitingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvAndCmdChosenParametersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogEvAndCmdMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogEvAndCmdEventsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LogSimView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DownloadInformationModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DownloadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogChosenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogCmdView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvChosenParametersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvEventsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogEvParametersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogParamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modbus\ModBusView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ParametersTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrintPreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrintSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\download-256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\emptyico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\folder-256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\help-256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\print-256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\save-256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\tomzelico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="System.Windows.Interactivity.dll" />
+    <EmbeddedResource Include="SimpleInjector.dll" />
+    <EmbeddedResource Include="Caliburn.Micro.dll" />
+    <Resource Include="appicon.ico" />
+    <Resource Include="Assets\BluetoothIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\download.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\print.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mainappicon256.ico" />
+    <Resource Include="Assets\Splash3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Splash2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="mainappicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\appicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiImplementation\ILow\" />
+    <Folder Include="Views\BLE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\excel-26.png" />
+    <Resource Include="Assets\pdf-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="FoxitPDFInfoLib">
+      <Guid>{DFB9EA05-9456-443E-B310-6D854CC80D93}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFPrevHndlrLib">
+      <Guid>{0F6D3808-7974-4B1A-94C2-3200767EACE8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFShellLib">
+      <Guid>{67E94227-7662-4050-9C72-746983CF37A2}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFSHELLSERVERLib">
+      <Guid>{41C5FFFE-36DD-415D-9ED0-2976A342A1C8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Runtime.WindowsRuntime.4.7.0\build\net461\System.Runtime.WindowsRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Runtime.WindowsRuntime.4.7.0\build\net461\System.Runtime.WindowsRuntime.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.7.0\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.7.0\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.targets" Condition="Exists('..\packages\Microsoft.Windows.SDK.Contracts.10.0.22621.755\build\Microsoft.Windows.SDK.Contracts.targets')" />
+  <Import Project="..\packages\System.Runtime.WindowsRuntime.4.7.0\build\net461\System.Runtime.WindowsRuntime.targets" Condition="Exists('..\packages\System.Runtime.WindowsRuntime.4.7.0\build\net461\System.Runtime.WindowsRuntime.targets')" />
+  <Import Project="..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.7.0\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets" Condition="Exists('..\packages\System.Runtime.WindowsRuntime.UI.Xaml.4.7.0\build\net461\System.Runtime.WindowsRuntime.UI.Xaml.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Work\\TimBrowser\\TimBrowser\\TimBrowser.csproj": {}
+  },
+  "projects": {
+    "E:\\Work\\TimBrowser\\TimBrowser.Bluetooth\\TimBrowser.Bluetooth.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\TimBrowser.Bluetooth\\TimBrowser.Bluetooth.csproj",
+        "projectName": "TimBrowser.Bluetooth",
+        "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.Bluetooth\\TimBrowser.Bluetooth.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj",
+        "projectName": "TimBrowser.DataCore",
+        "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "E:\\Work\\TimBrowser\\TimBrowser\\TimBrowser.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\TimBrowser\\TimBrowser.csproj",
+        "projectName": "TimBrowser",
+        "projectPath": "E:\\Work\\TimBrowser\\TimBrowser\\TimBrowser.csproj",
+        "packagesPath": "C:\\Users\\myxxx\\.nuget\\packages\\",
+        "outputPath": "E:\\Work\\TimBrowser\\TimBrowser\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\myxxx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "E:\\Work\\TimBrowser\\TimBrowser.Bluetooth\\TimBrowser.Bluetooth.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.Bluetooth\\TimBrowser.Bluetooth.csproj"
+              },
+              "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\TimBrowser.DataCore\\TimBrowser.DataCore.csproj"
+              },
+              "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj": {
+                "projectPath": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "InTheHand.BluetoothLE": {
+              "target": "Package",
+              "version": "[4.0.33, )"
+            },
+            "System.Runtime.WindowsRuntime.UI.Xaml": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj",
+        "projectName": "TpeParameters",
+        "projectPath": "E:\\Work\\TimBrowser\\Tpe\\Tpe Parameters\\TpeParameters\\TpeParameters\\TpeParameters.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}
